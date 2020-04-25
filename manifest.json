@@ -5,8 +5,15 @@
   "description": "Connect Dungeon Master's Vault to Roll20.",
   "content_scripts": [
     {
-      "matches": ["*://*.dungeonmastersvault.com/pages/dnd/5e/characters/*"],
-      "js": ["dist/index.js"]
+      "matches": ["*://www.dungeonmastersvault.com/pages/dnd/5e/characters/*"],
+      "js": ["dist/dmv.js"]
+    },
+    {
+      "matches": ["*://app.roll20.net/*"],
+      "js": ["dist/roll20.js"]
     }
-  ]
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
 }

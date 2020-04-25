@@ -3,48 +3,22 @@
   "description": "Connect Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
   "version": "1.0.0",
-  "main": "src/index.js",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-transform-runtime": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "babel-jest": "^25.3.0",
-    "concurrently": "^5.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.2.5",
-    "jest": "^25.3.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.2",
     "web-ext": "^4.2.0"
   },
   "scripts": {
-    "build": "parcel build src/index.js -o index.js",
-    "dev": "concurrently --kill-others yarn:watch yarn:ext:run",
+    "build": "parcel build src/*",
+    "clean": "rm -r dist/*",
     "ext:lint": "web-ext lint",
     "ext:run": "web-ext run",
     "test": "jest",
-    "watch": "parcel watch src/index.js -o index.js"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-runtime"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test"
-    }
-  },
-  "jest": {
-    "silent": true
-  },
-  "prettier": {}
+    "watch": "parcel watch src/*"
+  }
 }
