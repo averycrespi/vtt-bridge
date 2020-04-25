@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "VTT Bridge",
+  "version": "1.0",
+  "description": "Connect Dungeon Master's Vault to Roll20.",
+  "content_scripts": [
+    {
+      "matches": ["*://*.dungeonmastersvault.com/pages/dnd/5e/characters/*"],
+      "js": ["dist/index.js"]
+    }
+  ]
+}
