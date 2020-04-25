@@ -14,11 +14,10 @@
     "web-ext": "^4.2.0"
   },
   "scripts": {
-    "build": "parcel build src/*",
+    "build": "parcel build --no-source-maps src/scripts/* -d dist",
     "clean": "rm -r dist/*",
-    "ext:lint": "web-ext lint",
-    "ext:run": "web-ext run",
-    "test": "jest",
-    "watch": "parcel watch src/*"
+    "lint": "web-ext lint",
+    "start": "web-ext run",
+    "watch": "parcel watch --no-source-maps src/scripts/* -d dist"
   }
 }
