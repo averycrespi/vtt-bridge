@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { ROLL_ABILITY_SCORE } from "../types";
+import { ROLL_ABILITY_SCORE } from "../messages";
 
 const hookAbilityScores = (onClick) => {
   const parent = document.querySelector(".ability-scores");
@@ -9,9 +9,9 @@ const hookAbilityScores = (onClick) => {
     const button = createButton("roll", function () {
       onClick({
         type: ROLL_ABILITY_SCORE,
-        name: child.querySelector(".ability-score-name").innerText,
+        stat: child.querySelector(".ability-score-name").innerText,
         score: child.querySelector(".ability-score").innerText,
-        modifier: child.querySelector(".ability-score-modifier").innerText,
+        mod: child.querySelector(".ability-score-modifier").innerText,
       });
     });
     button.classList.add("m-t-10");

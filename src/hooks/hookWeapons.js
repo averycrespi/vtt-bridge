@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { ATTACK_WITH_WEAPON } from "../types";
+import { ATTACK_WITH_WEAPON } from "../messages";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -17,9 +17,9 @@ const hookWeapons = (onClick) => {
       event.stopPropagation();
       onClick({
         type: ATTACK_WITH_WEAPON,
-        name: row.querySelector(".weapon").innerText,
+        weapon: row.querySelector(".weapon").innerText,
         details: row.querySelector(".weapon-damage-modifier").innerText,
-        attackModifier: row.querySelector(".attack-modifier").innerText,
+        mod: row.querySelector(".attack-modifier").innerText,
       });
     });
     cell.appendChild(button);

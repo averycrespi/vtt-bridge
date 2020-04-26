@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { USE_ACTION } from "../types";
+import { USE_ACTION } from "../messages";
 
 const hookActions = (onClick) => {
   const parent = document.querySelector(".actions");
@@ -11,7 +11,7 @@ const hookActions = (onClick) => {
     const button = createButton("use", function () {
       onClick({
         type: USE_ACTION,
-        name: name.innerText,
+        action: name.innerText,
         details: details.innerText,
       });
     });

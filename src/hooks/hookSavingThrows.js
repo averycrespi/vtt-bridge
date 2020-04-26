@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { ROLL_SAVING_THROW } from "../types";
+import { ROLL_SAVING_THROW } from "../messages";
 
 const hookSavingThrows = (onClick) => {
   // This table has no helpful selectors, so we need to search upwards from a child.
@@ -13,8 +13,8 @@ const hookSavingThrows = (onClick) => {
     const button = createButton("roll", function () {
       onClick({
         type: ROLL_SAVING_THROW,
-        name: row.querySelector(".saving-throw-name").innerText,
-        bonus: row.querySelector(".saving-throw-bonus").innerText,
+        stat: row.querySelector(".saving-throw-name").innerText,
+        mod: row.querySelector(".saving-throw-bonus").innerText,
       });
     });
     button.classList.add("m-l-10");

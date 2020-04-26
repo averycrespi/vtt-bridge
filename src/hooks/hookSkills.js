@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { ROLL_SKILL } from "../types";
+import { ROLL_SKILL } from "../messages";
 
 const hookSkills = (onClick) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
@@ -9,8 +9,8 @@ const hookSkills = (onClick) => {
     const button = createButton("roll", function () {
       onClick({
         type: ROLL_SKILL,
-        name: row.querySelector(".skill-name").innerText,
-        bonus: row.querySelector(".skillbonus").innerText,
+        skill: row.querySelector(".skill-name").innerText,
+        mod: row.querySelector(".skillbonus").innerText,
       });
     });
     button.classList.add("m-l-10");

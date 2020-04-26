@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { USE_FEATURE } from "../types";
+import { USE_FEATURE } from "../messages";
 
 const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
@@ -11,7 +11,7 @@ const hookFeatures = (onClick) => {
     const button = createButton("use", function () {
       onClick({
         type: USE_FEATURE,
-        name: name.innerText,
+        feature: name.innerText,
         details: details.innerText,
       });
     });

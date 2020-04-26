@@ -15,5 +15,6 @@
   ],
   "background": {
     "scripts": ["dist/background.js"]
-  }
+  },
+  "permissions": ["tabs"]
 }
