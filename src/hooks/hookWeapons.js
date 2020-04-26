@@ -1,6 +1,5 @@
-import { createButton, createElement, onElementLoad } from "../common/dom";
-
-import { ATTACK_WITH_WEAPON } from "../common/messages";
+import { createButtonInCell, onElementLoad } from "../common/dom";
+import { emote, roll } from "../common/commands";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -11,18 +10,13 @@ const hookWeapons = (onClick) => {
       headerCount += 1;
       continue;
     }
-    const cell = createElement("td");
-    const button = createButton("attack", function () {
-      // Don't expand the details when the button is clicked.
+    const weapon = row.querySelector(".weapon").innerText;
+    const mod = row.querySelector(".attack-modifier").innerText;
+    const cell = createButtonInCell("attack", function () {
+      // Don't expand the weapon details when the button is clicked.
       event.stopPropagation();
-      onClick({
-        type: ATTACK_WITH_WEAPON,
-        weapon: row.querySelector(".weapon").innerText,
-        details: row.querySelector(".weapon-damage-modifier").innerText,
-        mod: row.querySelector(".attack-modifier").innerText,
-      });
+      onClick([emote("attacks with", weapon), roll(mod)]);
     });
-    cell.appendChild(button);
     row.appendChild(cell);
   }
   console.debug("Hooked " + (rows.length - headerCount) + " weapons");

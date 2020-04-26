@@ -2,13 +2,11 @@ import { onElementLoad } from "../common/dom";
 
 console.debug("Loading roll20.js ...");
 
-const handleMessage = (message) => {
-  console.debug(
-    "Received message from background.js: " + JSON.stringify(message)
-  );
+const handleMessage = (commands) => {
+  console.log("Received commands from background: " + JSON.stringify(commands));
   onElementLoad("#textchat-input", () => {
     const chat = document.querySelector("#textchat-input");
-    chat.querySelector("textarea").value = message;
+    chat.querySelector("textarea").value = commands.join("\n");
     chat.querySelector(".btn").click();
   });
 };

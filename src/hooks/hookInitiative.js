@@ -1,17 +1,15 @@
 import { createButton, onElementLoad } from "../common/dom";
+import { emote, roll } from "../common/commands";
 
-import { ROLL_INITIATIVE } from "../common/messages";
 import { TOP_MARGIN } from "../common/classes";
 
 const hookInitiative = (onClick) => {
   const elem = document.querySelector(".initiative");
+  const mod = elem.innerText;
   const button = createButton(
     "roll",
     function () {
-      onClick({
-        type: ROLL_INITIATIVE,
-        mod: elem.innerText,
-      });
+      onClick([emote("is rolling initiative"), roll(mod)]);
     },
     [TOP_MARGIN]
   );

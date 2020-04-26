@@ -44,13 +44,17 @@ export const createButton = (innerText, onClick, classes = []) => {
 };
 
 /**
- * Create an element.
+ * Create a styled button in a cell.
  *
- * @param {String} tagName
- * @return {HTMLElement}
+ * @param {String} innerText
+ * @param {Function} onClick
+ * @param {Array} classes
+ * @returns {HTMLElement}
  */
-export const createElement = (tagName) => {
-  const elem = document.createElement(tagName);
-  elem.classList.add(VTT_BRIDGE);
-  return elem;
+export const createButtonInCell = (innerText, onClick, classes = []) => {
+  const button = createButton(innerText, onClick, classes);
+  const cell = document.createElement("td");
+  cell.classList.add(VTT_BRIDGE);
+  cell.appendChild(button);
+  return cell;
 };

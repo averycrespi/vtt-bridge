@@ -1,7 +1,6 @@
 import { LEFT_MARGIN, TOP_MARGIN } from "../common/classes";
 import { createButton, onElementLoad } from "../common/dom";
-
-import { USE_FEATURE } from "../common/messages";
+import { emote, say } from "../common/commands";
 
 const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
@@ -12,11 +11,7 @@ const hookFeatures = (onClick) => {
     const button = createButton(
       "use",
       function () {
-        onClick({
-          type: USE_FEATURE,
-          feature: name.innerText,
-          details: details.innerText,
-        });
+        onClick([emote("uses", name.innerText), say(details.innerText)]);
       },
       [TOP_MARGIN, LEFT_MARGIN]
     );
