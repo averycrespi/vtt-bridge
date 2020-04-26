@@ -1,7 +1,8 @@
-import { INITIATIVE } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { INITIATIVE } from "../types";
+
+const hookInitiative = (onClick) => {
   const elem = document.querySelector(".initiative");
   const button = createButton("roll", function () {
     onClick({
@@ -13,3 +14,6 @@ export default (onClick) => {
   elem.parentNode.appendChild(button);
   console.log("Hooked initiative");
 };
+
+export default (onClick) =>
+  onElementLoad(".initiative", () => hookInitiative(onClick));

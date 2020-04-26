@@ -17,7 +17,7 @@
     "build": "parcel build --no-source-maps src/scripts/* -d dist",
     "clean": "rm -r dist/*",
     "lint": "web-ext lint",
-    "start": "web-ext run",
+    "start": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true",
     "watch": "parcel watch --no-source-maps src/scripts/* -d dist"
   }
 }

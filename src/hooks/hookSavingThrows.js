@@ -1,7 +1,8 @@
-import { SAVING_THROW } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { SAVING_THROW } from "../types";
+
+const hookSavingThrows = (onClick) => {
   // This table has no class, so we need to search upwards from a child.
   const rows = document
     .querySelector(".saving-throw-name")
@@ -22,3 +23,6 @@ export default (onClick) => {
   }
   console.log("Hooked saving throws");
 };
+
+export default (onClick) =>
+  onElementLoad(".saving-throw-name", () => hookSavingThrows(onClick));

@@ -1,10 +1,12 @@
-import { FEATURE } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { FEATURE } from "../types";
+
+const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
   for (const child of parent.querySelectorAll("p")) {
-    const [name, details, ...rest] = child.querySelectorAll("span");
+    // There may be additional spans, but we don't care about them.
+    const [name, details, ..._] = child.querySelectorAll("span");
     const button = createButton("use", function () {
       onClick({
         type: FEATURE,
@@ -17,3 +19,6 @@ export default (onClick) => {
   }
   console.log("Hooked features");
 };
+
+export default (onClick) =>
+  onElementLoad(".features\\,Traits\\,AndFeats", () => hookFeatures(onClick));

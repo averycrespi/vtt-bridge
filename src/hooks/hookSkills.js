@@ -1,7 +1,8 @@
-import { SKILL } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { SKILL } from "../types";
+
+const hookSkills = (onClick) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
   for (const row of rows) {
     const cell = document.createElement("td");
@@ -18,3 +19,5 @@ export default (onClick) => {
   }
   console.log("Hooked skills");
 };
+
+export default (onClick) => onElementLoad(".skills", () => hookSkills(onClick));

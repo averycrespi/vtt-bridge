@@ -1,7 +1,8 @@
-import { WEAPON } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { WEAPON } from "../types";
+
+const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
   for (const row of rows) {
     if (row.querySelectorAll("th").length > 0) {
@@ -9,7 +10,7 @@ export default (onClick) => {
       continue;
     }
     const cell = document.createElement("td");
-    const button = createButton("roll", function () {
+    const button = createButton("attack", function () {
       // Don't expand the details when the button is clicked.
       event.stopPropagation();
       onClick({
@@ -24,3 +25,6 @@ export default (onClick) => {
   }
   console.log("Hooked weapons");
 };
+
+export default (onClick) =>
+  onElementLoad(".weapons", () => hookWeapons(onClick));

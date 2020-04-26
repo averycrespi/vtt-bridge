@@ -1,15 +1,17 @@
-import { ACTION } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { ACTION } from "../types";
+
+const hookActions = (onClick) => {
   const parent = document.querySelector(".actions");
   for (const child of parent.querySelectorAll("p")) {
-    const spans = child.querySelectorAll("span");
+    // There may be additional spans, but we don't care about them.
+    const [name, details, ..._] = child.querySelectorAll("span");
     const button = createButton("use", function () {
       onClick({
         type: ACTION,
-        name: spans[0].innerText,
-        details: spans[1].innerText,
+        name: name.innerText,
+        details: details.innerText,
       });
     });
     button.classList.add("m-t-10", "m-l-10");
@@ -17,3 +19,6 @@ export default (onClick) => {
   }
   console.log("Hooked actions");
 };
+
+export default (onClick) =>
+  onElementLoad(".actions", () => hookActions(onClick));

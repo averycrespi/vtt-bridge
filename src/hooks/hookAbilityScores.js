@@ -1,7 +1,8 @@
-import { ABILITY_SCORE } from "../types";
-import { createButton } from "./common";
+import { createButton, onElementLoad } from "./common";
 
-export default (onClick) => {
+import { ABILITY_SCORE } from "../types";
+
+const hookAbilityScores = (onClick) => {
   const parent = document.querySelector(".ability-scores");
   for (const child of parent.children) {
     const button = createButton("roll", function () {
@@ -17,3 +18,6 @@ export default (onClick) => {
   }
   console.log("Hooked ability scores");
 };
+
+export default (onClick) =>
+  onElementLoad(".ability-scores", () => hookAbilityScores(onClick));

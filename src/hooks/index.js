@@ -10,6 +10,13 @@ import { onElementLoad } from "./common";
 // Global variable for tracking the active tab.
 let activeTab = 0;
 
+export const createHooks = (onClick) => {
+  onElementLoad(".app", () => {
+    createDefaultHooks(onClick);
+    createTabHooks(onClick);
+  });
+};
+
 const createDefaultHooks = (onClick) => {
   hookAbilityScores(onClick);
   hookSkills(onClick);
@@ -30,12 +37,10 @@ const createTabHooks = (onClick) => {
   combatTab.addEventListener("click", () => {
     console.log("Loaded combat tab");
     if (activeTab !== 0) {
-      onElementLoad(".initiative", () => {
-        hookInitiative(onClick);
-        hookWeapons(onClick);
-      });
-      activeTab = 0;
+      hookInitiative(onClick);
+      hookWeapons(onClick);
     }
+    activeTab = 0;
   });
 
   proficienciesTab.addEventListener("click", () => {
@@ -51,23 +56,17 @@ const createTabHooks = (onClick) => {
   featuresTab.addEventListener("click", () => {
     console.log("Loaded features tab");
     if (activeTab !== 3) {
-      onElementLoad(".actions", () => {
-        hookActions(onClick);
-        hookFeatures(onClick);
-      });
+      hookActions(onClick);
+      hookFeatures(onClick);
     }
     activeTab = 3;
   });
 
   equipmentTab.addEventListener("click", () => {
     console.log("Loaded equipment tab");
+    if (activeTab !== 4) {
+      hookWeapons(onClick);
+    }
     activeTab = 4;
-  });
-};
-
-export const createHooks = (onClick) => {
-  onElementLoad(".character-name", () => {
-    createDefaultHooks(onClick);
-    createTabHooks(onClick);
   });
 };
