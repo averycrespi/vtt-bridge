@@ -1,5 +1,5 @@
 import { WEAPON } from "../types";
-import { createButton } from "../dom";
+import { createButton } from "./common";
 
 export default (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");

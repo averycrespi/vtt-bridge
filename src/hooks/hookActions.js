@@ -1,5 +1,5 @@
 import { ACTION } from "../types";
-import { createButton } from "../dom";
+import { createButton } from "./common";
 
 export default (onClick) => {
   const parent = document.querySelector(".actions");

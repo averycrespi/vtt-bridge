@@ -1,5 +1,5 @@
 import { INITIATIVE } from "../types";
-import { createButton } from "../dom";
+import { createButton } from "./common";
 
 export default (onClick) => {
   const elem = document.querySelector(".initiative");

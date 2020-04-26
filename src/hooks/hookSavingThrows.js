@@ -1,5 +1,5 @@
 import { SAVING_THROW } from "../types";
-import { createButton } from "../dom";
+import { createButton } from "./common";
 
 export default (onClick) => {
   // This table has no class, so we need to search upwards from a child.
