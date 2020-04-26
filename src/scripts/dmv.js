@@ -1,3 +1,4 @@
+import * as styles from "../styles";
 import * as types from "../types";
 
 /**
@@ -18,15 +19,15 @@ export const onElementLoad = (selector, callback) => {
 /**
  * Create a button with an onclick handler.
  *
- * The button's style will match the rest of the page.
- *
  * @param {String} innerText
  * @param {Function} onclick
+ * @param {Array} classes
  */
-const createButton = (innerText, onclick) => {
+const createButton = (innerText, onclick, classes = []) => {
   const button = document.createElement("button");
   button.innerText = innerText;
-  button.className = "form-button";
+  button.className = styles.BUTTON;
+  button.classList.add(...classes);
   button.onclick = onclick;
   return button;
 };
@@ -100,13 +101,17 @@ const hookTabs = () => {
 const hookAbilityScores = () => {
   const parent = document.querySelector(".ability-scores");
   for (const child of parent.children) {
-    const button = createButton("Roll", function () {
-      dispatch(types.ABILITY_SCORE, {
-        name: child.querySelector(".ability-score-name").innerText,
-        score: child.querySelector(".ability-score").innerText,
-        modifier: child.querySelector(".ability-score-modifier").innerText,
-      });
-    });
+    const button = createButton(
+      "roll",
+      function () {
+        dispatch(types.ABILITY_SCORE, {
+          name: child.querySelector(".ability-score-name").innerText,
+          score: child.querySelector(".ability-score").innerText,
+          modifier: child.querySelector(".ability-score-modifier").innerText,
+        });
+      },
+      [styles.PAD_TOP]
+    );
     child.appendChild(button);
   }
   console.log("Hooked ability scores");
@@ -119,12 +124,16 @@ const hookSkills = () => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
   for (const row of rows) {
     const cell = document.createElement("td");
-    const button = createButton("Roll", function () {
-      dispatch(types.SKILL, {
-        name: row.querySelector(".skill-name").innerText,
-        bonus: row.querySelector(".skillbonus").innerText,
-      });
-    });
+    const button = createButton(
+      "roll",
+      function () {
+        dispatch(types.SKILL, {
+          name: row.querySelector(".skill-name").innerText,
+          bonus: row.querySelector(".skillbonus").innerText,
+        });
+      },
+      [styles.PAD_LEFT]
+    );
     cell.appendChild(button);
     row.appendChild(cell);
   }
@@ -142,12 +151,16 @@ const hookSavingThrows = () => {
     .querySelectorAll("tr");
   for (const row of rows) {
     const cell = document.createElement("td");
-    const button = createButton("Roll", function () {
-      dispatch(types.SAVING_THROW, {
-        name: row.querySelector(".saving-throw-name").innerText,
-        bonus: row.querySelector(".saving-throw-bonus").innerText,
-      });
-    });
+    const button = createButton(
+      "roll",
+      function () {
+        dispatch(types.SAVING_THROW, {
+          name: row.querySelector(".saving-throw-name").innerText,
+          bonus: row.querySelector(".saving-throw-bonus").innerText,
+        });
+      },
+      [styles.PAD_LEFT]
+    );
     cell.appendChild(button);
     row.appendChild(cell);
   }
@@ -159,11 +172,15 @@ const hookSavingThrows = () => {
  */
 const hookInitiative = () => {
   const elem = document.querySelector(".initiative");
-  const button = createButton("Roll", function () {
-    dispatch(types.INITIATIVE, {
-      bonus: elem.innerText,
-    });
-  });
+  const button = createButton(
+    "roll",
+    function () {
+      dispatch(types.INITIATIVE, {
+        bonus: elem.innerText,
+      });
+    },
+    [styles.PAD_TOP]
+  );
   elem.parentNode.appendChild(button);
   console.log("Hooked initiative");
 };
@@ -179,7 +196,7 @@ const hookWeapons = () => {
       continue;
     }
     const cell = document.createElement("td");
-    const button = createButton("Roll", function () {
+    const button = createButton("roll", function () {
       // Don't expand the details when the button is clicked.
       event.stopPropagation();
       dispatch(types.WEAPON, {
@@ -201,12 +218,16 @@ const hookActions = () => {
   const parent = document.querySelector(".actions");
   for (const child of parent.querySelectorAll("p")) {
     const spans = child.querySelectorAll("span");
-    const button = createButton("Use", function () {
-      dispatch(types.ACTION, {
-        name: spans[0].innerText,
-        details: spans[1].innerText,
-      });
-    });
+    const button = createButton(
+      "use",
+      function () {
+        dispatch(types.ACTION, {
+          name: spans[0].innerText,
+          details: spans[1].innerText,
+        });
+      },
+      [styles.PAD_TOP, styles.PAD_LEFT]
+    );
     child.appendChild(button);
   }
   console.log("Hooked actions");
@@ -219,12 +240,16 @@ const hookFeatures = () => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
   for (const child of parent.querySelectorAll("p")) {
     const spans = child.querySelectorAll("span");
-    const button = createButton("Use", function () {
-      dispatch(types.FEATURE, {
-        name: spans[0].innerText,
-        details: spans[1].innerText,
-      });
-    });
+    const button = createButton(
+      "use",
+      function () {
+        dispatch(types.FEATURE, {
+          name: spans[0].innerText,
+          details: spans[1].innerText,
+        });
+      },
+      [styles.PAD_TOP, styles.PAD_LEFT]
+    );
     child.appendChild(button);
   }
   console.log("Hooked features");
