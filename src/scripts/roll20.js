@@ -1,15 +1,16 @@
+import { onElementLoad } from "../common";
+
 console.debug("Loaded roll20.js");
 
 const handleMessage = (message) => {
-  console.log(
+  console.debug(
     "Received message from background.js: " + JSON.stringify(message)
   );
-  const chat = document.querySelector("#textchat-input");
-  const textArea = chat.querySelector("textarea");
-  textArea.value = message;
-  setTimeout(function () {
+  onElementLoad("#textchat-input", () => {
+    const chat = document.querySelector("#textchat-input");
+    chat.querySelector("textarea").value = message;
     chat.querySelector(".btn").click();
-  }, 100);
+  });
 };
 
 browser.runtime.onMessage.addListener(handleMessage);

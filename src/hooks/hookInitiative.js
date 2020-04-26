@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { ROLL_INITIATIVE } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookInitiative = (onClick) => {
   const elem = document.querySelector(".initiative");

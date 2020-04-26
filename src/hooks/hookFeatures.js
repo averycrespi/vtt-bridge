@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { USE_FEATURE } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");

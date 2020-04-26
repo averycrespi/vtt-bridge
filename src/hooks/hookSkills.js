@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { ROLL_SKILL } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookSkills = (onClick) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");

@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { USE_ACTION } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookActions = (onClick) => {
   const parent = document.querySelector(".actions");

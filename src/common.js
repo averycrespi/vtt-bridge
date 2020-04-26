@@ -1,18 +1,4 @@
 /**
- * Create a styled button.
- *
- * @param {String} innerText
- * @param {Function} onClick
- */
-export const createButton = (innerText, onClick) => {
-  const button = document.createElement("button");
-  button.innerText = innerText;
-  button.className = "form-button";
-  button.onclick = onClick;
-  return button;
-};
-
-/**
  * Run a callback after an element loads.
  *
  * @param {String} selector

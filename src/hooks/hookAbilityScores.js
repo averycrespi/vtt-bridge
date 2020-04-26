@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { ROLL_ABILITY_SCORE } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookAbilityScores = (onClick) => {
   const parent = document.querySelector(".ability-scores");

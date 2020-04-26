@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { ATTACK_WITH_WEAPON } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");

@@ -1,6 +1,6 @@
-import { createButton, onElementLoad } from "./common";
-
 import { ROLL_SAVING_THROW } from "../messages";
+import createButton from "./createButton";
+import { onElementLoad } from "../common";
 
 const hookSavingThrows = (onClick) => {
   // This table has no helpful selectors, so we need to search upwards from a child.

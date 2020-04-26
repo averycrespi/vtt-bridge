@@ -11,6 +11,12 @@ export const USE_FEATURE = "USE_FEATURE";
 const emote = (...parts) => "/em " + parts.join(" ");
 const roll = (mod) => "/roll 1d20" + (mod !== "0" ? mode : "");
 
+/**
+ * Render a message as a series of commands.
+ *
+ * @param {Object} message
+ * @returns {String}
+ */
 export const renderMessage = (message) => {
   let commands = [];
   switch (message.type) {
@@ -34,7 +40,7 @@ export const renderMessage = (message) => {
       commands = [emote("is rolling skill:", message.skill), roll(message.mod)];
       break;
     case USE_ACTION:
-      commands = [emote("uses action", message.action), message.details];
+      commands = [emote("uses action:", message.action), message.details];
       break;
     case USE_FEATURE:
       commands = [emote("uses feature:", message.feature), message.details];
