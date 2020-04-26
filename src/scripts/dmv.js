@@ -1,5 +1,5 @@
 import { createHooks } from "../hooks";
 
-console.debug("Loaded dmv.js");
+console.debug("Loading dmv.js ...");
 
 createHooks((message) => browser.runtime.sendMessage(message));

@@ -1,6 +1,7 @@
-import { ROLL_SAVING_THROW } from "../messages";
-import createButton from "./createButton";
-import { onElementLoad } from "../common";
+import { createButton, createElement, onElementLoad } from "../common/dom";
+
+import { LEFT_MARGIN } from "../common/classes";
+import { ROLL_SAVING_THROW } from "../common/messages";
 
 const hookSavingThrows = (onClick) => {
   // This table has no helpful selectors, so we need to search upwards from a child.
@@ -9,15 +10,18 @@ const hookSavingThrows = (onClick) => {
     .closest("table")
     .querySelectorAll("tr");
   for (const row of rows) {
-    const cell = document.createElement("td");
-    const button = createButton("roll", function () {
-      onClick({
-        type: ROLL_SAVING_THROW,
-        stat: row.querySelector(".saving-throw-name").innerText,
-        mod: row.querySelector(".saving-throw-bonus").innerText,
-      });
-    });
-    button.classList.add("m-l-10");
+    const cell = createElement("td");
+    const button = createButton(
+      "roll",
+      function () {
+        onClick({
+          type: ROLL_SAVING_THROW,
+          stat: row.querySelector(".saving-throw-name").innerText,
+          mod: row.querySelector(".saving-throw-bonus").innerText,
+        });
+      },
+      [LEFT_MARGIN]
+    );
     cell.appendChild(button);
     row.appendChild(cell);
   }

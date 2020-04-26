@@ -1,3 +1,4 @@
+import { VTT_BRIDGE } from "../common/classes";
 import hookAbilityScores from "./hookAbilityScores";
 import hookActions from "./hookActions";
 import hookFeatures from "./hookFeatures";
@@ -5,16 +6,24 @@ import hookInitiative from "./hookInitiative";
 import hookSavingThrows from "./hookSavingThrows";
 import hookSkills from "./hookSkills";
 import hookWeapons from "./hookWeapons";
-import { onElementLoad } from "../common";
+import { onElementLoad } from "../common/dom";
 
 // Global variable for tracking the active tab.
 let activeTab = 0;
 
 export const createHooks = (onClick) => {
   onElementLoad(".app", () => {
+    removeAllHooks();
     createDefaultHooks(onClick);
     createTabHooks(onClick);
   });
+};
+
+const removeAllHooks = () => {
+  const elems = document.querySelectorAll("." + VTT_BRIDGE);
+  for (const elem of elems) {
+    elem.parentNode.removeChild(elem);
+  }
 };
 
 const createDefaultHooks = (onClick) => {

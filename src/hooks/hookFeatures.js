@@ -1,6 +1,7 @@
-import { USE_FEATURE } from "../messages";
-import createButton from "./createButton";
-import { onElementLoad } from "../common";
+import { LEFT_MARGIN, TOP_MARGIN } from "../common/classes";
+import { createButton, onElementLoad } from "../common/dom";
+
+import { USE_FEATURE } from "../common/messages";
 
 const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
@@ -8,14 +9,17 @@ const hookFeatures = (onClick) => {
   for (const child of children) {
     // There may be additional spans, but we don't care about them.
     const [name, details, ..._] = child.querySelectorAll("span");
-    const button = createButton("use", function () {
-      onClick({
-        type: USE_FEATURE,
-        feature: name.innerText,
-        details: details.innerText,
-      });
-    });
-    button.classList.add("m-t-10", "m-l-10");
+    const button = createButton(
+      "use",
+      function () {
+        onClick({
+          type: USE_FEATURE,
+          feature: name.innerText,
+          details: details.innerText,
+        });
+      },
+      [TOP_MARGIN, LEFT_MARGIN]
+    );
     child.appendChild(button);
   }
   console.debug("Hooked " + children.length + " features");

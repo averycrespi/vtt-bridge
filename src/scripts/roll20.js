@@ -1,6 +1,6 @@
-import { onElementLoad } from "../common";
+import { onElementLoad } from "../common/dom";
 
-console.debug("Loaded roll20.js");
+console.debug("Loading roll20.js ...");
 
 const handleMessage = (message) => {
   console.debug(

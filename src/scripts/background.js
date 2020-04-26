@@ -1,6 +1,6 @@
-import { renderMessage } from "../messages";
+import { renderMessage } from "../common/messages";
 
-console.debug("Loaded background.js");
+console.debug("Loading background.js ...");
 
 const handleMessage = (message) => {
   console.debug("Received message from dmv.js: " + JSON.stringify(message));

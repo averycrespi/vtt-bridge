@@ -9,7 +9,7 @@ export const USE_ACTION = "USE_ACTION";
 export const USE_FEATURE = "USE_FEATURE";
 
 const emote = (...parts) => "/em " + parts.join(" ");
-const roll = (mod) => "/roll 1d20" + (mod !== "0" ? mode : "");
+const roll = (mod) => "/roll 1d20" + (mod !== "0" ? mod : "");
 
 /**
  * Render a message as a series of commands.

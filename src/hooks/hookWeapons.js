@@ -1,6 +1,6 @@
-import { ATTACK_WITH_WEAPON } from "../messages";
-import createButton from "./createButton";
-import { onElementLoad } from "../common";
+import { createButton, createElement, onElementLoad } from "../common/dom";
+
+import { ATTACK_WITH_WEAPON } from "../common/messages";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -11,7 +11,7 @@ const hookWeapons = (onClick) => {
       headerCount += 1;
       continue;
     }
-    const cell = document.createElement("td");
+    const cell = createElement("td");
     const button = createButton("attack", function () {
       // Don't expand the details when the button is clicked.
       event.stopPropagation();
