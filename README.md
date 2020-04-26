@@ -35,7 +35,10 @@ VTT Bridge connects your DMV character sheet to your active Roll20 game. With th
 ## Getting Started
 
 1. Install the VTT Bridge extension. (TODO)
-2. Open Dungeon Master's Vault and Roll20 in different tabs.
+2. Open a Dungeon Master's Vault character sheet in one tab. You should see yellow <kbd>Roll</kbd> buttons.
+3. Open a Roll20 game in another tab. Wait for the game to load.
+4. Click one of the new buttons on the Dungeon Master's Vault character sheet.
+5. Watch your roll appear in Roll20.
 
 ## Development
 
