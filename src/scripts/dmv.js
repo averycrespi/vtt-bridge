@@ -15,6 +15,22 @@ export const onElementLoad = (selector, callback) => {
   }, 100);
 };
 
+/**
+ * Create a button with an onclick handler.
+ *
+ * The button's style will match the rest of the page.
+ *
+ * @param {String} innerText
+ * @param {Function} onclick
+ */
+const createButton = (innerText, onclick) => {
+  const button = document.createElement("button");
+  button.innerText = innerText;
+  button.className = "form-button";
+  button.onclick = onclick;
+  return button;
+};
+
 // We need to wait for orcpub.js to finish before creating our hooks.
 onElementLoad(".character-name", () => {
   console.log("Loaded dmv.js");
@@ -24,25 +40,12 @@ onElementLoad(".character-name", () => {
   hookSavingThrows();
   hookInitiative();
   hookWeapons();
+  hookActions();
+  hookFeatures();
 });
 
 //TODO: implement
 const dispatch = (type, payload) => console.log(type, payload);
-
-/**
- * Create a roll button with an onclick handler.
- *
- * The button's style will match the rest of the page.
- *
- * @param {Function} onclick
- */
-const createRollButton = (onclick) => {
-  const button = document.createElement("button");
-  button.innerText = "Roll";
-  button.className = "form-button";
-  button.onclick = onclick;
-  return button;
-};
 
 // Global variable for tracking the active tab.
 let activeTab = 0;
@@ -57,6 +60,8 @@ const hookTabs = () => {
     if (activeTab !== 0) {
       onElementLoad(".initiative", () => {
         hookInitiative();
+      });
+      onElementLoad(".weapons", () => {
         hookWeapons();
       });
       activeTab = 0;
@@ -72,6 +77,14 @@ const hookTabs = () => {
   });
   tabs[3].addEventListener("click", () => {
     console.log("Loaded features tab");
+    if (activeTab !== 3) {
+      onElementLoad(".actions", () => {
+        hookActions();
+      });
+      onElementLoad(".features\\,Traits\\,AndFeats", () => {
+        hookFeatures();
+      });
+    }
     activeTab = 3;
   });
   tabs[4].addEventListener("click", () => {
@@ -87,7 +100,7 @@ const hookTabs = () => {
 const hookAbilityScores = () => {
   const parent = document.querySelector(".ability-scores");
   for (const child of parent.children) {
-    const button = createRollButton(function () {
+    const button = createButton("Roll", function () {
       dispatch(types.ABILITY_SCORE, {
         name: child.querySelector(".ability-score-name").innerText,
         score: child.querySelector(".ability-score").innerText,
@@ -106,7 +119,7 @@ const hookSkills = () => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
   for (const row of rows) {
     const cell = document.createElement("td");
-    const button = createRollButton(function () {
+    const button = createButton("Roll", function () {
       dispatch(types.SKILL, {
         name: row.querySelector(".skill-name").innerText,
         bonus: row.querySelector(".skillbonus").innerText,
@@ -129,7 +142,7 @@ const hookSavingThrows = () => {
     .querySelectorAll("tr");
   for (const row of rows) {
     const cell = document.createElement("td");
-    const button = createRollButton(function () {
+    const button = createButton("Roll", function () {
       dispatch(types.SAVING_THROW, {
         name: row.querySelector(".saving-throw-name").innerText,
         bonus: row.querySelector(".saving-throw-bonus").innerText,
@@ -146,7 +159,7 @@ const hookSavingThrows = () => {
  */
 const hookInitiative = () => {
   const elem = document.querySelector(".initiative");
-  const button = createRollButton(function () {
+  const button = createButton("Roll", function () {
     dispatch(types.INITIATIVE, {
       bonus: elem.innerText,
     });
@@ -166,7 +179,7 @@ const hookWeapons = () => {
       continue;
     }
     const cell = document.createElement("td");
-    const button = createRollButton(function (e) {
+    const button = createButton("Roll", function () {
       // Don't expand the details when the button is clicked.
       event.stopPropagation();
       dispatch(types.WEAPON, {
@@ -179,4 +192,40 @@ const hookWeapons = () => {
     row.appendChild(cell);
   }
   console.log("Hooked weapons");
+};
+
+/**
+ * Hook action uses.
+ */
+const hookActions = () => {
+  const parent = document.querySelector(".actions");
+  for (const child of parent.querySelectorAll("p")) {
+    const spans = child.querySelectorAll("span");
+    const button = createButton("Use", function () {
+      dispatch(types.ACTION, {
+        name: spans[0].innerText,
+        details: spans[1].innerText,
+      });
+    });
+    child.appendChild(button);
+  }
+  console.log("Hooked actions");
+};
+
+/**
+ * Hook feature uses.
+ */
+const hookFeatures = () => {
+  const parent = document.querySelector(".features\\,Traits\\,AndFeats");
+  for (const child of parent.querySelectorAll("p")) {
+    const spans = child.querySelectorAll("span");
+    const button = createButton("Use", function () {
+      dispatch(types.FEATURE, {
+        name: spans[0].innerText,
+        details: spans[1].innerText,
+      });
+    });
+    child.appendChild(button);
+  }
+  console.log("Hooked features");
 };
