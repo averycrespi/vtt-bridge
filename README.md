@@ -8,7 +8,7 @@
 </div>
 
 <div align="center">
-    <h4>Connect Dungeon Master's Vault to Roll20 .</h4>
+    <h4>Connect Dungeon Master's Vault to Roll20.</h4>
 </div>
 
 <div align="center">
@@ -28,9 +28,7 @@ TODO
 
 ## Credits
 
-Logo derived from:
-
-- dragon by BGBOXXX Design from the Noun Project
+Logo derived from: dragon by BGBOXXX Design from the Noun Project.
 
 ## License
 
