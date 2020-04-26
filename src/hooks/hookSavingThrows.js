@@ -3,7 +3,7 @@ import { createButton, onElementLoad } from "./common";
 import { SAVING_THROW } from "../types";
 
 const hookSavingThrows = (onClick) => {
-  // This table has no class, so we need to search upwards from a child.
+  // This table has no helpful selectors, so we need to search upwards from a child.
   const rows = document
     .querySelector(".saving-throw-name")
     .closest("table")
@@ -21,7 +21,7 @@ const hookSavingThrows = (onClick) => {
     cell.appendChild(button);
     row.appendChild(cell);
   }
-  console.log("Hooked saving throws");
+  console.debug("Hooked " + rows.length + " saving throws");
 };
 
 export default (onClick) =>

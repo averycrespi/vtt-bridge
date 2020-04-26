@@ -12,7 +12,7 @@ const hookInitiative = (onClick) => {
   });
   button.classList.add("m-t-10");
   elem.parentNode.appendChild(button);
-  console.log("Hooked initiative");
+  console.debug("Hooked initiative");
 };
 
 export default (onClick) =>

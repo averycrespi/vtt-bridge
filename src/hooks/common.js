@@ -32,7 +32,7 @@ export const onElementLoad = (
       callback();
     } else if (attempts >= maxAttempts) {
       clearInterval(interval);
-      console.error("Maximum number of attempts exceeded: " + selector);
+      console.warn("Maximum number of attempts exceeded: " + selector);
     } else {
       attempts += 1;
     }

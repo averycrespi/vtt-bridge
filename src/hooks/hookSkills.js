@@ -17,7 +17,7 @@ const hookSkills = (onClick) => {
     cell.appendChild(button);
     row.appendChild(cell);
   }
-  console.log("Hooked skills");
+  console.debug("Hooked " + rows.length + " skills");
 };
 
 export default (onClick) => onElementLoad(".skills", () => hookSkills(onClick));

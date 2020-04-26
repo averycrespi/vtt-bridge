@@ -1,1 +1,1 @@
-console.log("Loaded roll20.js");
+console.debug("Loaded roll20.js");

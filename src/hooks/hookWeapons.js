@@ -4,9 +4,11 @@ import { WEAPON } from "../types";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
+  let headerCount = 0;
   for (const row of rows) {
     if (row.querySelectorAll("th").length > 0) {
       // Don't add a button to the table header.
+      headerCount += 1;
       continue;
     }
     const cell = document.createElement("td");
@@ -23,8 +25,9 @@ const hookWeapons = (onClick) => {
     cell.appendChild(button);
     row.appendChild(cell);
   }
-  console.log("Hooked weapons");
+  console.debug("Hooked " + (rows.length - headerCount) + " weapons");
 };
 
+// Not a typo: wait for first weapon instead of table.
 export default (onClick) =>
-  onElementLoad(".weapons", () => hookWeapons(onClick));
+  onElementLoad(".weapon", () => hookWeapons(onClick));

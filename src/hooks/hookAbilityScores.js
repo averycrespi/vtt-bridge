@@ -4,7 +4,8 @@ import { ABILITY_SCORE } from "../types";
 
 const hookAbilityScores = (onClick) => {
   const parent = document.querySelector(".ability-scores");
-  for (const child of parent.children) {
+  const children = parent.children;
+  for (const child of children) {
     const button = createButton("roll", function () {
       onClick({
         type: ABILITY_SCORE,
@@ -16,7 +17,7 @@ const hookAbilityScores = (onClick) => {
     button.classList.add("m-t-10");
     child.appendChild(button);
   }
-  console.log("Hooked ability scores");
+  console.debug("Hooked " + children.length + " ability scores");
 };
 
 export default (onClick) =>

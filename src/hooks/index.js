@@ -35,8 +35,8 @@ const createTabHooks = (onClick) => {
   ] = document.querySelectorAll(".flex-grow-1.t-a-c");
 
   combatTab.addEventListener("click", () => {
-    console.log("Loaded combat tab");
     if (activeTab !== 0) {
+      console.debug("Switched to combat tab");
       hookInitiative(onClick);
       hookWeapons(onClick);
     }
@@ -44,18 +44,23 @@ const createTabHooks = (onClick) => {
   });
 
   proficienciesTab.addEventListener("click", () => {
-    console.log("Loaded proficiencies tab");
+    if (activeTab !== 1) {
+      console.debug("Switched to proficiencies tab");
+    }
     activeTab = 1;
   });
 
   spellsTab.addEventListener("click", () => {
-    console.log("Loaded spells tab");
+    if (activeTab !== 2) {
+      console.debug("Switched to spells tab");
+      //TODO: hook cantrips and spells
+    }
     activeTab = 2;
   });
 
   featuresTab.addEventListener("click", () => {
-    console.log("Loaded features tab");
     if (activeTab !== 3) {
+      console.debug("Switched to features tab");
       hookActions(onClick);
       hookFeatures(onClick);
     }
@@ -63,8 +68,8 @@ const createTabHooks = (onClick) => {
   });
 
   equipmentTab.addEventListener("click", () => {
-    console.log("Loaded equipment tab");
     if (activeTab !== 4) {
+      console.debug("Switched to equipment tab");
       hookWeapons(onClick);
     }
     activeTab = 4;
