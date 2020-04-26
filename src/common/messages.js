@@ -28,22 +28,28 @@ export const renderMessage = (message) => {
     case CAST_SPELL:
       break; //TODO
     case ROLL_ABILITY_SCORE:
-      commands = [emote("is rolling check:", message.stat), roll(message.mod)];
+      commands = [
+        emote("is rolling", message.stat, "check"),
+        roll(message.mod),
+      ];
       break;
     case ROLL_INITIATIVE:
       commands = [emote("is rolling initiative"), roll(message.mod)];
       break;
     case ROLL_SAVING_THROW:
-      commands = [emote("is rolling save:", message.stat), roll(message.mod)];
+      commands = [emote("is rolling", message.stat, "save"), roll(message.mod)];
       break;
     case ROLL_SKILL:
-      commands = [emote("is rolling skill:", message.skill), roll(message.mod)];
+      commands = [
+        emote("is rolling", message.skill, "check"),
+        roll(message.mod),
+      ];
       break;
     case USE_ACTION:
-      commands = [emote("uses action:", message.action), message.details];
+      commands = [emote("uses", message.action), message.details];
       break;
     case USE_FEATURE:
-      commands = [emote("uses feature:", message.feature), message.details];
+      commands = [emote("uses", message.feature), message.details];
       break;
     default:
       console.error("Unknown message: ", JSON.stringify(message));
