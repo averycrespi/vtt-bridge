@@ -1,7 +1,7 @@
 <div align="center">
     <br>
     <a href="https://github.com/averycrespi/vtt-bridge">
-        <img src="https://raw.githubusercontent.com/averycrespi/vtt-bridge/master/public/logo.png" alt="Logo" width="200">
+        <img src="https://raw.githubusercontent.com/averycrespi/vtt-bridge/master/assets/logo.png" alt="Logo" width="200">
     </a>
     <br>
     <h1>VTT Bridge</h1>
