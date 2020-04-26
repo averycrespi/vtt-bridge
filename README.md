@@ -42,7 +42,7 @@ TODO
 
 ## Credits
 
-Project inspired by [VTT Enchancment Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
+Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
 
 Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
 
