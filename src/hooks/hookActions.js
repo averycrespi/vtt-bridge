@@ -12,6 +12,7 @@ export default (onClick) => {
         details: spans[1].innerText,
       });
     });
+    button.classList.add("m-t-10", "m-l-10");
     child.appendChild(button);
   }
   console.log("Hooked actions");

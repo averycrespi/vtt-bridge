@@ -9,6 +9,7 @@ export default (onClick) => {
       bonus: elem.innerText,
     });
   });
+  button.classList.add("m-t-10");
   elem.parentNode.appendChild(button);
   console.log("Hooked initiative");
 };

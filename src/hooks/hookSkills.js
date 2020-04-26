@@ -12,6 +12,7 @@ export default (onClick) => {
         bonus: row.querySelector(".skillbonus").innerText,
       });
     });
+    button.classList.add("m-l-10");
     cell.appendChild(button);
     row.appendChild(cell);
   }

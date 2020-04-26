@@ -12,6 +12,7 @@ export default (onClick) => {
         modifier: child.querySelector(".ability-score-modifier").innerText,
       });
     });
+    button.classList.add("m-t-10");
     child.appendChild(button);
   }
   console.log("Hooked ability scores");

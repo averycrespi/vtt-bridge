@@ -16,6 +16,7 @@ export default (onClick) => {
         bonus: row.querySelector(".saving-throw-bonus").innerText,
       });
     });
+    button.classList.add("m-l-10");
     cell.appendChild(button);
     row.appendChild(cell);
   }
