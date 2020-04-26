@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { ACTION } from "../types";
+import { USE_ACTION } from "../types";
 
 const hookActions = (onClick) => {
   const parent = document.querySelector(".actions");
@@ -10,7 +10,7 @@ const hookActions = (onClick) => {
     const [name, details, ..._] = child.querySelectorAll("span");
     const button = createButton("use", function () {
       onClick({
-        type: ACTION,
+        type: USE_ACTION,
         name: name.innerText,
         details: details.innerText,
       });

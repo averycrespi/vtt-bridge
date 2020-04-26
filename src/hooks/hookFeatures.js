@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { FEATURE } from "../types";
+import { USE_FEATURE } from "../types";
 
 const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
@@ -10,7 +10,7 @@ const hookFeatures = (onClick) => {
     const [name, details, ..._] = child.querySelectorAll("span");
     const button = createButton("use", function () {
       onClick({
-        type: FEATURE,
+        type: USE_FEATURE,
         name: name.innerText,
         details: details.innerText,
       });

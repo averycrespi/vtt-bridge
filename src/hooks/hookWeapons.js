@@ -1,6 +1,6 @@
 import { createButton, onElementLoad } from "./common";
 
-import { WEAPON } from "../types";
+import { ATTACK_WITH_WEAPON } from "../types";
 
 const hookWeapons = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -16,7 +16,7 @@ const hookWeapons = (onClick) => {
       // Don't expand the details when the button is clicked.
       event.stopPropagation();
       onClick({
-        type: WEAPON,
+        type: ATTACK_WITH_WEAPON,
         name: row.querySelector(".weapon").innerText,
         details: row.querySelector(".weapon-damage-modifier").innerText,
         attackModifier: row.querySelector(".attack-modifier").innerText,

@@ -1,12 +1,12 @@
 import { createButton, onElementLoad } from "./common";
 
-import { INITIATIVE } from "../types";
+import { ROLL_INITIATIVE } from "../types";
 
 const hookInitiative = (onClick) => {
   const elem = document.querySelector(".initiative");
   const button = createButton("roll", function () {
     onClick({
-      type: INITIATIVE,
+      type: ROLL_INITIATIVE,
       bonus: elem.innerText,
     });
   });
