@@ -6,12 +6,13 @@ const hookFeatures = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");
   const children = parent.querySelectorAll("p");
   for (const child of children) {
-    // There may be additional spans, but we don't care about them.
-    const [name, details, ..._] = child.querySelectorAll("span");
+    const spans = child.querySelectorAll("span");
+    const feature = spans[0].innerText;
+    const details = spans[1].innerText;
     const button = createButton(
       "use",
       function () {
-        onClick([emote("uses", name.innerText), say(details.innerText)]);
+        onClick([emote("uses", feature), say(details)]);
       },
       [TOP_MARGIN, LEFT_MARGIN]
     );
