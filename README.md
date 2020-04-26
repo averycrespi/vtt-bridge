@@ -20,7 +20,21 @@
 
 ## About
 
-TODO
+> Do you manage your character sheet using Dungeon Master's Vault, but hate manually entering your rolls in Roll20?
+
+VTT Bridge intelligently connects your DMV character sheet to your active Roll20 game. With the click of a button, you can:
+
+- Roll ability scores
+- Use actions
+- Cast cantrips (TODO)
+- Use features
+- Roll initiative
+- Roll saving throws
+- Roll skills
+- Cast spells (TODO)
+- Attack with weapons
+
+**Disclaimer**: The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
 
 ## Getting Started
 
@@ -28,7 +42,9 @@ TODO
 
 ## Credits
 
-Logo derived from: dragon by BGBOXXX Design from the Noun Project.
+Project inspired by [VTT Enchancment Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
+
+Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
 
 ## License
 
