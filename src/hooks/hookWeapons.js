@@ -22,6 +22,5 @@ const hookWeapons = (onClick) => {
   console.debug("Hooked " + (rows.length - headerCount) + " weapons");
 };
 
-// Not a typo: wait for first weapon instead of table.
 export default (onClick) =>
   onElementLoad(".weapon", () => hookWeapons(onClick));

@@ -22,4 +22,4 @@ const hookAbilityScores = (onClick) => {
 };
 
 export default (onClick) =>
-  onElementLoad(".ability-scores", () => hookAbilityScores(onClick));
+  onElementLoad(".ability-score-name", () => hookAbilityScores(onClick));

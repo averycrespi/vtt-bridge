@@ -20,4 +20,5 @@ const hookSkills = (onClick) => {
   console.debug("Hooked " + rows.length + " skills");
 };
 
-export default (onClick) => onElementLoad(".skills", () => hookSkills(onClick));
+export default (onClick) =>
+  onElementLoad(".skill-name", () => hookSkills(onClick));
