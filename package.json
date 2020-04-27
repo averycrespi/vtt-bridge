@@ -19,6 +19,6 @@
     "watch": "parcel watch --no-source-maps src/scripts/* -d dist",
     "firefox:build": "yarn build && web-ext build",
     "firefox:lint": "yarn build && web-ext lint",
-    "firefox:run": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com --start-url https://app.roll20.net"
+    "firefox:run": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true --start-url https://app.roll20.net"
   }
 }
