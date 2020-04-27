@@ -1,8 +1,8 @@
 {
   "name": "vtt-bridge",
-  "description": "Connect Dungeon Master's Vault to Roll20.",
+  "description": "A browser extension that connects Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
@@ -15,9 +15,10 @@
   },
   "scripts": {
     "build": "parcel build --no-source-maps src/scripts/* -d dist",
-    "clean": "rm -r dist/*",
-    "lint": "web-ext lint",
-    "start": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true --start-url https://app.roll20.net",
-    "watch": "parcel watch --no-source-maps src/scripts/* -d dist"
+    "clean": "rm -r dist/* web-ext-artifacts/*",
+    "watch": "parcel watch --no-source-maps src/scripts/* -d dist",
+    "firefox:build": "yarn build && web-ext build",
+    "firefox:lint": "yarn build && web-ext lint",
+    "firefox:run": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com --start-url https://app.roll20.net"
   }
 }

@@ -26,7 +26,7 @@
 VTT Bridge connects your DMV character sheet to your active Roll20 game. With the click of a button, you can:
 
 - Attack with weapons
-- Cast cantrips and spells (TODO)
+- Cast cantrips and spells (_TODO_)
 - Roll ability scores, initiative, saving throws, and skills
 - Use actions and features
 
@@ -34,7 +34,7 @@ VTT Bridge connects your DMV character sheet to your active Roll20 game. With th
 
 ## Getting Started
 
-1. Install the VTT Bridge extension. (TODO)
+1. Install the VTT Bridge extension. (_TODO_)
 2. Open a Dungeon Master's Vault character sheet in one tab. You should see yellow <kbd>Roll</kbd> buttons.
 3. Open a Roll20 game in another tab. Wait for the game to load.
 4. Click one of the new buttons on the Dungeon Master's Vault character sheet.
@@ -42,7 +42,23 @@ VTT Bridge connects your DMV character sheet to your active Roll20 game. With th
 
 ## Development
 
-TODO
+Requires [Git](https://git-scm.com/) and the [Yarn](https://yarnpkg.com/) package manager.
+
+You may need to install [web-ext](https://github.com/mozilla/web-ext) and [Parcel](https://parceljs.org/) globally (e.g. with `yarn global add web-ext parcel`).
+
+```sh
+# Clone the repository
+git clone https://github.com/averycrespi/vtt-bridge && cd vtt-bridge
+
+# Install dependencies
+yarn
+
+# Build the content and background scripts
+yarn build
+
+# Start Firefox with the extension loaded
+yarn firefox:run
+```
 
 ## Credits
 
