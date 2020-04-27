@@ -5,6 +5,7 @@ import { VTT_BRIDGE } from "./classes";
  *
  * @param {String} selector
  * @param {Function} callback
+ * @param {Number} timeout
  * @param {Number} maxAttempts
  */
 export const onElementLoad = (
@@ -44,7 +45,7 @@ export const createButton = (innerText, onClick, classes = []) => {
 };
 
 /**
- * Create a styled button in a cell.
+ * Create a styled button in a table cell.
  *
  * @param {String} innerText
  * @param {Function} onClick

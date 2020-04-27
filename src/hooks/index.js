@@ -11,6 +11,11 @@ import { onElementLoad } from "../common/dom";
 // Global variable for tracking the active tab.
 let activeTab = 0;
 
+/**
+ * Create all hooks.
+ *
+ * @param {Function} onClick
+ */
 export const createHooks = (onClick) => {
   onElementLoad(".app", () => {
     removeAllHooks();
@@ -30,6 +35,7 @@ const createDefaultHooks = (onClick) => {
   hookAbilityScores(onClick);
   hookSkills(onClick);
   hookSavingThrows(onClick);
+  // Initiative and weapons are loaded in the default tab.
   hookInitiative(onClick);
   hookWeapons(onClick);
 };
