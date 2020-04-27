@@ -2,7 +2,7 @@ import hookActions from "./hookActions";
 import hookFeatures from "./hookFeatures";
 import hookInitiative from "./hookInitiative";
 import hookWeapons from "./hookWeapons";
-import { onElementLoad } from "../common/dom";
+import { onElementLoad } from "../common";
 
 // Global variable for tracking the active tab.
 let activeTab = 0;

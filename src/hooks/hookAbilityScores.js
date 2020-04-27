@@ -1,7 +1,7 @@
-import { createButton, onElementLoad } from "../common/dom";
-import { emote, roll } from "../common/commands";
+import { addTopMargin, createButton } from "./elements";
+import { emote, roll } from "./commands";
 
-import { TOP_MARGIN } from "../common/classes";
+import { onElementLoad } from "../common";
 
 const hookAbilityScores = (onClick) => {
   const parent = document.querySelector(".ability-scores");
@@ -9,13 +9,10 @@ const hookAbilityScores = (onClick) => {
   for (const child of children) {
     const stat = child.querySelector(".ability-score-name").innerText;
     const mod = child.querySelector(".ability-score-modifier").innerText;
-    const button = createButton(
-      "roll",
-      function () {
-        onClick([emote("is rolling", stat, "check"), roll(mod)]);
-      },
-      [TOP_MARGIN]
-    );
+    const button = createButton("roll", function () {
+      onClick([emote("is rolling", stat, "check"), roll(mod)]);
+    });
+    addTopMargin(button);
     child.appendChild(button);
   }
   console.debug("Hooked " + children.length + " ability scores");

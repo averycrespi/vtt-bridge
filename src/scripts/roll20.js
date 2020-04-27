@@ -1,4 +1,4 @@
-import { onElementLoad } from "../common/dom";
+import { onElementLoad } from "../common";
 
 console.debug("Loading roll20.js ...");
 

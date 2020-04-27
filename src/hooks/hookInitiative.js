@@ -1,18 +1,15 @@
-import { createButton, onElementLoad } from "../common/dom";
-import { emote, roll } from "../common/commands";
+import { addTopMargin, createButton } from "./elements";
+import { emote, roll } from "./commands";
 
-import { TOP_MARGIN } from "../common/classes";
+import { onElementLoad } from "../common";
 
 const hookInitiative = (onClick) => {
   const elem = document.querySelector(".initiative");
   const mod = elem.innerText;
-  const button = createButton(
-    "roll",
-    function () {
-      onClick([emote("is rolling initiative"), roll(mod)]);
-    },
-    [TOP_MARGIN]
-  );
+  const button = createButton("roll", function () {
+    onClick([emote("is rolling initiative"), roll(mod)]);
+  });
+  addTopMargin(button);
   elem.parentNode.appendChild(button);
   console.debug("Hooked initiative");
 };
