@@ -60,6 +60,9 @@ yarn build
 
 # Start Firefox with the extension loaded
 yarn firefox:run
+
+# Build the Firefox extension
+yarn firefox:build
 ```
 
 ### Structure
