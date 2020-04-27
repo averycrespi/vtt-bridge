@@ -30,7 +30,9 @@ VTT Bridge connects your DMV character sheet to your active Roll20 game. With th
 - Roll ability scores, initiative, saving throws, and skills
 - Use actions and features
 
-**Disclaimer**: The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
+### Disclaimer
+
+The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
 
 ## Getting Started
 
@@ -59,6 +61,18 @@ yarn build
 # Start Firefox with the extension loaded
 yarn firefox:run
 ```
+
+### Structure
+
+The extension loads three scripts:
+
+- `dmv.js`: Adds buttons to DMV character sheets. Sends a message to `background.js` when a button is clicked.
+- `background.js`: Receives messages from `dmv.js` and forwards them to `roll20.js`.
+- `roll20.js`: Receives messages from `background.js` and runs the commands in Roll20.
+
+We can't send messages directly between content scripts, so we use a background script as a relay.
+
+The extension requires the `tabs` permission to find the Roll20 tab.
 
 ## Credits
 
