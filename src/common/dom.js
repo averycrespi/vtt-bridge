@@ -1,5 +1,3 @@
-import { VTT_BRIDGE } from "./classes";
-
 /**
  * Run a callback after an element loads.
  *
@@ -39,7 +37,7 @@ export const onElementLoad = (
 export const createButton = (innerText, onClick, classes = []) => {
   const button = document.createElement("button");
   button.innerText = innerText;
-  button.classList.add("form-button", VTT_BRIDGE, ...classes);
+  button.classList.add("form-button", ...classes);
   button.onclick = onClick;
   return button;
 };
@@ -55,7 +53,6 @@ export const createButton = (innerText, onClick, classes = []) => {
 export const createButtonInCell = (innerText, onClick, classes = []) => {
   const button = createButton(innerText, onClick, classes);
   const cell = document.createElement("td");
-  cell.classList.add(VTT_BRIDGE);
   cell.appendChild(button);
   return cell;
 };

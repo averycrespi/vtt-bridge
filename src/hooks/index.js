@@ -1,4 +1,6 @@
-import { VTT_BRIDGE } from "../common/classes";
+import { createButton, onElementLoad } from "../common/dom";
+
+import { LEFT_MARGIN } from "../common/classes";
 import hookAbilityScores from "./hookAbilityScores";
 import hookActions from "./hookActions";
 import hookFeatures from "./hookFeatures";
@@ -6,39 +8,32 @@ import hookInitiative from "./hookInitiative";
 import hookSavingThrows from "./hookSavingThrows";
 import hookSkills from "./hookSkills";
 import hookWeapons from "./hookWeapons";
-import { onElementLoad } from "../common/dom";
 
-// Global variable for tracking the active tab.
-let activeTab = 0;
-
-/**
- * Create all hooks.
- *
- * @param {Function} onClick
- */
 export const createHooks = (onClick) => {
-  onElementLoad(".app", () => {
-    removeAllHooks();
-    createDefaultHooks(onClick);
-    createTabHooks(onClick);
+  onElementLoad(".class-name", () => {
+    const parent = document.querySelector(".character-summary");
+    const button = createButton(
+      "connect to roll20",
+      function () {
+        parent.removeChild(button);
+        // Ability scores, skills, and saving throws are always visible.
+        hookAbilityScores(onClick);
+        hookSkills(onClick);
+        hookSavingThrows(onClick);
+        // Initiative and weapons are loaded in the default tab.
+        hookInitiative(onClick);
+        hookWeapons(onClick);
+        // Tabs require additional logic to recreate hooks on switch.
+        createTabHooks(onClick);
+      },
+      [LEFT_MARGIN, "vtt-connect-button"]
+    );
+    parent.appendChild(button);
   });
 };
 
-const removeAllHooks = () => {
-  const elems = document.querySelectorAll("." + VTT_BRIDGE);
-  for (const elem of elems) {
-    elem.parentNode.removeChild(elem);
-  }
-};
-
-const createDefaultHooks = (onClick) => {
-  hookAbilityScores(onClick);
-  hookSkills(onClick);
-  hookSavingThrows(onClick);
-  // Initiative and weapons are loaded in the default tab.
-  hookInitiative(onClick);
-  hookWeapons(onClick);
-};
+// Global variable for tracking the active tab.
+let activeTab = 0;
 
 const createTabHooks = (onClick) => {
   const [
