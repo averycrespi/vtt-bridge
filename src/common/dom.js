@@ -1,29 +1,28 @@
 /**
  * Run a callback after an element loads.
  *
+ * Uses exponential backoff to improve performance.
+ *
  * @param {String} selector
  * @param {Function} callback
+ * @param {Number} attempts
  * @param {Number} timeout
- * @param {Number} maxAttempts
  */
 export const onElementLoad = (
   selector,
   callback,
-  timeout = 100,
-  maxAttempts = 10
+  attempts = 10,
+  timeout = 100
 ) => {
-  let attempts = 0;
-  const interval = setInterval(() => {
-    if (document.querySelector(selector)) {
-      clearInterval(interval);
-      callback();
-    } else if (attempts >= maxAttempts) {
-      clearInterval(interval);
-      console.warn("Maximum number of attempts exceeded: " + selector);
-    } else {
-      attempts += 1;
-    }
-  }, timeout);
+  if (document.querySelector(selector)) {
+    callback();
+  } else if (attempts <= 0) {
+    console.warn("Maximum number of attempts exceeded: " + selector);
+  } else {
+    setTimeout(function () {
+      onElementLoad(selector, callback, attempts - 1, timeout * 2);
+    }, timeout);
+  }
 };
 
 /**
