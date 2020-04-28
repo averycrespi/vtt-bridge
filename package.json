@@ -15,9 +15,10 @@
   },
   "scripts": {
     "build": "parcel build --no-source-maps src/scripts/* -d dist",
-    "clean": "rm -r dist/* web-ext-artifacts/*",
     "watch": "parcel watch --no-source-maps src/scripts/* -d dist",
-    "firefox:build": "yarn build && web-ext lint && web-ext build --overwrite-dest",
+    "clean": "rm -rf dist/*",
+    "rebuild": "yarn clean && yarn build",
+    "firefox:build": "yarn rebuild && web-ext lint --warnings-as-errors && web-ext build --overwrite-dest",
     "firefox:run": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true --start-url https://app.roll20.net"
   }
 }
