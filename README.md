@@ -42,7 +42,7 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 ## Getting Started
 
 1. Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
-2. Open your Dungeon Master's Vault character sheet. Click the <kbd>Connect to Roll20</kbd> button.
+2. Open your Dungeon Master's Vault character sheet. Click the <kbd>View</kbd> button, then click the <kbd>Connect to Roll20</kbd> button.
 3. Open your Roll20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
 4. Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet.
 5. Watch your roll appear in your Roll20 game.
