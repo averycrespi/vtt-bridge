@@ -1,6 +1,6 @@
 <div align="center">
     <br>
-    <img src="assets/icon-full.png" alt="VTT Bridge" width="200">
+    <img src="assets/readme/icon-full.png" alt="VTT Bridge" width="200">
     <br>
     <h1>VTT Bridge</h1>
 </div>
@@ -11,7 +11,7 @@
 
 <div align="center">
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-        <img src="assets/firefox.png">
+        <img src="assets/readme/firefox.png">
     </a>
 </div>
 
@@ -41,11 +41,27 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 ## Getting Started
 
-1. Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
-2. Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right, then click the <kbd>Connect to Roll20</kbd> button.
-3. Open your Roll20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
-4. Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet.
-5. Watch your roll appear in your Roll20 game.
+Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
+
+<a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
+    <img src="assets/readme/firefox.png">
+</a>
+
+Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right, which opens the read-only view.
+
+![www link](assets/readme/www.png)
+
+Click the <kbd>Connect to Roll20</kbd> button.
+
+![Connect to Roll20 button](assets/readme/connect_to_roll20.png)
+
+Open your Roll 20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
+
+![Connected to DMV message](assets/readme/connected_to_dmv.png)
+
+Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
+
+![Roll demo](assets/readme/roll_demo.png)
 
 ## FAQ
 
@@ -55,15 +71,19 @@ VTT Bridge loads a background script to relay commands from Dungeon Master's Vau
 
 **Help, the "Connect to Roll20" button isn't appearing!**
 
-Please reload the page. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+1. Make sure that you're on the read-only page - NOT the character builder page!
+2. Try reloading the page.
+3. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
 
-**Help, the "Connected to Dungeon Master's Vault" message isn't appearing!**
+**Help, the "Connected to Dungeon Master's Vault" notification isn't appearing!**
 
-Please reload the page. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+1. Try reloading the page.
+2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
 
 **Why aren't my rolls appearing in Roll20?**
 
-Please ensure that both tabs (Dungeon Master's Vault and Roll20) are open in the same browser window.
+1. Make sure that both tabs (Dungeon Master's Vault and Roll20) are open in the SAME browser window.
+2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
 
 ## Development
 
@@ -73,7 +93,7 @@ You may need to install [web-ext](https://github.com/mozilla/web-ext) and [Parce
 
 ```sh
 # Clone the repository
-git clone https://github.com/averycrespi/vtt-bridge && cd vtt-bridge
+git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 
 # Install dependencies
 yarn
@@ -84,7 +104,7 @@ yarn build
 # Start Firefox with the extension loaded
 yarn firefox:run
 
-# Build the Firefox extension
+# Build the Firefox extension package
 yarn firefox:build
 ```
 
