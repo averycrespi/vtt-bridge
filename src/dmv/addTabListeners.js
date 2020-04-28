@@ -35,7 +35,7 @@ const ready = (onClick) => {
   spellsTab.addEventListener("click", () => {
     if (activeTab !== 2) {
       console.debug("Switched to spells tab");
-      //TODO: hook cantrips and spells
+      //TODO: handle cantrips and spells
     }
     activeTab = 2;
   });

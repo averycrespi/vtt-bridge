@@ -14,5 +14,16 @@ export const createButton = (innerText, onClick, classes = []) => {
   return button;
 };
 
+/**
+ * Create a top margin class.
+ *
+ * @param {String} size
+ */
 export const withTopMargin = (size = "10") => "m-t-" + size;
+
+/**
+ * Create a left margin class.
+ *
+ * @param {String} size
+ */
 export const withLeftMargin = (size = "10") => "m-l-" + size;
