@@ -1,5 +1,5 @@
-import { createHooks } from "../hooks";
+import createConnectButton from "../dmv/createConnectButton";
 
 console.debug("Loading dmv.js ...");
 
-createHooks((commands) => browser.runtime.sendMessage(commands));
+createConnectButton((commands) => browser.runtime.sendMessage(commands));

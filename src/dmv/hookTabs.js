@@ -1,13 +1,13 @@
-import hookActions from "./hookActions";
-import hookFeatures from "./hookFeatures";
-import hookInitiative from "./hookInitiative";
-import hookWeapons from "./hookWeapons";
+import createAttackWithWeaponButtons from "./createAttackWithWeaponButtons";
+import createRollInitiativeButton from "./createRollInitiativeButton";
+import createUseActionButtons from "./createUseActionButtons";
+import createUseFeatureButtons from "./createUseFeatureButtons";
 import { onElementLoad } from "../common";
 
 // Global variable for tracking the active tab.
 let activeTab = 0;
 
-const hookTabs = (onClick) => {
+const ready = (onClick) => {
   const [
     combatTab,
     proficienciesTab,
@@ -19,8 +19,8 @@ const hookTabs = (onClick) => {
   combatTab.addEventListener("click", () => {
     if (activeTab !== 0) {
       console.debug("Switched to combat tab");
-      hookInitiative(onClick);
-      hookWeapons(onClick);
+      createRollInitiativeButton(onClick);
+      createAttackWithWeaponButtons(onClick);
     }
     activeTab = 0;
   });
@@ -43,8 +43,8 @@ const hookTabs = (onClick) => {
   featuresTab.addEventListener("click", () => {
     if (activeTab !== 3) {
       console.debug("Switched to features tab");
-      hookActions(onClick);
-      hookFeatures(onClick);
+      createUseActionButtons(onClick);
+      createUseFeatureButtons(onClick);
     }
     activeTab = 3;
   });
@@ -52,11 +52,10 @@ const hookTabs = (onClick) => {
   equipmentTab.addEventListener("click", () => {
     if (activeTab !== 4) {
       console.debug("Switched to equipment tab");
-      hookWeapons(onClick);
+      createAttackWithWeaponButtons(onClick);
     }
     activeTab = 4;
   });
 };
 
-export default (onClick) =>
-  onElementLoad(".initiative", () => hookTabs(onClick));
+export default (onClick) => onElementLoad(".initiative", () => ready(onClick));

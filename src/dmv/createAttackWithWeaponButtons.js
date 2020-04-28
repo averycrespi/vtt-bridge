@@ -1,9 +1,8 @@
-import { emote, roll } from "./commands";
-
+import { attackWith } from "./commands";
 import { createButton } from "./elements";
 import { onElementLoad } from "../common";
 
-const hookWeapons = (onClick) => {
+const ready = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
   let headerCount = 0;
   for (const row of rows) {
@@ -14,17 +13,22 @@ const hookWeapons = (onClick) => {
     }
     const weapon = row.querySelector(".weapon").innerText;
     const mod = row.querySelector(".attack-modifier").innerText;
-    const button = createButton("attack", function () {
-      // Don't expand the weapon details when the button is clicked.
-      event.stopPropagation();
-      onClick([emote("attacks with", weapon), roll(mod)]);
-    });
+    const button = createButton(
+      "attack",
+      function () {
+        // Don't expand the weapon details when the button is clicked.
+        event.stopPropagation();
+        onClick(attackWith(weapon, mod));
+      },
+      ["vtt-attack-with-weapon"]
+    );
     const cell = document.createElement("td");
     cell.appendChild(button);
     row.appendChild(cell);
   }
-  console.debug("Hooked " + (rows.length - headerCount) + " weapons");
+  console.debug(
+    "Created " + (rows.length - headerCount) + " attack with weapon buttons"
+  );
 };
 
-export default (onClick) =>
-  onElementLoad(".weapon", () => hookWeapons(onClick));
+export default (onClick) => onElementLoad(".weapon", () => ready(onClick));
