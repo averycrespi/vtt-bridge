@@ -1,14 +1,18 @@
 <div align="center">
     <br>
-    <a href="https://github.com/averycrespi/vtt-bridge">
-        <img src="https://raw.githubusercontent.com/averycrespi/vtt-bridge/master/assets/logo.png" alt="Logo" width="200">
-    </a>
+    <img src="assets/icon-full.png" alt="VTT Bridge" width="200">
     <br>
     <h1>VTT Bridge</h1>
 </div>
 
 <div align="center">
     <h4>A browser extension that connects Dungeon Master's Vault to Roll20.</h4>
+</div>
+
+<div align="center">
+    <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
+        <img src="assets/firefox.png">
+    </a>
 </div>
 
 <div align="center">
@@ -21,12 +25,12 @@
 
 ## About
 
-> Do you manage your character sheet using Dungeon Master's Vault, but hate manually entering your rolls in Roll20?
+VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 game.
 
-VTT Bridge connects your DMV character sheet to your active Roll20 game. With the click of a button, you can:
+With the click of a button, you can:
 
 - Attack with weapons
-- Cast cantrips and spells (_TODO_)
+- Cast cantrips and spells (_WIP_)
 - Roll ability scores, initiative, saving throws, and skills
 - Use actions and features
 
@@ -36,7 +40,7 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 ## Getting Started
 
-1. Install the VTT Bridge extension. (_TODO_)
+1. Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
 2. Open your Dungeon Master's Vault character sheet. Click the <kbd>Connect to Roll20</kbd> button.
 3. Open your Roll20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
 4. Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet.
@@ -74,8 +78,6 @@ The extension loads three scripts:
 - `roll20.js`: Receives messages from `background.js` and runs the commands in Roll20.
 
 We can't send messages directly between content scripts, so we use a background script as a relay.
-
-The extension requires the `tabs` permission to find Roll20 tabs in the same window.
 
 ## Credits
 
