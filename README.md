@@ -18,6 +18,7 @@
 <div align="center">
     <a href="#about">About</a> •
     <a href="#getting-started">Getting Started</a> •
+    <a href="#faq">FAQ</a> •
     <a href="#development">Development</a> •
     <a href="#credits">Credits</a> •
     <a href="#license">License</a>
@@ -34,7 +35,7 @@ With the click of a button, you can:
 - Roll ability scores, initiative, saving throws, and skills
 - Use actions and features
 
-### Disclaimer
+**Disclaimer**
 
 The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
 
@@ -45,6 +46,24 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 3. Open your Roll20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
 4. Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet.
 5. Watch your roll appear in your Roll20 game.
+
+## FAQ
+
+**Why does VTT Bridge need to access my browser tabs?**
+
+VTT Bridge loads a background script to relay commands from Dungeon Master's Vault to Roll20. This background script needs to [find the tab](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/query) that contains the Roll20 game.
+
+**Help, the "Connect to Roll20" button isn't appearing!**
+
+Please reload the page. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+
+**Help, the "Connected to Dungeon Master's Vault" message isn't appearing!**
+
+Please reload the page. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+
+**Why aren't my rolls appearing in Roll20?**
+
+Please ensure that both tabs (Dungeon Master's Vault and Roll20) are open in the same browser window.
 
 ## Development
 
@@ -68,16 +87,6 @@ yarn firefox:run
 # Build the Firefox extension
 yarn firefox:build
 ```
-
-### Structure
-
-The extension loads three scripts:
-
-- `dmv.js`: Adds buttons to DMV character sheets. Sends a message to `background.js` when a button is clicked.
-- `background.js`: Receives messages from `dmv.js` and forwards them to `roll20.js`.
-- `roll20.js`: Receives messages from `background.js` and runs the commands in Roll20.
-
-We can't send messages directly between content scripts, so we use a background script as a relay.
 
 ## Credits
 
