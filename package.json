@@ -14,8 +14,8 @@
     "web-ext": "^4.2.0"
   },
   "scripts": {
-    "build": "parcel build --no-source-maps src/scripts/* -d dist",
-    "watch": "parcel watch --no-source-maps src/scripts/* -d dist",
+    "build": "parcel build --no-source-maps src/scripts/* src/styles/*",
+    "watch": "parcel watch --no-source-maps src/scripts/* src/styles/*",
     "clean": "rm -rf dist/*",
     "rebuild": "yarn clean && yarn build",
     "firefox:build": "yarn rebuild && web-ext lint --warnings-as-errors && web-ext build --overwrite-dest",

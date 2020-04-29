@@ -10,15 +10,16 @@
   "content_scripts": [
     {
       "matches": ["*://www.dungeonmastersvault.com/pages/dnd/5e/characters/*"],
-      "js": ["dist/dmv.js"]
+      "js": ["dist/scripts/dmv.js"],
+      "css": ["dist/styles/dmv.css"]
     },
     {
       "matches": ["*://app.roll20.net/editor*"],
-      "js": ["dist/roll20.js"]
+      "js": ["dist/scripts/roll20.js"]
     }
   ],
   "background": {
-    "scripts": ["dist/background.js"]
+    "scripts": ["dist/scripts/background.js"]
   },
   "permissions": ["tabs"]
 }

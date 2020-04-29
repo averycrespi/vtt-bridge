@@ -1,5 +1,11 @@
+import { createToast, showToast } from "../dmv/toasts";
+
 import createConnectButton from "../dmv/createConnectButton";
 
 console.debug("Loading dmv.js ...");
 
-createConnectButton((commands) => browser.runtime.sendMessage(commands));
+createToast();
+createConnectButton((commands) => {
+  showToast();
+  browser.runtime.sendMessage(commands);
+});
