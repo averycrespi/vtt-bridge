@@ -1,7 +1,7 @@
-import { createButton, withLeftMargin } from "./elements";
+import { createButton, withLeftMargin } from "../elements";
 
-import { onElementLoad } from "../common";
-import { rollDice } from "./commands";
+import { onElementLoad } from "../../common";
+import { rollDice } from "../commands";
 
 const ready = (onClick) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");

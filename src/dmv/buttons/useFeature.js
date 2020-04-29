@@ -1,7 +1,7 @@
-import { createButton, withLeftMargin, withTopMargin } from "./elements";
+import { createButton, withLeftMargin, withTopMargin } from "../elements";
 
-import { onElementLoad } from "../common";
-import { useAbility } from "./commands";
+import { onElementLoad } from "../../common";
+import { useAbility } from "../commands";
 
 const ready = (onClick) => {
   const parent = document.querySelector(".features\\,Traits\\,AndFeats");

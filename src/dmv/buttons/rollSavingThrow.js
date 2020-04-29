@@ -1,7 +1,7 @@
-import { createButton, withLeftMargin } from "./elements";
+import { createButton, withLeftMargin } from "../elements";
 
-import { onElementLoad } from "../common";
-import { rollDice } from "./commands";
+import { onElementLoad } from "../../common";
+import { rollDice } from "../commands";
 
 const ready = (onClick) => {
   // This table has no helpful selectors, so we need to search upwards from a child.

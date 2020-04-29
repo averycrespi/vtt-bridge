@@ -1,6 +1,6 @@
-import { attackWith } from "./commands";
-import { createButton } from "./elements";
-import { onElementLoad } from "../common";
+import { attackWith } from "../commands";
+import { createButton } from "../elements";
+import { onElementLoad } from "../../common";
 
 const ready = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");

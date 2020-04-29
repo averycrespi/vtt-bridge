@@ -1,7 +1,7 @@
-import { createButton, withTopMargin } from "./elements";
+import { createButton, withTopMargin } from "../elements";
 
-import { onElementLoad } from "../common";
-import { rollDice } from "./commands";
+import { onElementLoad } from "../../common";
+import { rollDice } from "../commands";
 
 const ready = (onClick) => {
   const parent = document.querySelector(".ability-scores");
