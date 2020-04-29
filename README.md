@@ -24,6 +24,11 @@
     <a href="#license">License</a>
 </div>
 
+<div align="center">
+    <br>
+    <img src="assets/readme/dmv_roll20_demo.gif">
+</div>
+
 ## About
 
 VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 game.
@@ -64,9 +69,7 @@ Open your Roll 20 game in another tab. You should see a message that says `Conne
 
 ![Connected to DMV message](assets/readme/connected_to_dmv.png)
 
-Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
-
-![Roll demo](assets/readme/roll_demo.png)
+Click one of the new buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
 ## FAQ
 
