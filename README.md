@@ -37,8 +37,8 @@ With the click of a button, you can:
 
 Advanced features:
 
-- <kbd>Ctrl</kbd> click to roll with advantage
-- <kbd>Shift</kbd> click to roll with disadvantage
+- <kbd>Ctrl+Click</kbd> to roll with advantage
+- <kbd>Shift+Click</kbd> to roll with disadvantage
 
 **Disclaimer**
 
