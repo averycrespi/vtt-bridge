@@ -81,11 +81,6 @@ Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault characte
 1. Try reloading the page.
 2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
 
-**Why aren't my rolls appearing in Roll20?**
-
-1. Make sure that both tabs (Dungeon Master's Vault and Roll20) are open in the SAME browser window.
-2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
-
 ## Development
 
 Requires [Git](https://git-scm.com/) and the [Yarn](https://yarnpkg.com/) package manager.
