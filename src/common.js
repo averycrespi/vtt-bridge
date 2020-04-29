@@ -24,3 +24,13 @@ export const onElementLoad = (
     }, timeout);
   }
 };
+
+/**
+ * Enum of message types.
+ *
+ * @constant
+ */
+export const messageTypes = {
+  ENQUEUE: "ENQUEUE",
+  DEQUEUE: "DEQUEUE",
+};

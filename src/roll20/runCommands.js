@@ -1,9 +1,9 @@
 import { onElementLoad } from "../common";
 
 const ready = (commands) => {
-  const chat = document.querySelector("#textchat-input");
-  chat.querySelector("textarea").value = commands.join("\n");
-  chat.querySelector(".btn").click();
+  const input = document.querySelector("#textchat-input");
+  input.querySelector("textarea").value = commands.join("\n");
+  input.querySelector(".btn").click();
   console.debug("Ran commands: " + JSON.stringify(commands));
 };
 

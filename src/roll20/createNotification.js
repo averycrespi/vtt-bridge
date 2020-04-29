@@ -1,18 +1,19 @@
 import { onElementLoad } from "../common";
 
 const ready = () => {
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("message", "system");
+  const notification = document.createElement("div");
+  notification.classList.add("message", "system");
 
   const spacer = document.createElement("div");
   spacer.classList.add("spacer");
-  wrapper.appendChild(spacer);
+  notification.appendChild(spacer);
 
-  const notification = document.createElement("strong");
-  notification.innerText = "Connected to Dungeon Master's Vault.";
-  wrapper.append(notification);
+  const text = document.createElement("strong");
+  text.innerText = "Connected to Dungeon Master's Vault.";
+  notification.append(text);
 
-  document.querySelector("#textchat").appendChild(wrapper);
+  const chat = document.querySelector("#textchat");
+  chat.appendChild(notification);
 
   console.debug("Created notification");
 };

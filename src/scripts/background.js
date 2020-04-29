@@ -1,8 +1,19 @@
+import { messageTypes } from "../common";
+
 console.debug("Loading background.js ...");
 
-browser.runtime.onMessage.addListener((message) => {
-  console.debug("Forwarding message: " + JSON.stringify(message));
-  browser.tabs
-    .query({ url: "*://app.roll20.net/*" })
-    .then((tabs) => tabs.map((t) => browser.tabs.sendMessage(t.id, message)));
+let queue = [];
+
+browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  switch (message.type) {
+    case messageTypes.ENQUEUE:
+      console.debug("Enqueuing commands: " + JSON.stringify(message.commands));
+      queue.push(...message.commands);
+      break;
+    case messageTypes.DEQUEUE:
+      console.debug("Dequeuing commands: " + JSON.stringify(queue));
+      sendResponse(queue);
+      queue = [];
+      break;
+  }
 });

@@ -1,6 +1,7 @@
 import { createToast, showToast } from "../dmv/toasts";
 
 import createConnectButton from "../dmv/buttons/connectToRoll20";
+import { messageTypes } from "../common";
 
 console.debug("Loading dmv.js ...");
 
@@ -8,5 +9,5 @@ createToast();
 
 createConnectButton((commands) => {
   showToast();
-  browser.runtime.sendMessage(commands);
+  browser.runtime.sendMessage({ type: messageTypes.ENQUEUE, commands });
 });

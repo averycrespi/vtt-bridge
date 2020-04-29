@@ -70,10 +70,6 @@ Click one of the <kbd>Roll</kbd> buttons on your Dungeon Master's Vault characte
 
 ## FAQ
 
-**Why does VTT Bridge need to access my browser tabs?**
-
-VTT Bridge loads a background script to relay commands from Dungeon Master's Vault to Roll20. This background script needs to [find the tab](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/query) that contains the Roll20 game.
-
 **Help, the "Connect to Roll20" button isn't appearing!**
 
 1. Make sure that you're on the read-only page - NOT the character builder page!
