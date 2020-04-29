@@ -14,8 +14,8 @@ const ready = (onClick) => {
     const mod = row.querySelector(".saving-throw-bonus").innerText;
     const button = createButton(
       "roll",
-      function () {
-        onClick(rollDice(stat + " save", mod));
+      function (event) {
+        onClick(rollDice(stat + " save", mod, event));
       },
       [withLeftMargin(), "vtt-roll-save"]
     );

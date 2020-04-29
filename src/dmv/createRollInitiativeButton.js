@@ -8,8 +8,8 @@ const ready = (onClick) => {
   const mod = elem.innerText;
   const button = createButton(
     "roll",
-    function () {
-      onClick(rollDice("initiative", mod));
+    function (event) {
+      onClick(rollDice("initiative", mod, event));
     },
     [withTopMargin(), "vtt-roll-initiative"]
   );

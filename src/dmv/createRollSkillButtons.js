@@ -10,8 +10,8 @@ const ready = (onClick) => {
     const mod = row.querySelector(".skillbonus").innerText;
     const button = createButton(
       "roll",
-      function () {
-        onClick(rollDice(skill, mod));
+      function (event) {
+        onClick(rollDice(skill, mod, event));
       },
       [withLeftMargin(), "vtt-roll-skill"]
     );

@@ -11,8 +11,8 @@ const ready = (onClick) => {
     const mod = child.querySelector(".ability-score-modifier").innerText;
     const button = createButton(
       "roll",
-      function () {
-        onClick(rollDice(stat + " check", mod));
+      function (event) {
+        onClick(rollDice(stat + " check", mod, event));
       },
       [withTopMargin(), "vtt-roll-check"]
     );

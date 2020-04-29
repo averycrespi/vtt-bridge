@@ -15,10 +15,10 @@ const ready = (onClick) => {
     const mod = row.querySelector(".attack-modifier").innerText;
     const button = createButton(
       "attack",
-      function () {
+      function (event) {
         // Don't expand the weapon details when the button is clicked.
         event.stopPropagation();
-        onClick(attackWith(weapon, mod));
+        onClick(attackWith(weapon, mod, event));
       },
       ["vtt-attack-with-weapon"]
     );

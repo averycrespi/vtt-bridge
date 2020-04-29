@@ -35,6 +35,11 @@ With the click of a button, you can:
 - Roll ability scores, initiative, saving throws, and skills
 - Use actions and features
 
+Advanced features:
+
+- <kbd>Ctrl</kbd> click to roll with advantage
+- <kbd>Shift</kbd> click to roll with disadvantage
+
 **Disclaimer**
 
 The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
