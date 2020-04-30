@@ -7,7 +7,8 @@ const ready = (onClick, selector, label) => {
   const parent = document.querySelector(selector);
   const children = parent.querySelectorAll("p");
   for (const child of children) {
-    const [abilitySpan, detailsSpan] = child.querySelectorAll("span");
+    // There may be more spans, but we don't care about them.
+    const [abilitySpan, detailsSpan, ,] = child.querySelectorAll("span");
     const ability = abilitySpan.innerText;
     const details = detailsSpan.innerText;
     const button = createButton(
