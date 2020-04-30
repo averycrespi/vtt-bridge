@@ -18,9 +18,8 @@
     "parcel:build": "parcel build --no-source-maps src/scripts/* src/styles/*",
     "parcel:clean": "rm -rf dist/*",
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
-    "parcel:watch": "parcel watch --no-source-maps src/scripts/* src/styles/*",
-    "firefox:run": "web-ext run $npm_package_config_run_options",
-    "chrome:run": "web-ext run --target chromium $npm_package_config_run_options",
+    "firefox:run": "mkdir -p profiles/firefox && web-ext run --keep-profile-changes --firefox-profile profiles/firefox $npm_package_config_run_options",
+    "chromium:run": "mkdir -p profiles/chromium && web-ext run --target chromium --keep-profile-changes --chromium-profile profiles/chromium $npm_package_config_run_options",
     "ext:build": "web-ext build --overwrite-dest",
     "ext:lint": "web-ext lint --warnings-as-errors",
     "ext:polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/scripts/",
@@ -28,6 +27,6 @@
     "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*"
   },
   "config": {
-    "run-options": "-u https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true -u https://app.roll20.net"
+    "run-options": "--no-reload --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters --start-url https://app.roll20.net"
   }
 }

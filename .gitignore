@@ -69,3 +69,6 @@ dist/
 
 # Web extension files
 web-ext-artifacts/
+
+# Browser profiles
+profiles/

@@ -104,7 +104,7 @@ yarn build
 yarn firefox:run
 
 # Start Chromium with the extension loaded
-yarn chrome:run
+yarn chromium:run
 ```
 
 ## Credits
