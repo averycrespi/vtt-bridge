@@ -4,11 +4,10 @@ import { onElementLoad } from "../../common";
 
 const ready = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
-  let headerCount = 0;
+  let buttonCount = 0;
   for (const row of rows) {
     if (row.querySelectorAll("th").length > 0) {
       // Don't add a button to the table header.
-      headerCount += 1;
       continue;
     }
     const weapon = row.querySelector(".weapon").innerText;
@@ -25,10 +24,9 @@ const ready = (onClick) => {
     const cell = document.createElement("td");
     cell.appendChild(button);
     row.appendChild(cell);
+    buttonCount += 1;
   }
-  console.debug(
-    "Created " + (rows.length - headerCount) + " attack with weapon buttons"
-  );
+  console.debug("Created " + buttonCount + " attack with weapon buttons");
 };
 
 export default (onClick) => onElementLoad(".weapon", () => ready(onClick));
