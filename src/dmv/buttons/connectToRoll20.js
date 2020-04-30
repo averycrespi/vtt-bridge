@@ -5,10 +5,7 @@ import createRollAbilityScoreButtons from "./rollAbilityScore";
 import createRollInitiativeButton from "./rollInitiative";
 import createRollSavingThrowButtons from "./rollSavingThrow";
 import createRollSkillButtons from "./rollSkill";
-import createUseActionButtons from "./useAction";
-import createUseBonusActionButtons from "./useBonusAction";
-import createUseFeatureButtons from "./useFeature";
-import createUseReactionButtons from "./useReaction";
+import createUseAbilityButtons from "./useAbility";
 import { onElementLoad } from "../../common";
 
 /**
@@ -34,12 +31,7 @@ const onTabSelect = {
   0: [createRollInitiativeButton, createAttackWithWeaponButtons],
   1: [],
   2: [],
-  3: [
-    createUseActionButtons,
-    createUseBonusActionButtons,
-    createUseReactionButtons,
-    createUseFeatureButtons,
-  ],
+  3: [createUseAbilityButtons],
   4: [createAttackWithWeaponButtons],
 };
 
