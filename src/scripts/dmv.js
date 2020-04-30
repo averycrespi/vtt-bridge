@@ -1,6 +1,6 @@
 import { createToast, showToast } from "../dmv/toasts";
 
-import createConnectButton from "../dmv/buttons/connectToRoll20";
+import createConnectButton from "../dmv/createButtons/connectToRoll20";
 import { messageTypes } from "../common";
 
 console.debug("Loading dmv.js ...");
