@@ -11,7 +11,16 @@
 
 <div align="center">
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-        <img src="assets/readme/firefox.png">
+        <img src="https://img.shields.io/amo/v/vtt-bridge">
+    </a>
+    <a href="https://github.com/averycrespi/vtt-bridge/commits/develop">
+        <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/develop">
+    </a>
+    <a href="https://github.com/averycrespi/vtt-bridge/issues">
+        <img src="https://img.shields.io/github/issues/averycrespi/vtt-bridge">
+    </a>
+    <a href="https://github.com/averycrespi/vtt-bridge/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/averycrespi/vtt-bridge">
     </a>
 </div>
 
