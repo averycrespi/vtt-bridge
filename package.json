@@ -27,6 +27,6 @@
     "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*"
   },
   "config": {
-    "run-options": "--browser-console --no-reload --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters --start-url https://app.roll20.net"
+    "run-options": "--watch-file dist/scripts/dmv.js --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters --start-url https://app.roll20.net"
   }
 }
