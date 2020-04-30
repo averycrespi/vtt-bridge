@@ -37,7 +37,7 @@ With the click of a button, you can:
 
 - Attack with weapons
 - Cast cantrips and spells (_WIP_)
-- Roll ability scores, initiative, saving throws, and skills
+- Roll ability scores, initiative, saving throws, skills, and tools
 - Use actions, bonus actions, reactions, and features
 
 Advanced features:

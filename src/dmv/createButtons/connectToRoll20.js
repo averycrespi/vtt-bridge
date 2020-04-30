@@ -3,6 +3,7 @@ import { createButton, withLeftMargin } from "../elements";
 import createAttackWithWeaponButtons from "./attackWithWeapon";
 import createRollAbilityScoreButtons from "./rollAbilityScore";
 import createRollInitiativeButton from "./rollInitiative";
+import createRollProficiencyButtons from "./rollProficiency";
 import createRollSavingThrowButtons from "./rollSavingThrow";
 import createRollSkillButtons from "./rollSkill";
 import createUseAbilityButtons from "./useAbility";
@@ -29,7 +30,7 @@ let connected = false;
  */
 const onTabSelect = {
   0: [createRollInitiativeButton, createAttackWithWeaponButtons],
-  1: [],
+  1: [createRollProficiencyButtons],
   2: [],
   3: [createUseAbilityButtons],
   4: [createAttackWithWeaponButtons],
