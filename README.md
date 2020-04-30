@@ -86,26 +86,7 @@ Click one of the new buttons on your Dungeon Master's Vault character sheet. You
 
 ## Development
 
-Requires [Git](https://git-scm.com/) and the [Yarn](https://yarnpkg.com/) package manager.
-
-You may need to install [web-ext](https://github.com/mozilla/web-ext) and [Parcel](https://parceljs.org/) globally (e.g. with `yarn global add web-ext parcel`).
-
-```sh
-# Clone the repository
-git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
-
-# Install dependencies
-yarn
-
-# Build the extension
-yarn build
-
-# Start Firefox with the extension loaded
-yarn firefox:run
-
-# Start Chromium with the extension loaded
-yarn chromium:run
-```
+See [DEVELOPERS.md](DEVELOPERS.md) for instructions.
 
 ## Credits
 
