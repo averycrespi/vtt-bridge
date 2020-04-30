@@ -20,13 +20,14 @@
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
     "firefox:run": "mkdir -p profiles/firefox && web-ext run --keep-profile-changes --firefox-profile profiles/firefox $npm_package_config_run_options",
     "chromium:run": "mkdir -p profiles/chromium && web-ext run --target chromium --keep-profile-changes --chromium-profile profiles/chromium $npm_package_config_run_options",
-    "ext:build": "web-ext build --overwrite-dest",
-    "ext:lint": "web-ext lint --warnings-as-errors",
+    "ext:build": "web-ext build --overwrite-dest $npm_package_config_ignore_options",
+    "ext:lint": "web-ext lint --warnings-as-errors $npm_package_config_ignore_options",
     "ext:polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/scripts/",
     "build": "yarn parcel:rebuild && yarn ext:polyfill && yarn ext:lint && yarn ext:build",
     "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*"
   },
   "config": {
+    "ignore-options": "--ignore-files assets/readme/ profiles/",
     "run-options": "--watch-file dist/scripts/dmv.js --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters --start-url https://app.roll20.net"
   }
 }
