@@ -97,14 +97,14 @@ git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 # Install dependencies
 yarn
 
-# Build the content and background scripts
+# Build the extension
 yarn build
 
 # Start Firefox with the extension loaded
 yarn firefox:run
 
-# Build the Firefox extension package
-yarn firefox:build
+# Start Chromium with the extension loaded
+yarn chrome:run
 ```
 
 ## Credits

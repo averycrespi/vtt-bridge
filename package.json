@@ -11,14 +11,23 @@
     "eslint-plugin-prettier": "^3.1.2",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.2",
-    "web-ext": "^4.2.0"
+    "web-ext": "^4.2.0",
+    "webextension-polyfill": "^0.6.0"
   },
   "scripts": {
-    "build": "parcel build --no-source-maps src/scripts/* src/styles/*",
-    "watch": "parcel watch --no-source-maps src/scripts/* src/styles/*",
-    "clean": "rm -rf dist/*",
-    "rebuild": "yarn clean && yarn build",
-    "firefox:build": "yarn rebuild && web-ext lint --warnings-as-errors && web-ext build --overwrite-dest",
-    "firefox:run": "web-ext run --browser-console --start-url https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true --start-url https://app.roll20.net"
+    "parcel:build": "parcel build --no-source-maps src/scripts/* src/styles/*",
+    "parcel:clean": "rm -rf dist/*",
+    "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
+    "parcel:watch": "parcel watch --no-source-maps src/scripts/* src/styles/*",
+    "firefox:run": "web-ext run $npm_package_config_run_options",
+    "chrome:run": "web-ext run --target chromium $npm_package_config_run_options",
+    "ext:build": "web-ext build --overwrite-dest",
+    "ext:lint": "web-ext lint --warnings-as-errors",
+    "ext:polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/scripts/",
+    "build": "yarn parcel:rebuild && yarn ext:polyfill && yarn ext:lint && yarn ext:build",
+    "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*"
+  },
+  "config": {
+    "run-options": "-u https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216164628?frame=true -u https://app.roll20.net"
   }
 }
