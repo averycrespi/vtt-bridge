@@ -1,6 +1,6 @@
 <div align="center">
     <br>
-    <img src="assets/readme/icon-full.png" alt="VTT Bridge" width="200">
+    <img src="assets/icon-full.png" alt="VTT Bridge" width="200">
     <br>
     <h1>VTT Bridge</h1>
 </div>
