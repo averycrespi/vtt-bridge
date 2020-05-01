@@ -1,8 +1,13 @@
 import { onElementLoad } from "../common";
 
 const ready = () => {
+  if (document.querySelector(".vtt-notification")) {
+    console.warn("Notification already exists");
+    return;
+  }
+
   const notification = document.createElement("div");
-  notification.classList.add("message", "system");
+  notification.classList.add("message", "system", "vtt-notification");
 
   const spacer = document.createElement("div");
   spacer.classList.add("spacer");
