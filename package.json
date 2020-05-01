@@ -26,8 +26,8 @@
   },
   "webExt": {
     "ignoreFiles": [
-      "assets/readme/",
-      "node_modules",
+      "assets/",
+      "node_modules/",
       "profiles/",
       "web-ext-artifacts/"
     ],

@@ -35,7 +35,7 @@
 
 <div align="center">
     <br>
-    <img src="assets/readme/dmv_roll20_demo.gif">
+    <img src="assets/demo.gif">
 </div>
 
 ## About
@@ -63,20 +63,20 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
 
 <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-    <img src="assets/readme/firefox.png">
+    <img src="assets/firefox.png">
 </a>
 
 Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right, which opens the read-only view.
 
-![www link](assets/readme/www.png)
+![Dungeon Master's Vault link](assets/dmv_link.png)
 
 Click the <kbd>Connect to Roll20</kbd> button.
 
-![Connect to Roll20 button](assets/readme/connect_to_roll20.png)
+![Dungeon Master's Vault button](assets/dmv_button.png)
 
-Open your Roll 20 game in another tab. You should see a message that says `Connected to Dungeon Master's Vault`.
+Open your Roll 20 game in another tab. You should see a notification that says `Connected to Dungeon Master's Vault`.
 
-![Connected to DMV message](assets/readme/connected_to_dmv.png)
+![Roll20 notification](assets/roll20_notification.png)
 
 Click one of the new buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
