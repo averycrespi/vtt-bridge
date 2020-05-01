@@ -13,6 +13,9 @@
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
         <img src="https://img.shields.io/amo/v/vtt-bridge">
     </a>
+    <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
+        <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh">
+    </a>
     <a href="https://github.com/averycrespi/vtt-bridge/commits/develop">
         <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/develop">
     </a>
@@ -60,10 +63,14 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 ## Getting Started
 
-Install the VTT Bridge extension for [Firefox](https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/) or Google Chrome (_WIP_).
+Install the VTT Bridge extension for Firefox or Google Chrome.
 
 <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
     <img src="assets/firefox.png">
+</a>
+
+<a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
+    <img src="assets/chrome.png">
 </a>
 
 Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right, which opens the read-only view.
