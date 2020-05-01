@@ -45,9 +45,9 @@ VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 g
 With the click of a button, you can:
 
 - Attack with weapons
-- Cast cantrips and spells (_WIP_)
+- Cast cantrips and spells
 - Roll ability scores, initiative, saving throws, skills, and tools
-- Use actions, bonus actions, reactions, and features
+- Use actions, bonus actions, features, and reactions
 
 Advanced features:
 

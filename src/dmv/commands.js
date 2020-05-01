@@ -1,4 +1,4 @@
-const describe = (text) => "*" + text + "*";
+const describe = (text) => text;
 const emote = (...text) => "/em " + text.join(" ");
 
 const rollNeutral = (mod) => "/r 1d20" + (mod !== "0" ? mod : "");

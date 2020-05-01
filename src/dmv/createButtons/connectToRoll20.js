@@ -7,6 +7,7 @@ import createRollProficiencyButtons from "./rollProficiency";
 import createRollSavingThrowButtons from "./rollSavingThrow";
 import createRollSkillButtons from "./rollSkill";
 import createUseAbilityButtons from "./useAbility";
+import { lookForSpells } from "../spells";
 import { onElementLoad } from "../../common";
 
 /**
@@ -31,7 +32,7 @@ let connected = false;
 const onTabSelect = {
   0: [createRollInitiativeButton, createAttackWithWeaponButtons],
   1: [createRollProficiencyButtons],
-  2: [],
+  2: [], // Cantrips and spells are handled differently.
   3: [createUseAbilityButtons],
   4: [createAttackWithWeaponButtons],
 };
@@ -94,7 +95,9 @@ const addTabListeners = (onClick) => {
   spellsTab.addEventListener("click", () => {
     console.debug("Selected spells tab");
     if (activeTab !== 2 && connected) {
-      onTabSelect[2].map((f) => f(onClick));
+      lookForSpells(onClick, function () {
+        return activeTab == 2;
+      });
     }
     activeTab = 2;
   });
