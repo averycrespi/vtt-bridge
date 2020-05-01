@@ -24,16 +24,39 @@ yarn build
 
 # Start Firefox with the extension loaded.
 # The `firefox` binary must be in your PATH.
-# Your profile will be saved to `profiles/firefox``.
+# Your profile will be saved to `profiles/firefox`.
 yarn firefox:run
 
 # Start Chromium with the extension loaded.
 # The `chromium-browser` binary must be in your PATH.
-# Your profile will be saved to `profiles/chromium``.
+# Your profile will be saved to `profiles/chromium`.
 yarn chromium:run
 ```
 
 See [package.json](package.json) for a list of all build scripts.
+
+## Testing
+
+Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/), and [chromedriver](https://chromedriver.chromium.org/).
+
+Make sure that the `geckodriver` and `chromedriver` binaries are in your `PATH` (for example, in `/usr/local/bin`).
+
+```sh
+# Create a virtual environment.
+python3 -m venv venv
+
+# Activate the virtual environment.
+source venv/bin/activate
+
+# Install dependencies.
+pip install -r requirements.txt
+
+# Deactivate the virtual environment.
+deactivate
+
+# Run tests.
+yarn test
+```
 
 ## Project Overview
 

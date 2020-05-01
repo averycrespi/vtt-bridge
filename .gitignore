@@ -72,3 +72,6 @@ web-ext-artifacts/
 
 # Browser profiles
 profiles/
+
+# Virtual environments
+venv/
