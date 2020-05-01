@@ -14,10 +14,9 @@ const ready = (onClick) => {
         // Don't add a button to the table header.
         continue;
       }
-      // We don't care about the proficiency and expertise cells.
-      const [nameCell, , , bonusCell] = row.querySelectorAll("td");
-      const name = nameCell.innerText;
-      const bonus = bonusCell.innerText;
+      const cells = row.querySelectorAll("td");
+      const name = cells[0].innerText;
+      const bonus = cells[cells.length - 1].innerText;
       const button = createButton(
         "roll",
         function (event) {
