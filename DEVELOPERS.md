@@ -41,22 +41,7 @@ Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://f
 
 Make sure that the `geckodriver` and `chromedriver` binaries are in your `PATH` (for example, in `/usr/local/bin`).
 
-```sh
-# Create a virtual environment.
-python3 -m venv venv
-
-# Activate the virtual environment.
-source venv/bin/activate
-
-# Install dependencies.
-pip install -r requirements.txt
-
-# Deactivate the virtual environment.
-deactivate
-
-# Run tests.
-yarn test
-```
+Run the integration tests with `yarn test`.
 
 ## Project Overview
 

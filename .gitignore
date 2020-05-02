@@ -73,5 +73,6 @@ web-ext-artifacts/
 # Browser profiles
 profiles/
 
-# Virtual environments
+# Python files
+.mypy_cache/
 venv/
