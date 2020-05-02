@@ -142,7 +142,7 @@ class TestRunner:
 
     def test_roll_saving_throw_buttons(self):
         self.logger.info("Testing roll saving throw buttons ...")
-        assert len(self.by_class_name("vtt-roll-save")) == 6
+        assert len(self.by_class_name("vtt-roll-saving-throw")) == 6
 
     def test_roll_initiative_button(self):
         self.logger.info("Testing roll initiative button ...")

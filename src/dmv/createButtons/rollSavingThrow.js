@@ -17,7 +17,7 @@ const ready = (onClick) => {
       function (event) {
         onClick(rollDice(stat + " save", mod, event));
       },
-      [withLeftMargin(), "vtt-roll-save"]
+      [withLeftMargin(), "vtt-roll-saving-throw"]
     );
     const cell = document.createElement("td");
     cell.appendChild(button);
