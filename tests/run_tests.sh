@@ -26,6 +26,12 @@ echo -e 'Installing dependencies ... \c'
 pip install -q -r requirements.txt
 echo 'installed!'
 
+if [[ ! -d 'logs' ]]; then
+    echo -e 'Creating logs directory ... \c'
+    mkdir -p logs
+    echo 'created!'
+fi
+
 echo 'Running automation tests ...'
 python tests/dmv.py firefox
 python tests/dmv.py chromium
