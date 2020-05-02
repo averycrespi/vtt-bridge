@@ -2,6 +2,7 @@
 
 from argparse import ArgumentParser
 from enum import Enum
+import json
 import logging
 import os.path
 from pathlib import Path
@@ -11,21 +12,26 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from sys import exit
-
-
-CHARACTER_URLS = (
-    "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216785521?frame=true",  # noqa
-)
+from typing import List
 
 
 class Browser(Enum):
-    """Represents a browser."""
+    """Represents a browser type."""
 
     firefox = "firefox"
     chromium = "chromium"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.value
+
+
+class Character:
+    """Represents a DMV character."""
+
+    def __init__(self, *, name: str, url: str, sections: List[str]):
+        self.name = name
+        self.url = url
+        self.sections = sections
 
 
 def parse_args():
@@ -39,22 +45,33 @@ def parse_args():
         help="One of: firefox, chromium",
     )
     parser.add_argument(
-        "--log-file",
+        "--log-dir",
         action="store",
-        default="logs/dmv.log",
-        type=str,
-        help="Path to log file",
+        default="logs",
+        type=Path,
+        help="Log file directory",
+    )
+    parser.add_argument(
+        "--character-file",
+        action="store",
+        default=Path("tests") / "characters.json",
+        type=Path,
+        help="Characters in JSON format",
     )
     return parser.parse_args()
 
 
-def configure_logger(*, log_file, browser):
+def configure_logger(log_dir: Path, browser: Browser) -> logging.Logger:
     """Configure the logger."""
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(message)s")
+
     streamHandler = logging.StreamHandler()
     streamHandler.setFormatter(formatter)
+
+    log_file = log_dir / "{}.log".format(str(browser))
     fileHandler = logging.FileHandler(log_file)
     fileHandler.setFormatter(formatter)
+
     logger = logging.getLogger(str(browser))
     logger.setLevel(logging.INFO)
     logger.addHandler(streamHandler)
@@ -62,44 +79,48 @@ def configure_logger(*, log_file, browser):
     return logger
 
 
-def find_extension():
+def load_characters(character_file: Path) -> List[Character]:
+    """Load characters from a JSON file."""
+    with open(character_file) as f:
+        return [Character(**obj) for obj in json.load(f)]
+
+
+def find_extension_file() -> Path:
     """Find the (most recent) packaged extension file."""
     paths = list(sorted(Path("web-ext-artifacts/").glob("vtt_bridge-*.zip")))
     assert len(paths) >= 1, "Can't find extension. Did you run `yarn build`?"
-    return str(paths[-1].resolve())
+    return paths[-1].resolve()
 
 
-def create_driver(*, browser, extension):
+def create_driver(browser: Browser, extension_file: Path):
     """Create the driver and load the extension."""
     if browser == Browser.firefox:
         driver = webdriver.Firefox(service_log_path=os.path.devnull)
-        driver.install_addon(extension, temporary=True)
+        driver.install_addon(str(extension_file), temporary=True)
         return driver
     elif browser == Browser.chromium:
         chrome_options = Options()
-        chrome_options.add_extension(extension)
+        chrome_options.add_extension(str(extension_file))
         driver = webdriver.Chrome(
             chrome_options=chrome_options, service_log_path=os.path.devnull
         )
         return driver
-    else:
-        raise ValueError("Unknown browser type: {}".format(browser))
 
 
 class TestRunner:
-    def __init__(self, *, driver, logger):
+    def __init__(self, driver, logger: logging.Logger):
         """Create a new test runner."""
         self.driver = driver
         self.logger = logger
         self.wait = WebDriverWait(driver, 10)
 
-    def by_class_name(self, name):
+    def by_class_name(self, name: str):
         """Find elements by class name."""
         return self.wait.until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, name))
         )
 
-    def by_css_selector(self, selector):
+    def by_css_selector(self, selector: str):
         """Find elements by CSS selector."""
         return self.wait.until(
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, selector))
@@ -109,7 +130,7 @@ class TestRunner:
         self.logger.info("Clicking connect button ...")
         self.by_class_name("vtt-connect")[0].click()
 
-    def select_tab_by_index(self, index):
+    def select_tab_by_index(self, index: int):
         self.logger.info("Selecting tab by index: {} ...".format(index))
         self.by_css_selector(".flex-grow-1.t-a-c")[index].click()
 
@@ -137,9 +158,25 @@ class TestRunner:
         self.logger.info("Testing roll proficiency buttons ...")
         assert len(self.by_class_name("vtt-roll-proficiency")) >= 18
 
-    def test_character(self, url):
-        self.logger.info("Testing character: {} ...".format(url))
-        self.driver.get(url)
+    def test_use_action_buttons(self):
+        self.logger.info("Testing use action buttons ...")
+        assert len(self.by_class_name("vtt-use-action")) >= 1
+
+    def test_use_bonus_action_buttons(self):
+        self.logger.info("Testing use bonus action buttons ...")
+        assert len(self.by_class_name("vtt-use-bonus-action")) >= 1
+
+    def test_use_feature_buttons(self):
+        self.logger.info("Testing use feature buttons ...")
+        assert len(self.by_class_name("vtt-use-feature")) >= 1
+
+    def test_use_reaction_buttons(self):
+        self.logger.info("Testing use reaction buttons ...")
+        assert len(self.by_class_name("vtt-use-reaction")) >= 1
+
+    def test_character(self, character: Character):
+        self.logger.info("Testing character: {} ...".format(character.name))
+        self.driver.get(character.url)
         self.click_connect_button()
         self.test_roll_check_buttons()
         self.test_roll_skill_buttons()
@@ -160,7 +197,14 @@ class TestRunner:
 
         self.logger.info("Testing features tab ...")
         self.select_tab_by_index(3)
-        # TODO: test actions, bonus actions, features, and reactions
+        if "actions" in character.sections:
+            self.test_use_action_buttons()
+        if "bonus actions" in character.sections:
+            self.test_use_bonus_action_buttons()
+        if "features" in character.sections:
+            self.test_use_feature_buttons()
+        if "reactions" in character.sections:
+            self.test_use_reaction_buttons()
 
         self.logger.info("Testing equipment tab ...")
         self.select_tab_by_index(4)
@@ -169,12 +213,13 @@ class TestRunner:
 
 if __name__ == "__main__":
     args = parse_args()
-    logger = configure_logger(log_file=args.log_file, browser=args.browser)
-    driver = create_driver(browser=args.browser, extension=find_extension())
+    logger = configure_logger(args.log_dir, args.browser)
+    characters = load_characters(args.character_file)
+    driver = create_driver(args.browser, find_extension_file())
     try:
-        runner = TestRunner(driver=driver, logger=logger)
-        for url in CHARACTER_URLS:
-            runner.test_character(url)
+        runner = TestRunner(driver, logger)
+        for character in characters:
+            runner.test_character(character)
         exit_code = 0
     except Exception:
         logger.exception("Tests failed with error:")

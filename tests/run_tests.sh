@@ -1,38 +1,29 @@
 #!/bin/bash
 
+# Arguments to this script will be passed through to `dmv.py`.
+
 set -euo pipefail
 
 if [[ ! -x "$(command -v geckodriver)" ]]; then
-    echo 'Error: geckodriver not found in PATH'
-    exit 1
+    echo 'Error: geckodriver not found' && exit 1
 fi
 
 if [[ ! -x "$(command -v chromedriver)" ]]; then
-    echo 'Error: chromedriver not found in PATH'
-    exit 1
+    echo 'Error: chromedriver not found' && exit 1
 fi
 
 if [[ ! -d 'venv' ]]; then
-    echo -e 'Creating virtual environment ... \c'
-    python3 -m venv venv
-    echo 'created!'
+    echo 'Creating virtual environment ...' && python3 -m venv venv
 fi
 
-echo -e 'Activating virtual environment ... \c'
-source venv/bin/activate
-echo 'activated!'
-
-echo -e 'Installing dependencies ... \c'
-pip install -q -r tests/requirements.txt
-echo 'installed!'
+echo 'Activating virtual environment ...' && source venv/bin/activate
+echo 'Installing dependencies ...' && pip install --quiet -r tests/requirements.txt
 
 if [[ ! -d 'logs' ]]; then
-    echo -e 'Creating logs directory ... \c'
-    mkdir -p logs
-    echo 'created!'
+    echo 'Creating logs directory ...' && mkdir -p logs
 fi
 
-echo 'Running automation tests ...'
-python tests/dmv.py firefox
-python tests/dmv.py chromium
+echo "Running automation tests ..."
+python tests/dmv.py firefox "$@"
+python tests/dmv.py chromium "$@"
 echo 'Tests passed!'

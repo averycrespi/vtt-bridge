@@ -18,7 +18,7 @@ yarn
 # `web-ext` builds and runs the extension.
 yarn global add parcel web-ext
 
-# Build the extension for Firefox and Chrome/Chromium.
+# Build the extension package.
 # The build artifacts will be generated in `web-ext-artifacts/`.
 yarn build
 
@@ -39,9 +39,17 @@ See [package.json](package.json) for a list of all build scripts.
 
 Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/), and [chromedriver](https://chromedriver.chromium.org/).
 
-Make sure that the `geckodriver` and `chromedriver` binaries are in your `PATH` (for example, in `/usr/local/bin`).
+```sh
+# Build the extension package.
+yarn build
 
-Run the integration tests with `yarn test`. Test logs will be saved in the `logs/` directory.
+# Run automation tests.
+# The `geckodriver` and `chromedriver` binaries must be in your PATH.
+# Logs will be written to the `logs/` directory.
+yarn test
+```
+
+The test harness will automatically create and activate a Python virtual environment in `venv/`.
 
 ## Project Overview
 
