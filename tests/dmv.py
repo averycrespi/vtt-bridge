@@ -58,13 +58,6 @@ def parse_args():
         type=Path,
         help="Characters file",
     )
-    parser.add_argument(
-        "--max-characters",
-        action="store",
-        default=None,
-        type=int,
-        help="Maximum number of characters to be tested",
-    )
     return parser.parse_args()
 
 
@@ -163,6 +156,10 @@ class TestRunner:
         self.logger.info("Testing roll proficiency buttons ...")
         assert len(self.by_class_name("vtt-roll-proficiency")) >= 18
 
+    def test_roll_proficiency_buttons_with_tools(self):
+        self.logger.info("Testing roll proficiency buttons with tools ...")
+        assert len(self.by_class_name("vtt-roll-proficiency")) >= 19
+
     def test_use_action_buttons(self):
         self.logger.info("Testing use action buttons ...")
         assert len(self.by_class_name("vtt-use-action")) >= 1
@@ -193,8 +190,10 @@ class TestRunner:
 
         self.logger.info("Testing proficiencies tab ...")
         self.select_tab_by_index(1)
-        self.test_roll_proficiency_buttons()
-        # TODO: test tools
+        if "tools" in character.sections:
+            self.test_roll_proficiency_buttons_with_tools()
+        else:
+            self.test_roll_proficiency_buttons()
 
         self.logger.info("Testing spells tab ...")
         self.select_tab_by_index(2)
@@ -224,8 +223,7 @@ if __name__ == "__main__":
     driver = create_driver(args.browser, extension_file)
     try:
         runner = TestRunner(driver, logger)
-        limit = args.max_characters or len(characters)
-        for character in characters[:limit]:
+        for character in characters:
             runner.test_character(character)
         exit_code = 0
     except Exception:

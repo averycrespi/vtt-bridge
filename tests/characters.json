@@ -7,6 +7,18 @@
   {
     "name": "Human Warlock (20)",
     "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592217094563?frame=true",
-    "sections": ["actions", "features"]
+    "sections": ["actions", "cantrips", "features", "spells"]
+  },
+  {
+    "name": "Elf Rogue (20)",
+    "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216788377?frame=true",
+    "sections": [
+      "actions",
+      "cantrips",
+      "bonus actions",
+      "features",
+      "reactions",
+      "tools"
+    ]
   }
 ]

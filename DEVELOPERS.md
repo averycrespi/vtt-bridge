@@ -38,12 +38,16 @@ Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://f
 # Build the extension package.
 yarn build
 
-# Run all automation tests.
-# The `geckodriver` and `chromedriver` binaries must be in your PATH.
-yarn test
+# Run automation tests for Firefox.
+# The `geckodriver` binary must be in your PATH.
+yarn firefox:test
 
-# Or: run a subset of tests.
-yarn test:fast
+# Run automation tests for Chromium.
+# The `chromedriver` binary must be in your PATH.
+yarn chromium:test
+
+# Run all tests.
+yarn test
 ```
 
 The test harness will automatically create and activate a Python virtual environment in the `venv` directory. Test characters will be loaded from `tests/characters.json`. Test logs will be written to the `logs` directory.
