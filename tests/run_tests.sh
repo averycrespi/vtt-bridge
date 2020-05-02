@@ -18,5 +18,5 @@ echo -e 'Activating virtual environment ... \c' && source venv/bin/activate && e
 
 echo -e 'Installing dependencies ... \c' && pip install -q -r requirements.txt && echo 'installed!'
 
-echo 'Running integration tests in Firefox ...' && python tests/integration.py firefox
-echo 'Running integration tests in Chromium ...' && python tests/integration.py chromium
+echo 'Running DMV automation tests in Firefox ...' && python tests/dmv.py firefox
+echo 'Running DMV automation tests in Chromium ...' && python tests/dmv.py chromium
