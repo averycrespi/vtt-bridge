@@ -23,7 +23,7 @@ source venv/bin/activate
 echo 'activated!'
 
 echo -e 'Installing dependencies ... \c'
-pip install -q -r requirements.txt
+pip install -q -r tests/requirements.txt
 echo 'installed!'
 
 if [[ ! -d 'logs' ]]; then
