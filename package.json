@@ -23,7 +23,8 @@
     "chromium:run": "mkdir -p profiles/chromium && web-ext run --target chromium",
     "build": "yarn parcel:rebuild && cp -v node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/scripts/ && web-ext lint && web-ext build",
     "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*",
-    "test": "./tests/run_tests.sh"
+    "test": "./tests/run_tests.sh",
+    "test:fast": "./tests/run_tests.sh --max-characters=1"
   },
   "webExt": {
     "ignoreFiles": [

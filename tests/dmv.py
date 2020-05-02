@@ -36,7 +36,7 @@ class Character:
 
 def parse_args():
     """Parse command-line arguments."""
-    parser = ArgumentParser("Run DMV automation tests")
+    parser = ArgumentParser("Run automation tests for DMV")
     parser.add_argument(
         "browser",
         action="store",
@@ -47,16 +47,23 @@ def parse_args():
     parser.add_argument(
         "--log-dir",
         action="store",
-        default="logs",
+        default=Path("logs"),
         type=Path,
         help="Log file directory",
     )
     parser.add_argument(
-        "--character-file",
+        "--characters-file",
         action="store",
         default=Path("tests") / "characters.json",
         type=Path,
-        help="Characters in JSON format",
+        help="Characters file",
+    )
+    parser.add_argument(
+        "--max-characters",
+        action="store",
+        default=None,
+        type=int,
+        help="Maximum number of characters to be tested",
     )
     return parser.parse_args()
 
@@ -64,14 +71,11 @@ def parse_args():
 def configure_logger(log_dir: Path, browser: Browser) -> logging.Logger:
     """Configure the logger."""
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(message)s")
-
     streamHandler = logging.StreamHandler()
     streamHandler.setFormatter(formatter)
-
     log_file = log_dir / "{}.log".format(str(browser))
     fileHandler = logging.FileHandler(log_file)
     fileHandler.setFormatter(formatter)
-
     logger = logging.getLogger(str(browser))
     logger.setLevel(logging.INFO)
     logger.addHandler(streamHandler)
@@ -79,17 +83,18 @@ def configure_logger(log_dir: Path, browser: Browser) -> logging.Logger:
     return logger
 
 
-def load_characters(character_file: Path) -> List[Character]:
+def load_characters(characters_file: Path) -> List[Character]:
     """Load characters from a JSON file."""
-    with open(character_file) as f:
+    with open(characters_file) as f:
         return [Character(**obj) for obj in json.load(f)]
 
 
 def find_extension_file() -> Path:
-    """Find the (most recent) packaged extension file."""
-    paths = list(sorted(Path("web-ext-artifacts/").glob("vtt_bridge-*.zip")))
+    """Find the packaged extension file."""
+    paths = list(Path("web-ext-artifacts/").glob("*.zip"))
     assert len(paths) >= 1, "Can't find extension. Did you run `yarn build`?"
-    return paths[-1].resolve()
+    assert len(paths) == 1, "Multiple versions found. Run `yarn clean`."
+    return paths[0].resolve()
 
 
 def create_driver(browser: Browser, extension_file: Path):
@@ -146,8 +151,8 @@ class TestRunner:
         self.logger.info("Testing roll saving throw buttons ...")
         assert len(self.by_class_name("vtt-roll-save")) == 6
 
-    def test_roll_initiative_buttons(self):
-        self.logger.info("Testing roll initiative buttons ...")
+    def test_roll_initiative_button(self):
+        self.logger.info("Testing roll initiative button ...")
         assert len(self.by_class_name("vtt-roll-initiative")) == 1
 
     def test_attack_with_weapon_buttons(self):
@@ -183,7 +188,7 @@ class TestRunner:
         self.test_roll_saving_throw_buttons()
 
         self.logger.info("Testing combat tab ...")
-        self.test_roll_initiative_buttons()
+        self.test_roll_initiative_button()
         self.test_attack_with_weapon_buttons()
 
         self.logger.info("Testing proficiencies tab ...")
@@ -214,11 +219,13 @@ class TestRunner:
 if __name__ == "__main__":
     args = parse_args()
     logger = configure_logger(args.log_dir, args.browser)
-    characters = load_characters(args.character_file)
-    driver = create_driver(args.browser, find_extension_file())
+    characters = load_characters(args.characters_file)
+    extension_file = find_extension_file()
+    driver = create_driver(args.browser, extension_file)
     try:
         runner = TestRunner(driver, logger)
-        for character in characters:
+        limit = args.max_characters or len(characters)
+        for character in characters[:limit]:
             runner.test_character(character)
         exit_code = 0
     except Exception:

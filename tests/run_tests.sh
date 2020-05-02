@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Arguments to this script will be passed through to `dmv.py`.
+# Run automation tests.
+#
+# Arguments will be passed through to `dmv.py`.
 
 set -euo pipefail
 

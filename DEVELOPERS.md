@@ -14,26 +14,21 @@ git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 yarn
 
 # Install build tools.
-# `parcel` bundles the JavaScript and CSS.
-# `web-ext` builds and runs the extension.
 yarn global add parcel web-ext
 
 # Build the extension package.
-# The build artifacts will be generated in `web-ext-artifacts/`.
 yarn build
 
 # Start Firefox with the extension loaded.
 # The `firefox` binary must be in your PATH.
-# Your profile will be saved to `profiles/firefox`.
 yarn firefox:run
 
 # Start Chromium with the extension loaded.
 # The `chromium-browser` binary must be in your PATH.
-# Your profile will be saved to `profiles/chromium`.
 yarn chromium:run
 ```
 
-See [package.json](package.json) for a list of all build scripts.
+When running Firefox or Chromium, your browser profile will be saved in the `profiles` directory.
 
 ## Testing
 
@@ -43,13 +38,15 @@ Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://f
 # Build the extension package.
 yarn build
 
-# Run automation tests.
+# Run all automation tests.
 # The `geckodriver` and `chromedriver` binaries must be in your PATH.
-# Logs will be written to the `logs/` directory.
 yarn test
+
+# Or: run a subset of tests.
+yarn test:fast
 ```
 
-The test harness will automatically create and activate a Python virtual environment in `venv/`.
+The test harness will automatically create and activate a Python virtual environment in the `venv` directory. Test characters will be loaded from `tests/characters.json`. Test logs will be written to the `logs` directory.
 
 ## Project Overview
 
