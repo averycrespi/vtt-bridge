@@ -41,7 +41,7 @@ Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://f
 
 Make sure that the `geckodriver` and `chromedriver` binaries are in your `PATH` (for example, in `/usr/local/bin`).
 
-Run the integration tests with `yarn test`.
+Run the integration tests with `yarn test`. Test logs will be saved in the `logs/` directory.
 
 ## Project Overview
 

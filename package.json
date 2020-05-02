@@ -28,6 +28,7 @@
   "webExt": {
     "ignoreFiles": [
       "assets/",
+      "logs/",
       "node_modules/",
       "profiles/",
       "tests/",

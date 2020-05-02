@@ -67,12 +67,8 @@ dist/
 # Editor configuration
 .vscode/
 
-# Web extension files
-web-ext-artifacts/
-
-# Browser profiles
-profiles/
-
-# Python files
+# Project-specific files
 .mypy_cache/
+profiles/
 venv/
+web-ext-artifacts/
