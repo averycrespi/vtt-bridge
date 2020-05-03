@@ -93,12 +93,12 @@ Click one of the new buttons on your Dungeon Master's Vault character sheet. You
 
 1. Make sure that you're on the read-only page - NOT the character builder page!
 2. Try reloading the page.
-3. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+3. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
 
 **Help, the "Connected to Dungeon Master's Vault" notification isn't appearing!**
 
 1. Try reloading the page.
-2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new).
+2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
 
 ## Development
 
