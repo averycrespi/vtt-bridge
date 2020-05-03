@@ -24,15 +24,17 @@ const ready = (onClick, selector, label) => {
 };
 
 export default (onClick) => {
-  onElementLoad(".actions", () => ready(onClick, ".actions", "action"));
+  onElementLoad(".actions p span", () => ready(onClick, ".actions", "action"));
 
-  onElementLoad(".bonusActions", () =>
+  onElementLoad(".bonusActions p span", () =>
     ready(onClick, ".bonusActions", "bonus action")
   );
 
-  onElementLoad(".features\\,Traits\\,AndFeats", () =>
+  onElementLoad(".features\\,Traits\\,AndFeats p span", () =>
     ready(onClick, ".features\\,Traits\\,AndFeats", "feature")
   );
 
-  onElementLoad(".reactions", () => ready(onClick, ".reactions", "reaction"));
+  onElementLoad(".reactions p span", () =>
+    ready(onClick, ".reactions", "reaction")
+  );
 };

@@ -22,4 +22,5 @@ const ready = (onClick) => {
   console.debug("Created " + rows.length + " roll skill buttons");
 };
 
-export default (onClick) => onElementLoad(".skill-name", () => ready(onClick));
+export default (onClick) =>
+  onElementLoad(".skills tr .skill-name", () => ready(onClick));

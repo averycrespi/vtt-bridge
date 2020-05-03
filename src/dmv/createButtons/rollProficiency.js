@@ -34,4 +34,4 @@ const ready = (onClick) => {
 };
 
 export default (onClick) =>
-  onElementLoad(".details-columns table", () => ready(onClick));
+  onElementLoad(".details-columns table tr", () => ready(onClick));

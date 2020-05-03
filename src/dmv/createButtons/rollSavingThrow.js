@@ -27,4 +27,4 @@ const ready = (onClick) => {
 };
 
 export default (onClick) =>
-  onElementLoad(".saving-throw-name", () => ready(onClick));
+  onElementLoad("table tr .saving-throw-name", () => ready(onClick));

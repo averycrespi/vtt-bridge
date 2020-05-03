@@ -45,4 +45,5 @@ const ready = (onClick) => {
   }
 };
 
-export default (onClick) => onElementLoad(".spells", () => ready(onClick));
+export default (onClick) =>
+  onElementLoad(".spells tr td div.opacity-5", () => ready(onClick));

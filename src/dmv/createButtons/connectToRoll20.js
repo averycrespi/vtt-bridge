@@ -65,7 +65,8 @@ const ready = (onClick) => {
   console.debug("Added tab listeners");
 };
 
-export default (onClick) => onElementLoad(".class-name", () => ready(onClick));
+export default (onClick) =>
+  onElementLoad(".character-summary .class-name", () => ready(onClick));
 
 const addTabListeners = (onClick) => {
   const [

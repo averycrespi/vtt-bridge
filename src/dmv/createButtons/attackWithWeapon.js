@@ -29,4 +29,5 @@ const ready = (onClick) => {
   console.debug("Created " + buttonCount + " attack with weapon buttons");
 };
 
-export default (onClick) => onElementLoad(".weapon", () => ready(onClick));
+export default (onClick) =>
+  onElementLoad(".weapons tr .weapon", () => ready(onClick));

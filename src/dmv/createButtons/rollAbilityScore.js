@@ -22,4 +22,4 @@ const ready = (onClick) => {
 };
 
 export default (onClick) =>
-  onElementLoad(".ability-score-name", () => ready(onClick));
+  onElementLoad(".ability-scores .ability-score-name", () => ready(onClick));
