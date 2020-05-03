@@ -89,7 +89,7 @@ Click one of the new buttons on your Dungeon Master's Vault character sheet. You
 
 ## FAQ
 
-**Help, the buttons arent't appearing on Dungeon Master's Vault!**
+**Help, the buttons aren't appearing on Dungeon Master's Vault!**
 
 1. Make sure that you're on the correct page. The URL should end with `?frame=true`.
 2. Reload the page.
