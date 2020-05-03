@@ -1,7 +1,17 @@
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton, withLeftMargin } from "../elements";
 
 import { onElementLoad } from "../../common";
-import { rollDice } from "../commands";
+
+/**
+ * Add roll buttons for saving throws.
+ *
+ * @param {Function} onClick
+ */
+export const addRollSavingThrowButtons = (onClick) =>
+  onElementLoad("table tr .saving-throw-name", () => ready(onClick));
 
 const ready = (onClick) => {
   // This table has no helpful selectors, so we need to search upwards from a child.
@@ -15,9 +25,9 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(rollDice(stat + " save", mod, event));
+        onClick(commands.rollDice(stat + " save", mod, event));
       },
-      [withLeftMargin(), "vtt-roll-saving-throw"]
+      [withLeftMargin(), classes.rollSavingThrow]
     );
     const cell = document.createElement("td");
     cell.appendChild(button);
@@ -25,6 +35,3 @@ const ready = (onClick) => {
   }
   console.debug("Created " + rows.length + " roll saving throw buttons");
 };
-
-export default (onClick) =>
-  onElementLoad("table tr .saving-throw-name", () => ready(onClick));

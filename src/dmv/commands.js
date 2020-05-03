@@ -1,20 +1,3 @@
-const describe = (text) => text;
-const emote = (...text) => "/em " + text.join(" ");
-
-const rollNeutral = (mod) => "/r 1d20" + (mod !== "0" ? mod : "");
-const rollAdvantage = (mod) => "/r 2d20kh1" + (mod !== "0" ? mod : "");
-const rollDisadvantage = (mod) => "/r 2d20kl1" + (mod !== "0" ? mod : "");
-
-const roll = (mod, event) => {
-  if (event.ctrlKey) {
-    return rollAdvantage(mod);
-  } else if (event.shiftKey) {
-    return rollDisadvantage(mod);
-  } else {
-    return rollNeutral(mod);
-  }
-};
-
 /**l
  * Attack with a weapon.
  *
@@ -64,3 +47,20 @@ export const useAbility = (ability, details) => [
   emote("uses", ability),
   describe(details),
 ];
+
+const describe = (text) => text;
+const emote = (...text) => "/em " + text.join(" ");
+
+const rollNeutral = (mod) => "/r 1d20" + (mod !== "0" ? mod : "");
+const rollAdvantage = (mod) => "/r 2d20kh1" + (mod !== "0" ? mod : "");
+const rollDisadvantage = (mod) => "/r 2d20kl1" + (mod !== "0" ? mod : "");
+
+const roll = (mod, event) => {
+  if (event.ctrlKey) {
+    return rollAdvantage(mod);
+  } else if (event.shiftKey) {
+    return rollDisadvantage(mod);
+  } else {
+    return rollNeutral(mod);
+  }
+};

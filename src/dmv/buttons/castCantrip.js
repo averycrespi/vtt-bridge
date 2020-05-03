@@ -1,7 +1,17 @@
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton, withTopMargin } from "../elements";
 
-import { castSpell } from "../commands";
 import { onElementLoad } from "../../common";
+
+/**
+ * Add cast buttons for cantrips.
+ *
+ * @param {Function} onClick
+ */
+export const addCastCantripButtons = (onClick) =>
+  onElementLoad(".spells tr td div.opacity-5", () => ready(onClick));
 
 const ready = (onClick) => {
   const divs = document
@@ -12,7 +22,7 @@ const ready = (onClick) => {
       const row = div.closest("tr");
       const cell = div.closest("td");
 
-      if (cell.querySelector(".vtt-cast-cantrip")) {
+      if (cell.querySelector("." + classes.castCantrip)) {
         // The button for this cantrip already exists.
         continue;
       }
@@ -24,12 +34,12 @@ const ready = (onClick) => {
       const button = createButton(
         "cast cantrip on roll20",
         function () {
-          onClick(castSpell(cantrip, details));
+          onClick(commands.castSpell(cantrip, details));
         },
-        ["vtt-cast-cantrip"]
+        [classes.castCantrip]
       );
 
-      // Put the button in the same position as the cast spell buttons.
+      // Match the classes of the "cast spell" buttons.
       const wrapper = document.createElement("div");
       wrapper.classList.add(
         "flex",
@@ -44,6 +54,3 @@ const ready = (onClick) => {
     }
   }
 };
-
-export default (onClick) =>
-  onElementLoad(".spells tr td div.opacity-5", () => ready(onClick));

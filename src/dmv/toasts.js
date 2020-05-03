@@ -1,4 +1,8 @@
-// Is the toast currently visible?
+/**
+ * Is the toast currently visible?
+ *
+ * @global
+ */
 let isVisible = false;
 
 /**
@@ -11,7 +15,13 @@ let isVisible = false;
  */
 export const showToast = (timeout = 3000) => {
   if (!document.querySelector("#vtt-toast")) {
-    createToast();
+    const toast = document.createElement("toast");
+    toast.id = "vtt-toast";
+    const icon = document.createElement("i");
+    icon.classList.add("fa", "fa-check-circle", "fa-2x");
+    toast.appendChild(icon);
+    document.body.appendChild(toast);
+    console.log("Created toast");
   }
   if (!isVisible) {
     const toast = document.querySelector("#vtt-toast");
@@ -20,15 +30,8 @@ export const showToast = (timeout = 3000) => {
     setTimeout(function () {
       toast.classList.remove("show");
       isVisible = false;
+      console.log("Hid toast");
     }, timeout);
+    console.log("Showed toast");
   }
-};
-
-const createToast = () => {
-  const toast = document.createElement("toast");
-  toast.id = "vtt-toast";
-  const icon = document.createElement("i");
-  icon.classList.add("fa", "fa-check-circle", "fa-2x");
-  toast.appendChild(icon);
-  document.body.appendChild(toast);
 };

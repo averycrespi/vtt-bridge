@@ -1,7 +1,17 @@
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton, withLeftMargin } from "../elements";
 
 import { onElementLoad } from "../../common";
-import { rollDice } from "../commands";
+
+/**
+ * Add roll buttons for skills.
+ *
+ * @param {Function} onClick
+ */
+export const addRollSkillButtons = (onClick) =>
+  onElementLoad(".skills tr .skill-name", () => ready(onClick));
 
 const ready = (onClick) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
@@ -11,9 +21,9 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(rollDice(skill, mod, event));
+        onClick(commands.rollDice(skill + " check", mod, event));
       },
-      [withLeftMargin(), "vtt-roll-skill"]
+      [withLeftMargin(), classes.rollSkill]
     );
     const cell = document.createElement("td");
     cell.appendChild(button);
@@ -21,6 +31,3 @@ const ready = (onClick) => {
   }
   console.debug("Created " + rows.length + " roll skill buttons");
 };
-
-export default (onClick) =>
-  onElementLoad(".skills tr .skill-name", () => ready(onClick));
