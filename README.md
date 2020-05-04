@@ -89,16 +89,26 @@ Click one of the new buttons on your Dungeon Master's Vault character sheet. You
 
 ## FAQ
 
-**Help, the "Connect to Roll20" button isn't appearing!**
+**Help, the buttons aren't appearing on Dungeon Master's Vault!**
 
-1. Make sure that you're on the read-only page - NOT the character builder page!
-2. Try reloading the page.
+1. Make sure that you're on the correct page. The URL should end with `?frame=true`.
+2. Reload the page.
 3. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
 
-**Help, the "Connected to Dungeon Master's Vault" notification isn't appearing!**
+**Help, the notification isn't appearing on Roll20!**
 
-1. Try reloading the page.
+1. Reload the page.
 2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
+
+**I found a bug! What should I do?**
+
+1. [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Bug report".
+2. Complete the issue template.
+
+**I have an idea for a new feature! What should I do?**
+
+1. [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Feature request".
+2. Complete the issue template.
 
 ## Development
 

@@ -1,7 +1,17 @@
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton, withTopMargin } from "../elements";
 
 import { onElementLoad } from "../../common";
-import { rollDice } from "../commands";
+
+/**
+ * Add roll buttons for ability scores.
+ *
+ * @param {Function} onClick
+ */
+export const addRollAbilityScoreButtons = (onClick) =>
+  onElementLoad(".ability-scores .ability-score-name", () => ready(onClick));
 
 const ready = (onClick) => {
   const parent = document.querySelector(".ability-scores");
@@ -12,14 +22,11 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(rollDice(stat + " check", mod, event));
+        onClick(commands.rollDice(stat + " check", mod, event));
       },
-      [withTopMargin(), "vtt-roll-check"]
+      [withTopMargin(), classes.rollAbilityScore]
     );
     child.appendChild(button);
   }
   console.debug("Created " + children.length + " roll ability score buttons");
 };
-
-export default (onClick) =>
-  onElementLoad(".ability-score-name", () => ready(onClick));

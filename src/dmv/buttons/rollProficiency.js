@@ -1,6 +1,16 @@
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton } from "../elements";
 import { onElementLoad } from "../../common";
-import { rollDice } from "../commands";
+
+/**
+ * Add roll buttons for proficiencies.
+ *
+ * @param {Function} onClick
+ */
+export const addRollProficiencyButtons = (onClick) =>
+  onElementLoad(".details-columns table tr", () => ready(onClick));
 
 const ready = (onClick) => {
   const tables = document
@@ -20,9 +30,9 @@ const ready = (onClick) => {
       const button = createButton(
         "roll",
         function (event) {
-          onClick(rollDice(name, bonus, event));
+          onClick(commands.rollDice(name, bonus, event));
         },
-        ["vtt-roll-proficiency"]
+        [classes.rollProficiency]
       );
       const cell = document.createElement("td");
       cell.appendChild(button);
@@ -32,6 +42,3 @@ const ready = (onClick) => {
   }
   console.debug("Created " + buttonCount + " roll proficiency buttons");
 };
-
-export default (onClick) =>
-  onElementLoad(".details-columns", () => ready(onClick));

@@ -1,6 +1,6 @@
 # Development
 
-> **Formatting note**: For brevity, Dungeon Master's Vault will be abbreviated as "DMV".
+> **Note**: For brevity, Dungeon Master's Vault will be abbreviated as "DMV".
 
 ## Getting Started
 
@@ -14,26 +14,43 @@ git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 yarn
 
 # Install build tools.
-# `parcel` bundles the JavaScript and CSS.
-# `web-ext` builds and runs the extension.
 yarn global add parcel web-ext
 
-# Build the extension for Firefox and Chrome/Chromium.
-# The build artifacts will be generated in `web-ext-artifacts/`.
+# Build the extension package.
 yarn build
 
 # Start Firefox with the extension loaded.
 # The `firefox` binary must be in your PATH.
-# Your profile will be saved to `profiles/firefox``.
 yarn firefox:run
 
 # Start Chromium with the extension loaded.
 # The `chromium-browser` binary must be in your PATH.
-# Your profile will be saved to `profiles/chromium``.
 yarn chromium:run
 ```
 
-See [package.json](package.json) for a list of all build scripts.
+When running Firefox or Chromium, your browser profile will be saved in the `profiles` directory.
+
+## Testing
+
+Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/), and [chromedriver](https://chromedriver.chromium.org/).
+
+```sh
+# Build the extension package.
+yarn build
+
+# Run automation tests for Firefox.
+# The `geckodriver` binary must be in your PATH.
+yarn firefox:test
+
+# Run automation tests for Chromium.
+# The `chromedriver` binary must be in your PATH.
+yarn chromium:test
+
+# Run all tests.
+yarn test
+```
+
+The test harness will automatically create and activate a Python virtual environment in the `venv` directory. Test characters will be loaded from `tests/characters.json`. Test logs will be written to the `logs` directory.
 
 ## Project Overview
 
@@ -54,8 +71,25 @@ The extension uses a queue-based architecture to communicate between DMV and Rol
 
 > **Historical note**: The extension previously used a relay-based architecture, where `background.js` forwarded commands from `dmv.js` to `roll20.js`. This required the `tabs` permission to let the extension [access your browser tabs](https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions#w_access-browser-tabs). For security reasons, the queue-based architecture was adopted as a replacement.
 
-## Implementation Details
+## Script Flow
 
-DMV and Roll20 are dynamic web applications. The [DOM](https://en.wikipedia.org/wiki/Document_Object_Model) is updated by JavaScript during page load and after user interaction. To correctly inject buttons and event listeners, the extension needs to wait for certain elements to load. The [onElementLoad](src/common.js) function uses [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) to efficiently check for the existence of an element in the DOM.
+> **Note**: These explanations are not complete or canonical. In case of ambiguity or conflict, reference the source code.
 
-Whenever possible, the extension [uses DMV's existing CSS](src/dmv/elements.js) to maintain consistency. The `form-button` class is used to style buttons and the `m` classes are used to add margin. When DMV's available styles are insufficient, the extension tries to match the color and font (e.g. toast styles in [dmv.css](src/styles/dmv.css)).
+### Dungeon Master's Vault content script (`dmv.js`) flow
+
+- **When script is loaded**: Add <kbd>Connect to Roll20</kbd> button. Add click listeners to each tab.
+- **When connect button is clicked**: Add <kbd>Attack</kbd>/<kbd>Roll</kbd>/<kbd>Use</kbd> buttons for the left panel and the active tab.
+- **When tab is clicked**: Add <kbd>Attack</kbd>/<kbd>Roll</kbd>/<kbd>Use</kbd> buttons for the active tab.
+- **When spells tab is clicked**: Add click listeners to each spell row.
+- **When spell row is clicked**: If cantrip, add <kbd>Cast</kbd> button. Otherwise, add click listener to existing <kbd>Cast</kbd> button.
+- **When Attack/Cast/Roll/Use button is clicked**: Show toast. Format commands and send `ENQUEUE` message.
+
+### Background script (`background.js`) flow
+
+- **When ENQUEUE message received**: Append commands to queue.
+- **When DEQUEUE message received**: Respond with all commands in queue. Empty queue.
+
+### Roll20 content script (`roll20.js`) flow
+
+- **When script is loaded**: Add `Connected` notification to chat. Send `DEQUEUE` messages at regular intervals.
+- **When DEQUEUE response received**: Run commands in chat.

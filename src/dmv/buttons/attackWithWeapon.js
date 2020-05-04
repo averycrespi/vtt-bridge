@@ -1,6 +1,16 @@
-import { attackWith } from "../commands";
+import * as classes from "../classes";
+import * as commands from "../commands";
+
 import { createButton } from "../elements";
 import { onElementLoad } from "../../common";
+
+/**
+ * Add attack buttons for weapons.
+ *
+ * @param {Function} onClick
+ */
+export const addAttackWithWeaponButtons = (onClick) =>
+  onElementLoad(".weapons tr .weapon", () => ready(onClick));
 
 const ready = (onClick) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -17,9 +27,9 @@ const ready = (onClick) => {
       function (event) {
         // Don't expand the weapon details when the button is clicked.
         event.stopPropagation();
-        onClick(attackWith(weapon, mod, event));
+        onClick(commands.attackWith(weapon, mod, event));
       },
-      ["vtt-attack-with-weapon"]
+      [classes.attackWithWeapon]
     );
     const cell = document.createElement("td");
     cell.appendChild(button);
@@ -28,5 +38,3 @@ const ready = (onClick) => {
   }
   console.debug("Created " + buttonCount + " attack with weapon buttons");
 };
-
-export default (onClick) => onElementLoad(".weapon", () => ready(onClick));

@@ -2,7 +2,7 @@
   "name": "vtt-bridge",
   "description": "A browser extension that connects Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
@@ -20,15 +20,21 @@
     "parcel:clean": "rm -rf dist/*",
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
     "firefox:run": "mkdir -p profiles/firefox && web-ext run",
+    "firefox:test": "./tests/run_firefox.sh",
     "chromium:run": "mkdir -p profiles/chromium && web-ext run --target chromium",
+    "chromium:test": "./tests/run_chromium.sh",
     "build": "yarn parcel:rebuild && cp -v node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/scripts/ && web-ext lint && web-ext build",
-    "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*"
+    "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*",
+    "test": "yarn firefox:test && yarn chromium:test"
   },
   "webExt": {
     "ignoreFiles": [
       "assets/",
+      "logs/",
       "node_modules/",
       "profiles/",
+      "tests/",
+      "venv/",
       "web-ext-artifacts/"
     ],
     "build": {
@@ -47,6 +53,31 @@
         "https://www.dungeonmastersvault.com/pages/dnd/5e/characters",
         "https://app.roll20.net"
       ]
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "webextensions": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
     }
   }
 }
