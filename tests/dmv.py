@@ -42,7 +42,7 @@ def parse_args():
         action="store",
         type=Browser,
         choices=list(Browser),
-        help="One of: firefox, chromium",
+        help="Browser type",
     )
     parser.add_argument(
         "--log-dir",
@@ -85,7 +85,7 @@ def load_characters(characters_file: Path) -> List[Character]:
 def find_extension_file() -> Path:
     """Find the packaged extension file."""
     paths = list(Path("web-ext-artifacts/").glob("*.zip"))
-    assert len(paths) >= 1, "Can't find extension. Did you run `yarn build`?"
+    assert len(paths) >= 1, "Can't find file. Did you run `yarn build`?"
     assert len(paths) == 1, "Multiple versions found. Run `yarn clean`."
     return paths[0].resolve()
 
@@ -197,7 +197,12 @@ class TestRunner:
 
         self.logger.info("Testing spells tab ...")
         self.select_tab_by_index(2)
-        # TODO: test cantrips and spells
+        if "cantrips" in character.sections:
+            # TODO: test cantrips
+            pass
+        if "spells" in character.sections:
+            # TODO: test spells
+            pass
 
         self.logger.info("Testing features tab ...")
         self.select_tab_by_index(3)
