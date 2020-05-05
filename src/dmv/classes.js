@@ -5,6 +5,7 @@ export const rollInitiatve = "vtt-roll-initiative";
 export const rollProficiency = "vtt-roll-proficiency";
 export const rollSavingThrow = "vtt-roll-saving-throw";
 export const rollSkill = "vtt-roll-skill";
+export const rollWeaponDamage = "vtt-roll-weapon-damage";
 
 export const useAction = "vtt-use-action";
 export const useBonusAction = "vtt-use-bonus-action";

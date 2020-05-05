@@ -144,9 +144,10 @@ class TestRunner:
         self.logger.info("Testing roll initiative button ...")
         assert len(self.by_class_name("vtt-roll-initiative")) == 1
 
-    def test_attack_with_weapon_buttons(self):
-        self.logger.info("Testing attack with weapon buttons ...")
+    def test_weapon_buttons(self):
+        self.logger.info("Testing weapon buttons ...")
         assert len(self.by_class_name("vtt-attack-with-weapon")) >= 1
+        assert len(self.by_class_name("vtt-roll-weapon-damage")) >= 1
 
     def test_roll_proficiency_buttons(self):
         self.logger.info("Testing roll proficiency buttons ...")
@@ -177,7 +178,7 @@ class TestRunner:
 
         self.logger.info("Testing combat tab ...")
         self.test_roll_initiative_button()
-        self.test_attack_with_weapon_buttons()
+        self.test_weapon_buttons()
 
         self.logger.info("Testing proficiencies tab ...")
         self.select_tab_by_index(1)
@@ -205,7 +206,7 @@ class TestRunner:
 
         self.logger.info("Testing equipment tab ...")
         self.select_tab_by_index(4)
-        self.test_attack_with_weapon_buttons()
+        self.test_weapon_buttons()
 
 
 if __name__ == "__main__":

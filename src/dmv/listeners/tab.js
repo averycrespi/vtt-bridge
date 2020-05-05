@@ -1,7 +1,7 @@
-import { addAttackWithWeaponListeners } from "./attackWithWeapon";
 import { addRollInitiativeListener } from "./rollInitiative";
 import { addRollProficiencyListeners } from "./rollProficiency";
 import { addUseAbilityButtons } from "../buttons/useAbility";
+import { addWeaponListeners } from "./weapon";
 import { onElementLoad } from "../../common";
 
 /**
@@ -32,7 +32,7 @@ const ready = (onClick) => {
     console.debug("Selected combat tab");
     if (activeTab !== 0) {
       addRollInitiativeListener(onClick);
-      addAttackWithWeaponListeners(onClick);
+      addWeaponListeners(onClick);
     }
     activeTab = 0;
   });
@@ -67,7 +67,7 @@ const ready = (onClick) => {
   equipmentTab.addEventListener("click", () => {
     console.debug("Selected equipment tab");
     if (activeTab !== 4) {
-      addAttackWithWeaponListeners(onClick);
+      addWeaponListeners(onClick);
     }
     activeTab = 4;
   });

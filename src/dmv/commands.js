@@ -8,7 +8,7 @@
  */
 export const attackWith = (weapon, mod, event) => [
   emote("attacks with", weapon),
-  roll(mod, event),
+  rollD20(mod, event),
 ];
 
 /**
@@ -24,6 +24,18 @@ export const castSpell = (spell, details) => [
 ];
 
 /**
+ * Roll damage.
+ *
+ * @param {String} label
+ * @param {String} damage
+ * @returns {Array} Commands
+ */
+export const rollDamage = (label, damage) => [
+  emote("rolls damage for", label),
+  roll(damage),
+];
+
+/**
  * Roll dice.
  *
  * @param {String} label
@@ -33,7 +45,7 @@ export const castSpell = (spell, details) => [
  */
 export const rollDice = (label, mod, event) => [
   emote("rolls", label),
-  roll(mod, event),
+  rollD20(mod, event),
 ];
 
 /**
@@ -49,18 +61,23 @@ export const useAbility = (ability, details) => [
 ];
 
 const describe = (text) => text;
-const emote = (...text) => "/em " + text.join(" ");
+const emote = (...text) => "/emote " + text.join(" ");
+const roll = (dice) => "/roll " + dice;
 
-const rollNeutral = (mod) => "/r 1d20" + (mod !== "0" ? mod : "");
-const rollAdvantage = (mod) => "/r 2d20kh1" + (mod !== "0" ? mod : "");
-const rollDisadvantage = (mod) => "/r 2d20kl1" + (mod !== "0" ? mod : "");
-
-const roll = (mod, event) => {
+/**
+ * Roll a D20 with optional advantage or disadvantage.
+ *
+ * @param {String} mod
+ * @param {Object} event
+ * @returns {String} Command
+ */
+const rollD20 = (mod, event) => {
+  const safeMod = mod !== "0" ? mod : "";
   if (event.ctrlKey) {
-    return rollAdvantage(mod);
+    return "/roll 2d20kh1" + safeMod;
   } else if (event.shiftKey) {
-    return rollDisadvantage(mod);
+    return "/roll 2d20kl1" + safeMod;
   } else {
-    return rollNeutral(mod);
+    return roll("d20" + safeMod);
   }
 };
