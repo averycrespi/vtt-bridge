@@ -18,8 +18,7 @@
     },
     {
       "matches": ["*://app.roll20.net/editor*"],
-      "js": ["dist/scripts/browser-polyfill.min.js", "dist/scripts/roll20.js"],
-      "css": ["dist/styles/roll20.css"]
+      "js": ["dist/scripts/browser-polyfill.min.js", "dist/scripts/roll20.js"]
     }
   ],
   "background": {
