@@ -43,6 +43,8 @@
 
 ## About
 
+**Note: Dungeon Master's Vault has recently added native roll buttons, which may interfere with the VTT Bridge extension. This will be fixed in the next release.**
+
 VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 game.
 
 With the click of a button, you can:
