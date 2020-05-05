@@ -11,7 +11,7 @@
 export const onPredicate = (
   predicate,
   callback,
-  attempts = 5,
+  attempts = 10,
   timeout = 100
 ) => {
   if (predicate()) {
