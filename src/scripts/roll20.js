@@ -11,20 +11,17 @@ const createNotification = () => {
   notification.appendChild(spacer);
 
   const text = document.createElement("strong");
-  text.innerText = "Connected to Dungeon Master's Vault.";
+  text.innerText = "Connected to VTT Bridge.";
   notification.appendChild(text);
 
-  const button = document.createElement("button");
-  button.classList.add("vtt-close-button");
-  button.innerText = "×";
-  button.onclick = () => document.querySelector(".vtt-notification").remove();
-  notification.appendChild(button);
-
-  document.querySelector("#textchat").appendChild(notification);
-  console.debug("Created notification");
+  const chat = document.querySelector("#textchat");
+  chat.querySelector(".content").appendChild(notification);
+  console.debug("Created Roll20 notification");
 };
 
-onElementLoad("#textchat", () => createNotification());
+onElementLoad("#textchat .message.system .userscript-commandintro", () =>
+  createNotification()
+);
 
 const runCommands = (commands) => {
   const input = document.querySelector("#textchat-input");

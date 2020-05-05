@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "VTT Bridge",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A browser extension that connects Dungeon Master's Vault to Roll20.",
   "icons": {
     "48": "icons/48.png",
@@ -11,21 +11,17 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.dungeonmastersvault.com/pages/dnd/5e/characters/*?frame=true"
+        "*://*.dungeonmastersvault.com/pages/dnd/5e/characters/*?frame=true"
       ],
-      "js": ["dist/scripts/browser-polyfill.min.js", "dist/scripts/dmv.js"],
-      "css": ["dist/styles/dmv.css"]
+      "js": ["dist/polyfill.js", "dist/dmv.js"],
+      "css": ["dist/dmv.css"]
     },
     {
       "matches": ["*://app.roll20.net/editor*"],
-      "js": ["dist/scripts/browser-polyfill.min.js", "dist/scripts/roll20.js"],
-      "css": ["dist/styles/roll20.css"]
+      "js": ["dist/polyfill.js", "dist/roll20.js"]
     }
   ],
   "background": {
-    "scripts": [
-      "dist/scripts/browser-polyfill.min.js",
-      "dist/scripts/background.js"
-    ]
+    "scripts": ["dist/polyfill.js", "dist/background.js"]
   }
 }
