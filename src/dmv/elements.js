@@ -9,7 +9,7 @@
 export const createButton = (innerText, onClick, classes = []) => {
   const button = document.createElement("button");
   button.innerText = innerText;
-  button.classList.add("form-button", ...classes);
+  button.classList.add("roll-button", ...classes);
   button.onclick = onClick;
   return button;
 };

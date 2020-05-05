@@ -14,11 +14,11 @@ export const addRollAbilityScoreButtons = (onClick) =>
   onElementLoad(".ability-scores .ability-score-name", () => ready(onClick));
 
 const ready = (onClick) => {
-  const parent = document.querySelector(".ability-scores");
-  const children = parent.children;
+  const children = document.querySelector(".ability-scores").children;
   for (const child of children) {
     const stat = child.querySelector(".ability-score-name").innerText;
     const mod = child.querySelector(".ability-score-modifier").innerText;
+
     const button = createButton(
       "roll",
       function (event) {
@@ -26,7 +26,9 @@ const ready = (onClick) => {
       },
       [withTopMargin(), classes.rollAbilityScore]
     );
+
     child.appendChild(button);
   }
-  console.debug("Created " + children.length + " roll ability score buttons");
+
+  console.debug("Added " + children.length + " roll ability score buttons");
 };

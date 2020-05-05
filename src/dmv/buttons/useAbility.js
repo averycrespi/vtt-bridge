@@ -34,13 +34,13 @@ export const addUseAbilityButtons = (onClick) => {
 };
 
 const ready = (onClick, selector, label, buttonClass) => {
-  const parent = document.querySelector(selector);
-  const children = parent.querySelectorAll("p");
+  const children = document.querySelector(selector).querySelectorAll("p");
   for (const child of children) {
     // There may be more spans, but we don't care about them.
     const [abilitySpan, detailsSpan, ,] = child.querySelectorAll("span");
     const ability = abilitySpan.innerText;
     const details = detailsSpan.innerText;
+
     const button = createButton(
       "use",
       function () {
@@ -48,7 +48,9 @@ const ready = (onClick, selector, label, buttonClass) => {
       },
       [withTopMargin(), withLeftMargin(), buttonClass]
     );
+
     child.appendChild(button);
   }
-  console.debug("Created " + children.length + " use " + label + " buttons");
+
+  console.debug("Added " + children.length + " use " + label + " buttons");
 };

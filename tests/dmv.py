@@ -124,10 +124,6 @@ class TestRunner:
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, selector))
         )
 
-    def click_connect_button(self):
-        self.logger.info("Clicking connect button ...")
-        self.by_class_name("vtt-connect")[0].click()
-
     def select_tab_by_index(self, index: int):
         self.logger.info("Selecting tab by index: {} ...".format(index))
         self.by_css_selector(".flex-grow-1.t-a-c")[index].click()
@@ -156,10 +152,6 @@ class TestRunner:
         self.logger.info("Testing roll proficiency buttons ...")
         assert len(self.by_class_name("vtt-roll-proficiency")) >= 18
 
-    def test_roll_proficiency_buttons_with_tools(self):
-        self.logger.info("Testing roll proficiency buttons with tools ...")
-        assert len(self.by_class_name("vtt-roll-proficiency")) >= 19
-
     def test_use_action_buttons(self):
         self.logger.info("Testing use action buttons ...")
         assert len(self.by_class_name("vtt-use-action")) >= 1
@@ -179,7 +171,6 @@ class TestRunner:
     def test_character(self, character: Character):
         self.logger.info("Testing character: {} ...".format(character.name))
         self.driver.get(character.url)
-        self.click_connect_button()
         self.test_roll_ability_score_buttons()
         self.test_roll_skill_buttons()
         self.test_roll_saving_throw_buttons()
@@ -190,10 +181,7 @@ class TestRunner:
 
         self.logger.info("Testing proficiencies tab ...")
         self.select_tab_by_index(1)
-        if "tools" in character.sections:
-            self.test_roll_proficiency_buttons_with_tools()
-        else:
-            self.test_roll_proficiency_buttons()
+        self.test_roll_proficiency_buttons()
 
         self.logger.info("Testing spells tab ...")
         self.select_tab_by_index(2)

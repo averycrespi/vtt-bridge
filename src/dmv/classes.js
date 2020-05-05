@@ -1,9 +1,4 @@
-export const connectToRoll20 = "vtt-connect";
-
 export const attackWithWeapon = "vtt-attack-with-weapon";
-
-export const castCantrip = "vtt-cast-cantrip";
-export const castSpell = "vtt-cast-spell";
 
 export const rollAbilityScore = "vtt-roll-ability-score";
 export const rollInitiatve = "vtt-roll-initiative";
