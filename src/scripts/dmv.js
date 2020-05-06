@@ -11,7 +11,7 @@ let notyf = new Notyf({
 });
 
 connectToRoll20((commands) => {
-  notyf.success("Sent commands to Roll20!");
+  notyf.success(commands[0]);
   browser.runtime.sendMessage({ type: messageTypes.ENQUEUE, commands });
 });
 
