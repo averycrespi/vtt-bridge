@@ -15,4 +15,4 @@ connectToRoll20((commands) => {
   browser.runtime.sendMessage({ type: messageTypes.ENQUEUE, commands });
 });
 
-notyf.success("Connected to Roll20!");
+notyf.success({ message: "Connected to Roll20!", duration: 5000 });
