@@ -21,14 +21,11 @@ const ready = (onClick) => {
       continue;
     }
 
-    //TODO: make cell indices more reliable
-    const cells = row.querySelectorAll("td");
+    const cells = Array.from(row.querySelectorAll("td"));
     const weapon = cells[0].innerText;
-    const damage = cells[cells.length - 5].innerText
-      .replace("melee,", "")
-      .replace("damage", "")
-      .trim();
-    const mod = cells[cells.length - 4].innerText;
+    const details = cells.find((c) => c.innerText.includes("damage")).innerText;
+    const damage = details.match(/[0-9d+-]+/)[0];
+    const mod = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
 
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
 

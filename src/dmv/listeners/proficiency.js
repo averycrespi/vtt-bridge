@@ -25,10 +25,9 @@ const ready = (onClick) => {
         continue;
       }
 
-      //TODO: make cell indices more reliable
-      const cells = row.querySelectorAll("td");
+      const cells = Array.from(row.querySelectorAll("td"));
       const name = cells[0].innerText;
-      const bonus = cells[cells.length - 2].innerText;
+      const bonus = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
 
       const button = row.querySelector(".roll-button");
       button.addEventListener("click", function (event) {
