@@ -14,6 +14,13 @@ export const addRollAbilityScoreButtons = (onClick) =>
   onElementLoad(".ability-scores .ability-score-name", () => ready(onClick));
 
 const ready = (onClick) => {
+  // Remove any existing buttons.
+  for (const button of document.querySelectorAll(
+    "." + classes.rollAbilityScoreCheck
+  )) {
+    button.remove();
+  }
+
   const children = document.querySelector(".ability-scores").children;
   for (const child of children) {
     const stat = child.querySelector(".ability-score-name").innerText;

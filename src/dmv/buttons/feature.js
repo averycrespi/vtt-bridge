@@ -34,6 +34,11 @@ export const addUseFeatureButtons = (onClick) => {
 };
 
 const ready = (onClick, selector, label, buttonClass) => {
+  // Remove any existing buttons.
+  for (const button of document.querySelectorAll("." + buttonClass)) {
+    button.remove();
+  }
+
   const children = document.querySelector(selector).querySelectorAll("p");
   for (const child of children) {
     // There may be more spans, but we don't care about them.
