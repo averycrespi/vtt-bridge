@@ -1,6 +1,6 @@
-import { addRollInitiativeListener } from "./rollInitiative";
-import { addRollProficiencyListeners } from "./rollProficiency";
-import { addUseAbilityButtons } from "../buttons/useAbility";
+import { addRollInitiativeListener } from "./initiative";
+import { addRollProficiencyListeners } from "./proficiency";
+import { addUseFeatureButtons } from "../buttons/feature";
 import { addWeaponListeners } from "./weapon";
 import { onElementLoad } from "../../common";
 
@@ -59,7 +59,7 @@ const ready = (onClick) => {
   featuresTab.addEventListener("click", () => {
     console.debug("Selected features tab");
     if (activeTab !== 3) {
-      addUseAbilityButtons(onClick);
+      addUseFeatureButtons(onClick);
     }
     activeTab = 3;
   });

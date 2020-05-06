@@ -1,6 +1,6 @@
-import { addRollAbilityScoreButtons } from "./buttons/rollAbilityScore";
-import { addRollSavingThrowListeners } from "./listeners/rollSavingThrow";
-import { addRollSkillListeners } from "./listeners/rollSkill";
+import { addRollAbilityScoreButtons } from "./buttons/abilityScore";
+import { addRollSavingThrowListeners } from "./listeners/savingThrow";
+import { addRollSkillListeners } from "./listeners/skill";
 import { addTabListeners } from "./listeners/tab";
 import { onElementLoad } from "../common";
 

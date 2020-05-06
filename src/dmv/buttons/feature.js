@@ -6,11 +6,11 @@ import { createButton, withLeftMargin, withTopMargin } from "../elements";
 import { onElementLoad } from "../../common";
 
 /**
- * Add use buttons for abilities.
+ * Add use buttons for features.
  *
  * @param {Function} onClick
  */
-export const addUseAbilityButtons = (onClick) => {
+export const addUseFeatureButtons = (onClick) => {
   onElementLoad(".actions p span", () =>
     ready(onClick, ".actions", "action", classes.useAction)
   );
