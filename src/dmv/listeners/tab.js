@@ -1,5 +1,6 @@
 import { addRollInitiativeListener } from "./initiative";
 import { addRollProficiencyListeners } from "./proficiency";
+import { addRollSpellListeners } from "./spell";
 import { addUseFeatureButtons } from "../buttons/feature";
 import { addWeaponListeners } from "./weapon";
 import { onElementLoad } from "../../common";
@@ -51,7 +52,7 @@ const ready = (onClick) => {
   spellsTab.addEventListener("click", () => {
     console.debug("Selected spells tab");
     if (activeTab !== 2) {
-      //TODO
+      addRollSpellListeners(onClick);
     }
     activeTab = 2;
   });
@@ -71,4 +72,6 @@ const ready = (onClick) => {
     }
     activeTab = 4;
   });
+
+  console.debug("Added listeners to tabs");
 };

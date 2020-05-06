@@ -20,6 +20,8 @@ export const attackWithWeapon = (weapon, mod, event) => [
   smartRoll(mod, event),
 ];
 
+export const castSpell = (spell) => [emote("casts " + spell)];
+
 export const rollAbilityScoreCheck = (stat, mod, event) => [
   emote("rolls " + stat + " check"),
   smartRoll(mod, event),

@@ -1,5 +1,7 @@
 export const attackWithWeapon = "vtt-attack-with-weapon";
 
+export const castSpell = "vtt-cast-spell";
+
 export const rollAbilityScoreCheck = "vtt-roll-ability-score-check";
 export const rollInitiatve = "vtt-roll-initiative";
 export const rollProficiency = "vtt-roll-proficiency";

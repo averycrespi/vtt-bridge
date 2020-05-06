@@ -153,6 +153,10 @@ class TestRunner:
         self.logger.info("Testing roll proficiency buttons ...")
         assert len(self.by_class_name("vtt-roll-proficiency")) >= 18
 
+    def test_roll_spell_buttons(self):
+        self.logger.info("Testing roll spell buttons ...")
+        assert len(self.by_class_name("vtt-cast-spell")) >= 1
+
     def test_use_action_buttons(self):
         self.logger.info("Testing use action buttons ...")
         assert len(self.by_class_name("vtt-use-action")) >= 1
@@ -186,12 +190,8 @@ class TestRunner:
 
         self.logger.info("Testing spells tab ...")
         self.select_tab_by_index(2)
-        if "cantrips" in character.sections:
-            # TODO: test cantrips
-            pass
         if "spells" in character.sections:
-            # TODO: test spells
-            pass
+            self.test_roll_spell_buttons()
 
         self.logger.info("Testing features tab ...")
         self.select_tab_by_index(3)
