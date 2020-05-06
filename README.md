@@ -38,26 +38,19 @@
 
 <div align="center">
     <br>
-    <img src="assets/demo.gif">
+    <img src="assets/screenshot.png">
 </div>
 
 ## About
-
-**Note: Dungeon Master's Vault has recently added native roll buttons, which may interfere with the VTT Bridge extension. This will be fixed in the next release.**
 
 VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 game.
 
 With the click of a button, you can:
 
 - Attack with weapons
-- Cast cantrips and spells
-- Roll ability scores, initiative, saving throws, skills, and tools
-- Use actions, bonus actions, features, and reactions
-
-Advanced features:
-
-- <kbd>Ctrl+Click</kbd> to roll with advantage
-- <kbd>Shift+Click</kbd> to roll with disadvantage
+- Cast spells
+- Roll checks
+- ... and much more!
 
 **Disclaimer**
 
@@ -75,19 +68,15 @@ Install the VTT Bridge extension for Firefox or Google Chrome.
     <img src="assets/chrome.png">
 </a>
 
-Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right, which opens the read-only view.
+Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right.
 
-![Dungeon Master's Vault link](assets/dmv_link.png)
+![Dungeon Master's Vault link](assets/dmv_www_link.png)
 
-Click the <kbd>Connect to Roll20</kbd> button.
-
-![Dungeon Master's Vault button](assets/dmv_button.png)
-
-Open your Roll 20 game in another tab. You should see a notification that says `Connected to Dungeon Master's Vault`.
+Open your Roll 20 game in another tab. You should see a chat message that says `Connected to VTT Bridge`.
 
 ![Roll20 notification](assets/roll20_notification.png)
 
-Click one of the new buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
+Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
 ## FAQ
 

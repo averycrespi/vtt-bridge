@@ -124,21 +124,17 @@ class TestRunner:
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, selector))
         )
 
-    def click_connect_button(self):
-        self.logger.info("Clicking connect button ...")
-        self.by_class_name("vtt-connect")[0].click()
-
     def select_tab_by_index(self, index: int):
         self.logger.info("Selecting tab by index: {} ...".format(index))
         self.by_css_selector(".flex-grow-1.t-a-c")[index].click()
 
     def test_roll_ability_score_buttons(self):
         self.logger.info("Testing roll ability score buttons ...")
-        assert len(self.by_class_name("vtt-roll-ability-score")) == 6
+        assert len(self.by_class_name("vtt-roll-ability-score-check")) == 6
 
     def test_roll_skill_buttons(self):
         self.logger.info("Testing roll skill buttons ...")
-        assert len(self.by_class_name("vtt-roll-skill")) == 18
+        assert len(self.by_class_name("vtt-roll-skill-check")) == 18
 
     def test_roll_saving_throw_buttons(self):
         self.logger.info("Testing roll saving throw buttons ...")
@@ -148,17 +144,18 @@ class TestRunner:
         self.logger.info("Testing roll initiative button ...")
         assert len(self.by_class_name("vtt-roll-initiative")) == 1
 
-    def test_attack_with_weapon_buttons(self):
-        self.logger.info("Testing attack with weapon buttons ...")
+    def test_weapon_buttons(self):
+        self.logger.info("Testing weapon buttons ...")
         assert len(self.by_class_name("vtt-attack-with-weapon")) >= 1
+        assert len(self.by_class_name("vtt-roll-weapon-damage")) >= 1
 
     def test_roll_proficiency_buttons(self):
         self.logger.info("Testing roll proficiency buttons ...")
         assert len(self.by_class_name("vtt-roll-proficiency")) >= 18
 
-    def test_roll_proficiency_buttons_with_tools(self):
-        self.logger.info("Testing roll proficiency buttons with tools ...")
-        assert len(self.by_class_name("vtt-roll-proficiency")) >= 19
+    def test_roll_spell_buttons(self):
+        self.logger.info("Testing roll spell buttons ...")
+        assert len(self.by_class_name("vtt-cast-spell")) >= 1
 
     def test_use_action_buttons(self):
         self.logger.info("Testing use action buttons ...")
@@ -179,30 +176,22 @@ class TestRunner:
     def test_character(self, character: Character):
         self.logger.info("Testing character: {} ...".format(character.name))
         self.driver.get(character.url)
-        self.click_connect_button()
         self.test_roll_ability_score_buttons()
         self.test_roll_skill_buttons()
         self.test_roll_saving_throw_buttons()
 
         self.logger.info("Testing combat tab ...")
         self.test_roll_initiative_button()
-        self.test_attack_with_weapon_buttons()
+        self.test_weapon_buttons()
 
         self.logger.info("Testing proficiencies tab ...")
         self.select_tab_by_index(1)
-        if "tools" in character.sections:
-            self.test_roll_proficiency_buttons_with_tools()
-        else:
-            self.test_roll_proficiency_buttons()
+        self.test_roll_proficiency_buttons()
 
         self.logger.info("Testing spells tab ...")
         self.select_tab_by_index(2)
-        if "cantrips" in character.sections:
-            # TODO: test cantrips
-            pass
         if "spells" in character.sections:
-            # TODO: test spells
-            pass
+            self.test_roll_spell_buttons()
 
         self.logger.info("Testing features tab ...")
         self.select_tab_by_index(3)
@@ -217,7 +206,7 @@ class TestRunner:
 
         self.logger.info("Testing equipment tab ...")
         self.select_tab_by_index(4)
-        self.test_attack_with_weapon_buttons()
+        self.test_weapon_buttons()
 
 
 if __name__ == "__main__":
