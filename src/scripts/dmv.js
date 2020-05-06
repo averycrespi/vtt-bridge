@@ -6,13 +6,11 @@ import { messageTypes } from "../common";
 
 console.debug("Loading dmv.js ...");
 
-let notyf = new Notyf({
-  types: [{ type: "success", background: "#f1a20f" }],
-});
+let notyf = new Notyf();
 
 connectToRoll20((commands) => {
   notyf.success(commands[0]);
   browser.runtime.sendMessage({ type: messageTypes.ENQUEUE, commands });
 });
 
-notyf.success({ message: "Connected to Roll20!", duration: 5000 });
+notyf.success({ message: "Connected to VTT Bridge!", duration: 5000 });
