@@ -37,14 +37,14 @@ const ready = (onClick, selector, label, buttonClass) => {
   const children = document.querySelector(selector).querySelectorAll("p");
   for (const child of children) {
     // There may be more spans, but we don't care about them.
-    const [abilitySpan, detailsSpan, ,] = child.querySelectorAll("span");
-    const ability = abilitySpan.innerText;
+    const [featureSpan, detailsSpan, ,] = child.querySelectorAll("span");
+    const feature = featureSpan.innerText;
     const details = detailsSpan.innerText;
 
     const button = createButton(
       "use",
       function () {
-        onClick(commands.useAbility(ability, details));
+        onClick(commands.useFeature(feature, details));
       },
       [withTopMargin(), withLeftMargin(), buttonClass]
     );

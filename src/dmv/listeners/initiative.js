@@ -17,7 +17,7 @@ const ready = (onClick) => {
 
   const button = parent.closest("div.flex-wrap").querySelector(".roll-button");
   button.addEventListener("click", function (event) {
-    onClick(commands.rollDice("initiative", mod, event));
+    onClick(commands.rollInitiative(mod, event));
   });
   button.classList.add(classes.rollInitiatve);
 

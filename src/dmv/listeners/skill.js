@@ -19,9 +19,9 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.rollDice(skill + " check", mod, event));
+      onClick(commands.rollSkillCheck(skill, mod, event));
     });
-    button.classList.add(classes.rollSkill);
+    button.classList.add(classes.rollSkillCheck);
   }
 
   console.debug("Added listeners to " + rows.length + " roll skill buttons");

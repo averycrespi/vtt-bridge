@@ -22,9 +22,9 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(commands.rollDice(stat + " check", mod, event));
+        onClick(commands.rollAbilityScoreCheck(stat, mod, event));
       },
-      [withTopMargin(), classes.rollAbilityScore]
+      [withTopMargin(), classes.rollAbilityScoreCheck]
     );
 
     child.appendChild(button);

@@ -22,7 +22,7 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.rollDice(stat + " save", mod, event));
+      onClick(commands.rollSavingThrow(stat, mod, event));
     });
     button.classList.add(classes.rollSavingThrow);
   }

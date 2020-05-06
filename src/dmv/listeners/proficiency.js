@@ -32,7 +32,7 @@ const ready = (onClick) => {
 
       const button = row.querySelector(".roll-button");
       button.addEventListener("click", function (event) {
-        onClick(commands.rollDice(name, bonus, event));
+        onClick(commands.rollProficiency(name, bonus, event));
       });
       button.classList.add(classes.rollProficiency);
       count++;

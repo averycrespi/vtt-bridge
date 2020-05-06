@@ -130,11 +130,11 @@ class TestRunner:
 
     def test_roll_ability_score_buttons(self):
         self.logger.info("Testing roll ability score buttons ...")
-        assert len(self.by_class_name("vtt-roll-ability-score")) == 6
+        assert len(self.by_class_name("vtt-roll-ability-score-check")) == 6
 
     def test_roll_skill_buttons(self):
         self.logger.info("Testing roll skill buttons ...")
-        assert len(self.by_class_name("vtt-roll-skill")) == 18
+        assert len(self.by_class_name("vtt-roll-skill-check")) == 18
 
     def test_roll_saving_throw_buttons(self):
         self.logger.info("Testing roll saving throw buttons ...")

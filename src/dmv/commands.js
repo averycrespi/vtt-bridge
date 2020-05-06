@@ -1,83 +1,56 @@
-/**l
- * Attack with a weapon.
- *
- * @param {String} weapon
- * @param {String} mod
- * @param {Object} event
- * @returns {Array} Commands
- */
-export const attackWith = (weapon, mod, event) => [
-  emote("attacks with", weapon),
-  rollD20(mod, event),
+const say = (text) => text;
+const emote = (text) => "/em " + text;
+const roll = (dice) => "/r " + dice;
+
+const smartRoll = (mod, event) => {
+  if (mod === 0) {
+    mod = "";
+  }
+  if (event.ctrlKey) {
+    return "/roll 2d20kh1" + mod;
+  } else if (event.shiftKey) {
+    return "/roll 2d20kl1" + mod;
+  } else {
+    return "/roll 1d20" + mod;
+  }
+};
+
+export const attackWithWeapon = (weapon, mod, event) => [
+  emote("attacks with " + weapon),
+  smartRoll(mod, event),
 ];
 
-/**
- * Cast a spell or cantrip.
- *
- * @param {String} spell
- * @param {String} details
- * @returns {Array} Commands
- */
-export const castSpell = (spell, details) => [
-  emote("casts", spell),
-  describe(details),
+export const rollAbilityScoreCheck = (stat, mod, event) => [
+  emote("rolls " + stat + " check"),
+  smartRoll(mod, event),
 ];
 
-/**
- * Roll damage.
- *
- * @param {String} label
- * @param {String} damage
- * @returns {Array} Commands
- */
-export const rollDamage = (label, damage) => [
-  emote("rolls damage for", label),
+export const rollInitiative = (mod, event) => [
+  emote("rolls initiative"),
+  smartRoll(mod, event),
+];
+
+export const rollProficiency = (name, mod, event) => [
+  emote("rolls " + name),
+  smartRoll(mod, event),
+];
+
+export const rollSavingThrow = (stat, mod, event) => [
+  emote("rolls " + stat + "save"),
+  smartRoll(mod, event),
+];
+
+export const rollSkillCheck = (skill, mod, event) => [
+  emote("rolls " + skill + " check"),
+  smartRoll(mod, event),
+];
+
+export const rollWeaponDamage = (weapon, damage) => [
+  emote("rolls " + weapon + " damage"),
   roll(damage),
 ];
 
-/**
- * Roll dice.
- *
- * @param {String} label
- * @param {String} mod
- * @param {Object} event
- * @returns {Array} Commands
- */
-export const rollDice = (label, mod, event) => [
-  emote("rolls", label),
-  rollD20(mod, event),
+export const useFeature = (name, description) => [
+  emote("uses " + name),
+  say(description),
 ];
-
-/**
- * Use an ability.
- *
- * @param {String} ability
- * @param {String} details
- * @returns {Array} Commands
- */
-export const useAbility = (ability, details) => [
-  emote("uses", ability),
-  describe(details),
-];
-
-const describe = (text) => text;
-const emote = (...text) => "/emote " + text.join(" ");
-const roll = (dice) => "/roll " + dice;
-
-/**
- * Roll a D20 with optional advantage or disadvantage.
- *
- * @param {String} mod
- * @param {Object} event
- * @returns {String} Command
- */
-const rollD20 = (mod, event) => {
-  const safeMod = mod !== "0" ? mod : "";
-  if (event.ctrlKey) {
-    return "/roll 2d20kh1" + safeMod;
-  } else if (event.shiftKey) {
-    return "/roll 2d20kl1" + safeMod;
-  } else {
-    return roll("d20" + safeMod);
-  }
-};

@@ -1,10 +1,10 @@
 export const attackWithWeapon = "vtt-attack-with-weapon";
 
-export const rollAbilityScore = "vtt-roll-ability-score";
+export const rollAbilityScoreCheck = "vtt-roll-ability-score-check";
 export const rollInitiatve = "vtt-roll-initiative";
 export const rollProficiency = "vtt-roll-proficiency";
 export const rollSavingThrow = "vtt-roll-saving-throw";
-export const rollSkill = "vtt-roll-skill";
+export const rollSkillCheck = "vtt-roll-skill-check";
 export const rollWeaponDamage = "vtt-roll-weapon-damage";
 
 export const useAction = "vtt-use-action";
