@@ -10,7 +10,7 @@ import { onElementLoad } from "../common";
  * @param {Function} onClick
  */
 export const connectToRoll20 = (onClick) =>
-  onElementLoad(".character-summary", () => ready(onClick));
+  onElementLoad(".character-summary .class-name", () => ready(onClick));
 
 const ready = (onClick) => {
   addRollAbilityScoreButtons(onClick);

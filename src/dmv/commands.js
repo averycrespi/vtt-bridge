@@ -3,7 +3,7 @@ const emote = (text) => "/em " + text;
 const roll = (dice) => "/r " + dice;
 
 const smartRoll = (mod, event) => {
-  if (mod === 0) {
+  if (mod === "0") {
     mod = "";
   }
   if (event.ctrlKey) {
@@ -36,7 +36,7 @@ export const rollProficiency = (name, mod, event) => [
 ];
 
 export const rollSavingThrow = (stat, mod, event) => [
-  emote("rolls " + stat + "save"),
+  emote("rolls " + stat + " save"),
   smartRoll(mod, event),
 ];
 
