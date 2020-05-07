@@ -2,6 +2,9 @@ import { messageTypes, onElementLoad } from "../common";
 
 console.debug("Loading roll20.js ...");
 
+/**
+ * Create a notification in the chat.
+ */
 const createNotification = () => {
   const notification = document.createElement("div");
   notification.classList.add("message", "system", "vtt-notification");
@@ -19,25 +22,24 @@ const createNotification = () => {
   console.debug("Created Roll20 notification");
 };
 
-onElementLoad("#textchat .message.system .userscript-commandintro", () =>
-  createNotification()
-);
-
-const runCommands = (commands) => {
-  const input = document.querySelector("#textchat-input");
-  input.querySelector("textarea").value = commands.join("\n");
-  input.querySelector(".btn").click();
-  console.debug("Ran commands: " + JSON.stringify(commands));
+/**
+ * Receive and run commands from the background script.
+ */
+const receiveCommands = () => {
+  browser.runtime
+    .sendMessage({ type: messageTypes.DEQUEUE })
+    .then((commands) => {
+      if (commands.length > 0) {
+        const input = document.querySelector("#textchat-input");
+        input.querySelector("textarea").value = commands.join("\n");
+        input.querySelector(".btn").click();
+        console.debug("Ran commands: " + JSON.stringify(commands));
+      }
+    });
 };
 
-setInterval(
-  () =>
-    browser.runtime
-      .sendMessage({ type: messageTypes.DEQUEUE })
-      .then((commands) => {
-        if (commands.length > 0) {
-          onElementLoad("#textchat-input", () => runCommands(commands));
-        }
-      }),
-  1000
-);
+onElementLoad("#textchat .message.system .userscript-commandintro", () => {
+  browser.runtime.sendMessage({ type: messageTypes.CLEAR });
+  createNotification();
+  setInterval(receiveCommands, 1000);
+});

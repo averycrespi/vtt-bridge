@@ -42,4 +42,5 @@ export const onElementLoad = (selector, callback) =>
 export const messageTypes = {
   ENQUEUE: "ENQUEUE",
   DEQUEUE: "DEQUEUE",
+  CLEAR: "CLEAR",
 };
