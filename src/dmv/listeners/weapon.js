@@ -30,13 +30,13 @@ const ready = (onClick) => {
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
 
     attackButton.addEventListener("click", function (event) {
-      onClick(commands.attackWithWeapon(weapon, mod, event));
+      onClick(commands.attackWith(weapon, mod, event));
     });
     attackButton.classList.add(classes.attackWithWeapon);
     count++;
 
     damageButton.addEventListener("click", function () {
-      onClick(commands.rollWeaponDamage(weapon, damage));
+      onClick(commands.rollDamage(weapon, damage));
     });
     damageButton.classList.add(classes.rollWeaponDamage);
     count++;

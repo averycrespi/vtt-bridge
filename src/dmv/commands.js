@@ -1,58 +1,45 @@
-const say = (text) => text;
-const emote = (text) => "/em " + text;
-const roll = (dice) => "/r " + dice;
+// Does the roll have advantage or disadvantage?
+const hasAdvantage = (event) => event.ctrlKey;
+const hasDisadvantage = (event) => event.shiftKey;
 
-const smartRoll = (mod, event) => {
-  if (mod === "0") {
-    mod = "";
-  }
-  if (event.ctrlKey) {
-    return "/roll 2d20kh1" + mod;
-  } else if (event.shiftKey) {
-    return "/roll 2d20kl1" + mod;
+const eventToRoll = (event) => {
+  if (hasAdvantage(event)) {
+    return "/roll 2d20kh1";
+  } else if (hasDisadvantage(event)) {
+    return "/roll 2d20kl1";
   } else {
-    return "/roll 1d20" + mod;
+    return "/roll 1d20";
   }
 };
 
-export const attackWithWeapon = (weapon, mod, event) => [
-  emote("attacks with " + weapon),
-  smartRoll(mod, event),
-];
+const rollD20 = (mod, event) => eventToRoll(event) + (mod === "0" ? "" : mod);
 
-export const castSpell = (spell) => [emote("casts " + spell)];
+export const attackWith = (name, mod, event) => ({
+  toast: "Attacked with " + name + "!",
+  commands: ["/em attacks with " + name, rollD20(mod, event)],
+});
 
-export const rollAbilityScoreCheck = (stat, mod, event) => [
-  emote("rolls " + stat + " check"),
-  smartRoll(mod, event),
-];
+export const rollCheck = (name, mod, event) => ({
+  toast: "Rolled " + name + " check!",
+  commands: ["/em rolls " + name + " check", rollD20(mod, event)],
+});
 
-export const rollInitiative = (mod, event) => [
-  emote("rolls initiative"),
-  smartRoll(mod, event),
-];
+export const rollDamage = (name, damage) => ({
+  toast: "Rolled " + name + " damage!",
+  commands: ["/em rolls " + name + " damage", "/roll " + damage],
+});
 
-export const rollProficiency = (name, mod, event) => [
-  emote("rolls " + name),
-  smartRoll(mod, event),
-];
+export const rollFor = (name, mod, event) => ({
+  toast: "Rolled " + name + "!",
+  commands: ["/em rolls " + name, rollD20(mod, event)],
+});
 
-export const rollSavingThrow = (stat, mod, event) => [
-  emote("rolls " + stat + " save"),
-  smartRoll(mod, event),
-];
+export const rollSave = (name, mod, event) => ({
+  toast: "Rolled " + name + " save!",
+  commands: ["/em rolls " + name + " save", rollD20(mod, event)],
+});
 
-export const rollSkillCheck = (skill, mod, event) => [
-  emote("rolls " + skill + " check"),
-  smartRoll(mod, event),
-];
-
-export const rollWeaponDamage = (weapon, damage) => [
-  emote("rolls " + weapon + " damage"),
-  roll(damage),
-];
-
-export const useFeature = (name, description) => [
-  emote("uses " + name),
-  say(description),
-];
+export const useFeature = (name, description) => ({
+  toast: "Used " + name + "!",
+  commands: ["/em uses " + name, description],
+});

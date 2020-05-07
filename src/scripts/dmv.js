@@ -8,8 +8,8 @@ console.debug("Loading dmv.js ...");
 
 let notyf = new Notyf();
 
-connectToRoll20((commands) => {
-  notyf.success(commands[0]);
+connectToRoll20(({ toast, commands }) => {
+  notyf.success(toast);
   browser.runtime.sendMessage({ type: messageTypes.ENQUEUE, commands });
 });
 

@@ -20,8 +20,8 @@ const ready = (onClick) => {
     const spell = cells[0].innerText;
 
     const button = row.querySelector(".roll-button");
-    button.addEventListener("click", function () {
-      onClick(commands.castSpell(spell));
+    button.addEventListener("click", function (event) {
+      onClick(commands.attackWith(spell, "0", event)); //TODO: add mod
     });
     button.classList.add(classes.castSpell);
   }
