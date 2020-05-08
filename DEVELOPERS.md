@@ -28,7 +28,7 @@ yarn firefox:run
 yarn chromium:run
 ```
 
-When running Firefox or Chromium, your browser profile will be saved in the `profiles` directory.
+When running Firefox or Chromium, your browser profile will be saved in the `.profiles` directory.
 
 ## Testing
 
@@ -53,9 +53,9 @@ yarn chromium:test
 yarn test
 ```
 
-- The test harness will automatically create and activate a Python virtual environment in the `venv` directory.
+- The test harness will create and activate a Python virtual environment in the `tests/venv` directory.
 - Test characters will be loaded from `tests/characters.json`.
-- Test logs will be written to the `logs` directory.
+- Test logs will be written to the `tests/logs` directory.
 
 ## Project Overview
 
