@@ -26,7 +26,7 @@ const makeEmote = (text, event = null) => {
   }
 };
 
-const makeRollD20 = (mod, event = null) => {
+const makeRoll = (mod, event = null) => {
   const safeMod = mod === "0" ? "" : mod;
   if (!event) {
     return "/roll 1d20" + safeMod;
