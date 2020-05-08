@@ -14,13 +14,13 @@ test("attack with weapon with empty modifier", () =>
 
 test("attack with weapon with advantage", () =>
   expect(commands.attackWith("sword", "+2", { ctrlKey: true })).toEqual({
-    toast: "Attacked with sword!",
+    toast: "Attacked with sword with advantage!",
     commands: ["/emote attacks with sword with advantage", "/roll 2d20kh1+2"],
   }));
 
 test("attack with weapon with disadvantage", () =>
   expect(commands.attackWith("sword", "+2", { shiftKey: true })).toEqual({
-    toast: "Attacked with sword!",
+    toast: "Attacked with sword with disadvantage!",
     commands: [
       "/emote attacks with sword with disadvantage",
       "/roll 2d20kl1+2",

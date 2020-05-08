@@ -2,7 +2,19 @@
 const hasAdvantage = (event) => event && event.ctrlKey;
 const hasDisadvantage = (event) => event && event.shiftKey;
 
-const emote = (text, event) => {
+const makeToast = (text, event = null) => {
+  if (!event) {
+    return text + "!";
+  } else if (hasAdvantage(event)) {
+    return text + " with advantage!";
+  } else if (hasDisadvantage(event)) {
+    return text + " with disadvantage!";
+  } else {
+    return text + "!";
+  }
+};
+
+const makeEmote = (text, event = null) => {
   if (!event) {
     return "/emote " + text;
   } else if (hasAdvantage(event)) {
@@ -14,7 +26,7 @@ const emote = (text, event) => {
   }
 };
 
-const rollD20 = (mod, event = null) => {
+const makeRollD20 = (mod, event = null) => {
   const safeMod = mod === "0" ? "" : mod;
   if (!event) {
     return "/roll 1d20" + safeMod;
@@ -28,31 +40,34 @@ const rollD20 = (mod, event = null) => {
 };
 
 export const attackWith = (name, mod, event) => ({
-  toast: "Attacked with " + name + "!",
-  commands: [emote("attacks with " + name, event), rollD20(mod, event)],
+  toast: makeToast("Attacked with " + name, event),
+  commands: [makeEmote("attacks with " + name, event), makeRoll(mod, event)],
 });
 
 export const rollCheck = (name, mod, event) => ({
-  toast: "Rolled " + name + " check!",
-  commands: [emote("rolls " + name + " check", event), rollD20(mod, event)],
+  toast: makeToast("Rolled " + name + " check", event),
+  commands: [
+    makeEmote("rolls " + name + " check", event),
+    makeRoll(mod, event),
+  ],
 });
 
 export const rollDamage = (name, damage) => ({
-  toast: "Rolled " + name + " damage!",
-  commands: [emote("rolls " + name + " damage"), "/roll " + damage],
+  toast: makeToast("Rolled " + name + " damage"),
+  commands: [makeEmote("rolls " + name + " damage"), "/roll " + damage],
 });
 
 export const rollFor = (name, mod, event) => ({
-  toast: "Rolled " + name + "!",
-  commands: [emote("rolls " + name, event), rollD20(mod, event)],
+  toast: makeToast("Rolled " + name, event),
+  commands: [makeEmote("rolls " + name, event), makeRoll(mod, event)],
 });
 
 export const rollSave = (name, mod, event) => ({
-  toast: "Rolled " + name + " save!",
-  commands: [emote("rolls " + name + " save", event), rollD20(mod, event)],
+  toast: makeToast("Rolled " + name + " save", event),
+  commands: [makeEmote("rolls " + name + " save", event), makeRoll(mod, event)],
 });
 
 export const useFeature = (name, description) => ({
-  toast: "Used " + name + "!",
-  commands: [emote("uses " + name), description],
+  toast: makeToast("Used " + name),
+  commands: [makeEmote("uses " + name), description],
 });
