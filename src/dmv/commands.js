@@ -16,13 +16,13 @@ const makeToast = (text, event = null) => {
 
 const makeEmote = (text, event = null) => {
   if (!event) {
-    return "/emote " + text;
+    return "/em " + text;
   } else if (hasAdvantage(event)) {
-    return "/emote " + text + " with advantage";
+    return "/em " + text + " with advantage";
   } else if (hasDisadvantage(event)) {
-    return "/emote " + text + " with disadvantage";
+    return "/em " + text + " with disadvantage";
   } else {
-    return "/emote " + text;
+    return "/em " + text;
   }
 };
 
