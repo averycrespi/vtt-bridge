@@ -38,6 +38,9 @@ Requires [Python](https://www.python.org/) 3.6 or newer, [geckodriver](https://f
 # Build the extension package.
 yarn build
 
+# Run unit tests with Jest.
+yarn parcel:test
+
 # Run automation tests for Firefox.
 # The `geckodriver` binary must be in your PATH.
 yarn firefox:test
@@ -50,7 +53,9 @@ yarn chromium:test
 yarn test
 ```
 
-The test harness will automatically create and activate a Python virtual environment in the `venv` directory. Test characters will be loaded from `tests/characters.json`. Test logs will be written to the `logs` directory.
+- The test harness will automatically create and activate a Python virtual environment in the `venv` directory.
+- Test characters will be loaded from `tests/characters.json`.
+- Test logs will be written to the `logs` directory.
 
 ## Project Overview
 
@@ -68,5 +73,3 @@ The extension uses a queue-based architecture to communicate between DMV and Rol
 4. `roll20.js` sends a `DEQUEUE` message to `background.js`. This message is sent at regular intervals.
 5. `background.js` receives the `DEQUEUE` message and responds with all commands in its queue. The queue is emptied.
 6. `roll20.js` receives the response and runs the commands in Roll20.
-
-> **Historical note**: The extension previously used a relay-based architecture, where `background.js` forwarded commands from `dmv.js` to `roll20.js`. This required the `tabs` permission to let the extension [access your browser tabs](https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions#w_access-browser-tabs). For security reasons, the queue-based architecture was adopted as a replacement.
