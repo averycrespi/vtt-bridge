@@ -29,7 +29,7 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(commands.rollAbilityScoreCheck(stat, mod, event));
+        onClick(commands.rollCheck(stat, mod, event));
       },
       [withTopMargin(), classes.rollAbilityScoreCheck]
     );

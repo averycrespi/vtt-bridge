@@ -19,7 +19,7 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.rollSkillCheck(skill, mod, event));
+      onClick(commands.rollCheck(skill, mod, event));
     });
     button.classList.add(classes.rollSkillCheck);
   }

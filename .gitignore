@@ -69,6 +69,7 @@ dist/
 
 # Project-specific files
 .mypy_cache/
-profiles/
-venv/
+.profiles/
+tests/logs/
+tests/venv/
 web-ext-artifacts/

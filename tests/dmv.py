@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argument(
         "--log-dir",
         action="store",
-        default=Path("logs"),
+        default=Path("tests") / "logs",
         type=Path,
         help="Log file directory",
     )

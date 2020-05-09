@@ -18,10 +18,11 @@ const ready = (onClick) => {
   for (const row of rows) {
     const cells = Array.from(row.querySelectorAll("td"));
     const spell = cells[0].innerText;
+    const mod = cells[4].innerText; //TODO: use better selector
 
     const button = row.querySelector(".roll-button");
-    button.addEventListener("click", function () {
-      onClick(commands.castSpell(spell));
+    button.addEventListener("click", function (event) {
+      onClick(commands.attackWith(spell, mod, event));
     });
     button.classList.add(classes.castSpell);
   }
