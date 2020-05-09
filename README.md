@@ -1,6 +1,6 @@
 <div align="center">
     <br>
-    <img src="assets/icon-full.png" alt="VTT Bridge" width="200">
+    <img src="assets/icon-full.png" alt="Icon" width="200">
     <br>
     <h1>VTT Bridge</h1>
 </div>
@@ -11,19 +11,19 @@
 
 <div align="center">
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-        <img src="https://img.shields.io/amo/v/vtt-bridge">
+        <img src="https://img.shields.io/amo/v/vtt-bridge" alt="Mozilla Add-On badge">
     </a>
     <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
-        <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh">
+        <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chromw Web Store badge">
     </a>
     <a href="https://github.com/averycrespi/vtt-bridge/commits/develop">
-        <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/develop">
+        <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/develop" alt="Last commit badge">
     </a>
     <a href="https://github.com/averycrespi/vtt-bridge/issues">
-        <img src="https://img.shields.io/github/issues/averycrespi/vtt-bridge">
+        <img src="https://img.shields.io/github/issues/averycrespi/vtt-bridge" alt="Issues badge">
     </a>
     <a href="https://github.com/averycrespi/vtt-bridge/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/averycrespi/vtt-bridge">
+        <img src="https://img.shields.io/github/license/averycrespi/vtt-bridge" alt="License badge">
     </a>
 </div>
 
@@ -37,8 +37,7 @@
 </div>
 
 <div align="center">
-    <br>
-    <img src="assets/screenshot.png">
+    <img src="assets/screenshot.png" alt="Screenshot">
 </div>
 
 ## About
@@ -61,18 +60,18 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 Install the VTT Bridge extension for Firefox or Google Chrome.
 
 <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-    <img src="assets/firefox.png">
+    <img src="assets/firefox.png" alt="Firefox logo">
 </a>
 
 <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
-    <img src="assets/chrome.png">
+    <img src="assets/chrome.png" alt="Chrome logo">
 </a>
 
-Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right.
+Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right. The URL should now end with `?frame`.
 
 ![Dungeon Master's Vault link](assets/dmv_www_link.png)
 
-Open your Roll 20 game in another tab. You should see a chat message that says `Connected to VTT Bridge`.
+Launch your Roll 20 game in another tab. You should see a chat message that says `Connected to VTT Bridge`.
 
 ![Roll20 notification](assets/roll20_notification.png)
 
@@ -80,26 +79,13 @@ Click one of the buttons on your Dungeon Master's Vault character sheet. Your ro
 
 ## FAQ
 
-**Help, the buttons aren't appearing on Dungeon Master's Vault!**
-
-1. Make sure that you're on the correct page. The URL should end with `?frame=true`.
-2. Reload the page.
-3. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
-
-**Help, the notification isn't appearing on Roll20!**
-
-1. Reload the page.
-2. If the problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose).
-
 **I found a bug! What should I do?**
 
-1. [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Bug report".
-2. Complete the issue template.
+[Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Bug report". Complete the issue template.
 
 **I have an idea for a new feature! What should I do?**
 
-1. [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Feature request".
-2. Complete the issue template.
+[Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Feature request". Complete the issue template.
 
 ## Development
 
@@ -107,9 +93,8 @@ See [DEVELOPERS.md](DEVELOPERS.md) for instructions.
 
 ## Credits
 
-Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
-
-Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
+- Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
+- Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
 
 ## License
 
