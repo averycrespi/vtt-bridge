@@ -1,6 +1,6 @@
 {
   "name": "vtt-bridge",
-  "description": "A browser extension that connects Dungeon Master's Vault to Roll20.",
+  "description": "Connect Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
   "version": "0.6.0",
   "license": "MIT",
