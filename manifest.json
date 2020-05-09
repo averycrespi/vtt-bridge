@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "VTT Bridge",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Connect Dungeon Master's Vault to Roll20.",
   "icons": {
     "48": "icons/48.png",
