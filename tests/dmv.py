@@ -130,11 +130,11 @@ class TestRunner:
 
     def test_roll_ability_score_buttons(self):
         self.logger.info("Testing roll ability score buttons ...")
-        assert len(self.by_class_name("vtt-roll-ability-score-check")) == 6
+        assert len(self.by_class_name("vtt-roll-ability-score")) == 6
 
     def test_roll_skill_buttons(self):
         self.logger.info("Testing roll skill buttons ...")
-        assert len(self.by_class_name("vtt-roll-skill-check")) == 18
+        assert len(self.by_class_name("vtt-roll-skill")) == 18
 
     def test_roll_saving_throw_buttons(self):
         self.logger.info("Testing roll saving throw buttons ...")
@@ -145,8 +145,9 @@ class TestRunner:
         assert len(self.by_class_name("vtt-roll-initiative")) == 1
 
     def test_weapon_buttons(self):
-        self.logger.info("Testing weapon buttons ...")
+        self.logger.info("Testing attack with weapon buttons ...")
         assert len(self.by_class_name("vtt-attack-with-weapon")) >= 1
+        self.logger.info("Testing roll weapon damage buttons ...")
         assert len(self.by_class_name("vtt-roll-weapon-damage")) >= 1
 
     def test_roll_proficiency_buttons(self):
@@ -155,23 +156,11 @@ class TestRunner:
 
     def test_roll_spell_buttons(self):
         self.logger.info("Testing roll spell buttons ...")
-        assert len(self.by_class_name("vtt-cast-spell")) >= 1
-
-    def test_use_action_buttons(self):
-        self.logger.info("Testing use action buttons ...")
-        assert len(self.by_class_name("vtt-use-action")) >= 1
-
-    def test_use_bonus_action_buttons(self):
-        self.logger.info("Testing use bonus action buttons ...")
-        assert len(self.by_class_name("vtt-use-bonus-action")) >= 1
+        assert len(self.by_class_name("vtt-attack-with-spell")) >= 1
 
     def test_use_feature_buttons(self):
         self.logger.info("Testing use feature buttons ...")
         assert len(self.by_class_name("vtt-use-feature")) >= 1
-
-    def test_use_reaction_buttons(self):
-        self.logger.info("Testing use reaction buttons ...")
-        assert len(self.by_class_name("vtt-use-reaction")) >= 1
 
     def test_character(self, character: Character):
         self.logger.info("Testing character: {} ...".format(character.name))
@@ -195,14 +184,8 @@ class TestRunner:
 
         self.logger.info("Testing features tab ...")
         self.select_tab_by_index(3)
-        if "actions" in character.sections:
-            self.test_use_action_buttons()
-        if "bonus actions" in character.sections:
-            self.test_use_bonus_action_buttons()
         if "features" in character.sections:
             self.test_use_feature_buttons()
-        if "reactions" in character.sections:
-            self.test_use_reaction_buttons()
 
         self.logger.info("Testing equipment tab ...")
         self.select_tab_by_index(4)
