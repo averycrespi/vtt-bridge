@@ -3,8 +3,8 @@ import * as classes from "./classes";
 export const buildCommands = ({ className, event, data }) => {
   const { name, mod, description, damage } = data;
   switch (className) {
+    case classes.attackWithSpell:
     case classes.attackWithWeapon:
-    case classes.castSpell:
       return {
         toast: makeToast("Attacked with " + name, event),
         commands: [
@@ -12,8 +12,8 @@ export const buildCommands = ({ className, event, data }) => {
           makeRoll(mod, event),
         ],
       };
-    case classes.rollAbilityScoreCheck:
-    case classes.rollSkillCheck:
+    case classes.rollAbilityScore:
+    case classes.rollSkill:
       return {
         toast: makeToast("Rolled " + name + " check", event),
         commands: [
@@ -40,10 +40,7 @@ export const buildCommands = ({ className, event, data }) => {
         toast: makeToast("Rolled " + name + " damage"),
         commands: [makeEmote("rolls " + name + " damage"), "/roll " + damage],
       };
-    case classes.useAction:
-    case classes.useBonusAction:
     case classes.useFeature:
-    case classes.useReaction:
       return {
         toast: makeToast("Used " + name),
         commands: [makeEmote("uses " + name), description],

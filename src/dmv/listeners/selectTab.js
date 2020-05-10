@@ -1,23 +1,14 @@
-import { addRollInitiativeListener } from "./initiative";
-import { addRollProficiencyListeners } from "./proficiency";
-import { addRollSpellListeners } from "./spell";
-import { addUseFeatureButtons } from "../buttons/feature";
+import { addRollInitiativeListeners } from "./rollInitiative";
+import { addRollProficiencyListeners } from "./rollProficiency";
+import { addRollSpellListeners } from "./rollSpell";
+import { addUseFeatureListeners } from "./useFeature";
 import { addWeaponListeners } from "./weapon";
 import { onElementLoad } from "../../common";
 
-/**
- * Which tab is currently selected?
- *
- * @global
- */
+// Which tab is currently selected?
 let activeTab = -1;
 
-/**
- * Add listeners to tabs.
- *
- * @param {Function} store
- */
-export const addTabListeners = (store) =>
+export const addSelectTabListeners = (store) =>
   onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
 
 const ready = (store) => {
@@ -32,7 +23,7 @@ const ready = (store) => {
   combatTab.addEventListener("click", () => {
     console.debug("Selected combat tab");
     if (activeTab !== 0) {
-      addRollInitiativeListener(store);
+      addRollInitiativeListeners(store);
       addWeaponListeners(store);
     }
     activeTab = 0;
@@ -60,7 +51,7 @@ const ready = (store) => {
   featuresTab.addEventListener("click", () => {
     console.debug("Selected features tab");
     if (activeTab !== 3) {
-      addUseFeatureButtons(store);
+      addUseFeatureListeners(store);
     }
     activeTab = 3;
   });
@@ -73,5 +64,5 @@ const ready = (store) => {
     activeTab = 4;
   });
 
-  console.debug("Added listeners to tabs");
+  console.debug("Added select tab listeners");
 };

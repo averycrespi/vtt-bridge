@@ -1,21 +1,16 @@
-import { addRollAbilityScoreButtons } from "./buttons/abilityScore";
-import { addRollSavingThrowListeners } from "./listeners/savingThrow";
-import { addRollSkillListeners } from "./listeners/skill";
-import { addTabListeners } from "./listeners/tab";
+import { addRollAbilityScoreListeners } from "./listeners/rollAbilityScore";
+import { addRollSavingThrowListeners } from "./listeners/rollSavingThrow";
+import { addRollSkillListeners } from "./listeners/rollSkill";
+import { addSelectTabListeners } from "./listeners/selectTab";
 import { onElementLoad } from "../common";
 
-/**
- * Connect DMV to Roll20.
- *
- * @param {Function} onClick
- */
 export const connectToRoll20 = (store) =>
   onElementLoad(".character-summary .class-name", () => ready(store));
 
 const ready = (store) => {
-  addRollAbilityScoreButtons(store);
+  addSelectTabListeners(store);
+  addRollAbilityScoreListeners(store);
   addRollSkillListeners(store);
   addRollSavingThrowListeners(store);
-  addTabListeners(store);
   console.debug("Connected to Roll20");
 };
