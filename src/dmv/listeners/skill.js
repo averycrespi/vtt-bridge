@@ -1,17 +1,16 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
 /**
  * Add listeners to roll skill buttons.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addRollSkillListeners = (onClick) =>
-  onElementLoad(".skills tr .skill-name", () => ready(onClick));
+export const addRollSkillListeners = (store) =>
+  onElementLoad(".skills tr .skill-name", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
   for (const row of rows) {
     const skill = row.querySelector(".skill-name").innerText;
@@ -19,7 +18,11 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.rollCheck(skill, mod, event));
+      store.dispatch("click", {
+        className: classes.rollSkillCheck,
+        event,
+        data: { name: skill, mod },
+      });
     });
     button.classList.add(classes.rollSkillCheck);
   }

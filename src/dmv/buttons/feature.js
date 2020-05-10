@@ -1,5 +1,4 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { createButton, withLeftMargin, withTopMargin } from "../elements";
 
@@ -8,32 +7,27 @@ import { onElementLoad } from "../../common";
 /**
  * Add use buttons for features.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addUseFeatureButtons = (onClick) => {
+export const addUseFeatureButtons = (store) => {
   onElementLoad(".actions p span", () =>
-    ready(onClick, ".actions", "action", classes.useAction)
+    ready(store, ".actions", "action", classes.useAction)
   );
 
   onElementLoad(".bonusActions p span", () =>
-    ready(onClick, ".bonusActions", "bonus action", classes.useBonusAction)
+    ready(store, ".bonusActions", "bonus action", classes.useBonusAction)
   );
 
   onElementLoad(".features\\,Traits\\,AndFeats p span", () =>
-    ready(
-      onClick,
-      ".features\\,Traits\\,AndFeats",
-      "feature",
-      classes.useFeature
-    )
+    ready(store, ".features\\,Traits\\,AndFeats", "feature", classes.useFeature)
   );
 
   onElementLoad(".reactions p span", () =>
-    ready(onClick, ".reactions", "reaction", classes.useReaction)
+    ready(store, ".reactions", "reaction", classes.useReaction)
   );
 };
 
-const ready = (onClick, selector, label, buttonClass) => {
+const ready = (store, selector, label, buttonClass) => {
   // Remove any existing buttons.
   for (const button of document.querySelectorAll("." + buttonClass)) {
     button.remove();
@@ -49,7 +43,11 @@ const ready = (onClick, selector, label, buttonClass) => {
     const button = createButton(
       "use",
       function () {
-        onClick(commands.useFeature(feature, details));
+        store.dispatch("click", {
+          className: buttonClass,
+          event,
+          data: { name: feature, description: details },
+        });
       },
       [withTopMargin(), withLeftMargin(), buttonClass]
     );

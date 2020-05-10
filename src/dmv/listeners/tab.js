@@ -15,12 +15,12 @@ let activeTab = -1;
 /**
  * Add listeners to tabs.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addTabListeners = (onClick) =>
-  onElementLoad(".flex-grow-1.t-a-c", () => ready(onClick));
+export const addTabListeners = (store) =>
+  onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   const [
     combatTab,
     proficienciesTab,
@@ -32,8 +32,8 @@ const ready = (onClick) => {
   combatTab.addEventListener("click", () => {
     console.debug("Selected combat tab");
     if (activeTab !== 0) {
-      addRollInitiativeListener(onClick);
-      addWeaponListeners(onClick);
+      addRollInitiativeListener(store);
+      addWeaponListeners(store);
     }
     activeTab = 0;
   });
@@ -44,7 +44,7 @@ const ready = (onClick) => {
   proficienciesTab.addEventListener("click", () => {
     console.debug("Selected proficiencies tab");
     if (activeTab !== 1) {
-      addRollProficiencyListeners(onClick);
+      addRollProficiencyListeners(store);
     }
     activeTab = 1;
   });
@@ -52,7 +52,7 @@ const ready = (onClick) => {
   spellsTab.addEventListener("click", () => {
     console.debug("Selected spells tab");
     if (activeTab !== 2) {
-      addRollSpellListeners(onClick);
+      addRollSpellListeners(store);
     }
     activeTab = 2;
   });
@@ -60,7 +60,7 @@ const ready = (onClick) => {
   featuresTab.addEventListener("click", () => {
     console.debug("Selected features tab");
     if (activeTab !== 3) {
-      addUseFeatureButtons(onClick);
+      addUseFeatureButtons(store);
     }
     activeTab = 3;
   });
@@ -68,7 +68,7 @@ const ready = (onClick) => {
   equipmentTab.addEventListener("click", () => {
     console.debug("Selected equipment tab");
     if (activeTab !== 4) {
-      addWeaponListeners(onClick);
+      addWeaponListeners(store);
     }
     activeTab = 4;
   });

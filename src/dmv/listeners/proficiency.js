@@ -1,17 +1,16 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
 /**
  * Add listeners to roll proficiency buttons.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addRollProficiencyListeners = (onClick) =>
-  onElementLoad(".details-columns table tr .roll-button", () => ready(onClick));
+export const addRollProficiencyListeners = (store) =>
+  onElementLoad(".details-columns table tr .roll-button", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   let count = 0;
 
   const tables = document
@@ -31,7 +30,11 @@ const ready = (onClick) => {
 
       const button = row.querySelector(".roll-button");
       button.addEventListener("click", function (event) {
-        onClick(commands.rollCheck(name, bonus, event));
+        store.dispatch("click", {
+          className: classes.rollProficiency,
+          event,
+          data: { name, mod: bonus },
+        });
       });
       button.classList.add(classes.rollProficiency);
       count++;

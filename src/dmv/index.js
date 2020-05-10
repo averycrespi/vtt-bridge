@@ -9,13 +9,13 @@ import { onElementLoad } from "../common";
  *
  * @param {Function} onClick
  */
-export const connectToRoll20 = (onClick, store) =>
-  onElementLoad(".character-summary .class-name", () => ready(onClick, store));
+export const connectToRoll20 = (store) =>
+  onElementLoad(".character-summary .class-name", () => ready(store));
 
-const ready = (onClick, store) => {
+const ready = (store) => {
   addRollAbilityScoreButtons(store);
-  addRollSkillListeners(onClick);
-  addRollSavingThrowListeners(onClick);
-  addTabListeners(onClick);
+  addRollSkillListeners(store);
+  addRollSavingThrowListeners(store);
+  addTabListeners(store);
   console.debug("Connected to Roll20");
 };

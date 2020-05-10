@@ -1,17 +1,16 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
 /**
  * Add listeners to roll spell and cantrip buttons.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addRollSpellListeners = (onClick) =>
-  onElementLoad(".details-columns tr.spell", () => ready(onClick));
+export const addRollSpellListeners = (store) =>
+  onElementLoad(".details-columns tr.spell", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   const rows = document
     .querySelector(".details-columns")
     .querySelectorAll("tr.spell");
@@ -22,7 +21,11 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.attackWith(spell, mod, event));
+      store.dispatch("click", {
+        className: classes.castSpell,
+        event,
+        data: { name: spell, mod },
+      });
     });
     button.classList.add(classes.castSpell);
   }

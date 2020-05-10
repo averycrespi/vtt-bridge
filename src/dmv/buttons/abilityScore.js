@@ -31,7 +31,7 @@ const ready = (store) => {
         store.dispatch("click", {
           event,
           className: classes.rollAbilityScoreCheck,
-          data: { stat, mod },
+          data: { name: stat, mod },
         });
       },
       [withTopMargin(), classes.rollAbilityScoreCheck]

@@ -1,17 +1,16 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
 /**
  * Add listeners to roll saving throw buttons.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addRollSavingThrowListeners = (onClick) =>
-  onElementLoad("table tr .saving-throw-name", () => ready(onClick));
+export const addRollSavingThrowListeners = (store) =>
+  onElementLoad("table tr .saving-throw-name", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   const rows = document
     .querySelector(".saving-throw-name")
     .closest("table")
@@ -22,7 +21,11 @@ const ready = (onClick) => {
 
     const button = row.querySelector(".roll-button");
     button.addEventListener("click", function (event) {
-      onClick(commands.rollSave(stat, mod, event));
+      store.dispatch("click", {
+        className: classes.rollSavingThrow,
+        event,
+        data: { name: stat, mod },
+      });
     });
     button.classList.add(classes.rollSavingThrow);
   }

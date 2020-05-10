@@ -6,12 +6,12 @@ import { onElementLoad } from "../../common";
 /**
  * Add listeners to attack and damage buttons.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addWeaponListeners = (onClick) =>
-  onElementLoad(".weapons .weapon .roll-button", () => ready(onClick));
+export const addWeaponListeners = (store) =>
+  onElementLoad(".weapons .weapon .roll-button", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   let count = 0;
 
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
@@ -30,13 +30,21 @@ const ready = (onClick) => {
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
 
     attackButton.addEventListener("click", function (event) {
-      onClick(commands.attackWith(weapon, mod, event));
+      store.dispatch("click", {
+        className: classes.attackWithWeapon,
+        event,
+        data: { name: weapon, mod },
+      });
     });
     attackButton.classList.add(classes.attackWithWeapon);
     count++;
 
     damageButton.addEventListener("click", function () {
-      onClick(commands.rollDamage(weapon, damage));
+      store.dispatch("click", {
+        className: classes.rollWeaponDamage,
+        event,
+        data: { name: weapon, damage },
+      });
     });
     damageButton.classList.add(classes.rollWeaponDamage);
     count++;

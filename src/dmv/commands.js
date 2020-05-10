@@ -1,3 +1,59 @@
+import * as classes from "./classes";
+
+export const buildCommands = ({ className, event, data }) => {
+  const { name, mod, description, damage } = data;
+  switch (className) {
+    case classes.attackWithWeapon:
+    case classes.castSpell:
+      return {
+        toast: makeToast("Attacked with " + name, event),
+        commands: [
+          makeEmote("attacks with " + name, event),
+          makeRoll(mod, event),
+        ],
+      };
+    case classes.rollAbilityScoreCheck:
+    case classes.rollSkillCheck:
+      return {
+        toast: makeToast("Rolled " + name + " check", event),
+        commands: [
+          makeEmote("rolls " + name + " check", event),
+          makeRoll(mod, event),
+        ],
+      };
+    case classes.rollInitiatve:
+    case classes.rollProficiency:
+      return {
+        toast: makeToast("Rolled " + name, event),
+        commands: [makeEmote("rolls " + name, event), makeRoll(mod, event)],
+      };
+    case classes.rollSavingThrow:
+      return {
+        toast: makeToast("Rolled " + name + " save", event),
+        commands: [
+          makeEmote("rolls " + name + " save", event),
+          makeRoll(mod, event),
+        ],
+      };
+    case classes.rollWeaponDamage:
+      return {
+        toast: makeToast("Rolled " + name + " damage"),
+        commands: [makeEmote("rolls " + name + " damage"), "/roll " + damage],
+      };
+    case classes.useAction:
+    case classes.useBonusAction:
+    case classes.useFeature:
+    case classes.useReaction:
+      return {
+        toast: makeToast("Used " + name),
+        commands: [makeEmote("uses " + name), description],
+      };
+    default:
+      console.error("Unrecognized class name: " + className);
+      return [];
+  }
+};
+
 // Does the roll have advantage or disadvantage?
 const hasAdvantage = (event) => event && event.ctrlKey;
 const hasDisadvantage = (event) => event && event.shiftKey;
@@ -38,36 +94,3 @@ const makeRoll = (mod, event = null) => {
     return "/roll 1d20" + safeMod;
   }
 };
-
-export const attackWith = (name, mod, event) => ({
-  toast: makeToast("Attacked with " + name, event),
-  commands: [makeEmote("attacks with " + name, event), makeRoll(mod, event)],
-});
-
-export const rollCheck = (name, mod, event) => ({
-  toast: makeToast("Rolled " + name + " check", event),
-  commands: [
-    makeEmote("rolls " + name + " check", event),
-    makeRoll(mod, event),
-  ],
-});
-
-export const rollDamage = (name, damage) => ({
-  toast: makeToast("Rolled " + name + " damage"),
-  commands: [makeEmote("rolls " + name + " damage"), "/roll " + damage],
-});
-
-export const rollFor = (name, mod, event) => ({
-  toast: makeToast("Rolled " + name, event),
-  commands: [makeEmote("rolls " + name, event), makeRoll(mod, event)],
-});
-
-export const rollSave = (name, mod, event) => ({
-  toast: makeToast("Rolled " + name + " save", event),
-  commands: [makeEmote("rolls " + name + " save", event), makeRoll(mod, event)],
-});
-
-export const useFeature = (name, description) => ({
-  toast: makeToast("Used " + name),
-  commands: [makeEmote("uses " + name), description],
-});
