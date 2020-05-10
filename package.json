@@ -29,7 +29,7 @@
     "parcel:watch": "yarn parcel:polyfill && parcel watch --no-source-maps src/scripts/*",
     "parcel:clean": "rm -rf dist/*",
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
-    "parcel:test": "jest --pass-with-no-tests",
+    "parcel:test": "jest",
     "firefox:run": "mkdir -p .profiles/firefox/ && web-ext run",
     "firefox:test": "./tests/run_firefox.sh",
     "chromium:run": "mkdir -p .profiles/chromium/ && web-ext run --target chromium",

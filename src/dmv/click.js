@@ -10,6 +10,7 @@ import { makeEmote, makeRoll, makeToast } from "./commands";
  */
 export const parseClick = ({ className, event, data }) => {
   //TODO: add schema validation
+  //TODO: add unit tests
   const { name, mod, description, damage } = data;
   switch (className) {
     case classes.attackWithSpell:
