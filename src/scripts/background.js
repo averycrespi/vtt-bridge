@@ -2,11 +2,6 @@ import { messageTypes } from "../common";
 
 console.debug("Loading background.js ...");
 
-/**
- * Queue of commands to be run.
- *
- * @global
- */
 let commandQueue = [];
 
 browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -26,5 +21,8 @@ browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       console.debug("Clearing command queue ...");
       commandQueue = [];
       break;
+
+    default:
+      throw "Unknown message type: " + message.type;
   }
 });

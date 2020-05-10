@@ -64,14 +64,6 @@ yarn test
 - Test characters will be loaded from `tests/characters.json`.
 - Test logs will be written to the `tests/logs` directory.
 
-## Structure
-
-- `assets`: Contains images for documentation purposes. Not included in the extension package.
-- `dist`: Contains the compiled extension files. Not included in Git.
-- `icons`: Contains icons of various sizes.
-- `src`: Contains the source code (and unit tests) of the extension.
-- `tests`: Contains browser automation tests. Not included in the extension package.
-
 ## Architecture
 
 The extension uses a **queue-based architecture** to communicate between Dungeon Master's Vault and Roll20.
@@ -93,3 +85,21 @@ Advantages:
 Disadvantages:
 
 - `roll20.js` needs to send a `DEQUEUE` message at regular intervals. Most of the time, the command queue (and therefore the response) will be empty. This creates a trade-off between performance and delay.
+
+## Structure
+
+```sh
+src
+├── common.js           # Shared code
+├── dmv
+│   ├── classes.js      # Button CSS classes
+│   ├── click.js        # Click parser
+│   ├── commands.js     # Command builder
+│   ├── index.js        # DMV entry point
+│   ├── listeners
+│   └── store.js        # Click storage
+└── scripts
+    ├── background.js   # Background script
+    ├── dmv.js          # DMV content script
+    └── roll20.js       # Roll20 content script
+```

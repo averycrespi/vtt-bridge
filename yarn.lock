@@ -2070,6 +2070,11 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+beedle@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/beedle/-/beedle-0.8.1.tgz#4f3874142870e48a76408f10067955f586b74849"
+  integrity sha512-L1xaSleWKliFrzTZd3jZ6wiAP4F/c0vmhZg8YGecpLQik3Ph/JDR5sRmhcqqYU7AXWpUV5SsKqhvrV/ol0NCLQ==
+
 binary-extensions@^1.0.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"

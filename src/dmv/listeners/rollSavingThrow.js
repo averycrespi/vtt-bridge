@@ -1,33 +1,27 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
-/**
- * Add listeners to roll saving throw buttons.
- *
- * @param {Function} onClick
- */
-export const addRollSavingThrowListeners = (onClick) =>
-  onElementLoad("table tr .saving-throw-name", () => ready(onClick));
+export const addRollSavingThrowListeners = (store) =>
+  onElementLoad("table tr .saving-throw-name", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   const rows = document
     .querySelector(".saving-throw-name")
     .closest("table")
     .querySelectorAll("tr");
+
   for (const row of rows) {
+    const className = classes.rollSavingThrow;
     const stat = row.querySelector(".saving-throw-name").innerText;
     const mod = row.querySelector(".saving-throw-bonus").innerText;
 
     const button = row.querySelector(".roll-button");
+    button.classList.add(className);
     button.addEventListener("click", function (event) {
-      onClick(commands.rollSave(stat, mod, event));
+      store.dispatch("click", { className, event, data: { name: stat, mod } });
     });
-    button.classList.add(classes.rollSavingThrow);
   }
 
-  console.debug(
-    "Added listeners to " + rows.length + " roll saving throw buttons"
-  );
+  console.debug("Added roll saving throw listeners");
 };
