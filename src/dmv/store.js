@@ -1,5 +1,10 @@
 import Store from "beedle";
 
+/**
+ * Create a new store.
+ *
+ * @returns {Object} Store
+ */
 export const createStore = () =>
   new Store({ actions, mutations, initialState });
 

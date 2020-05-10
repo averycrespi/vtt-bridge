@@ -2,9 +2,6 @@ import { messageTypes, onElementLoad } from "../common";
 
 console.debug("Loading roll20.js ...");
 
-/**
- * Create a notification in the chat.
- */
 const createNotification = () => {
   const notification = document.createElement("div");
   notification.classList.add("message", "system", "vtt-notification");
@@ -22,9 +19,6 @@ const createNotification = () => {
   console.debug("Created Roll20 notification");
 };
 
-/**
- * Receive and run commands from the background script.
- */
 const receiveCommands = () => {
   browser.runtime
     .sendMessage({ type: messageTypes.DEQUEUE })

@@ -1,5 +1,4 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
