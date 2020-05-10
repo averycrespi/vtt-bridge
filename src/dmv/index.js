@@ -9,11 +9,11 @@ import { onElementLoad } from "../common";
  *
  * @param {Function} onClick
  */
-export const connectToRoll20 = (onClick) =>
-  onElementLoad(".character-summary .class-name", () => ready(onClick));
+export const connectToRoll20 = (onClick, store) =>
+  onElementLoad(".character-summary .class-name", () => ready(onClick, store));
 
-const ready = (onClick) => {
-  addRollAbilityScoreButtons(onClick);
+const ready = (onClick, store) => {
+  addRollAbilityScoreButtons(store);
   addRollSkillListeners(onClick);
   addRollSavingThrowListeners(onClick);
   addTabListeners(onClick);

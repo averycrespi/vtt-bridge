@@ -1,5 +1,4 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { createButton, withTopMargin } from "../elements";
 
@@ -8,12 +7,12 @@ import { onElementLoad } from "../../common";
 /**
  * Add roll buttons for ability scores.
  *
- * @param {Function} onClick
+ * @param {Function} store
  */
-export const addRollAbilityScoreButtons = (onClick) =>
-  onElementLoad(".ability-scores .ability-score-name", () => ready(onClick));
+export const addRollAbilityScoreButtons = (store) =>
+  onElementLoad(".ability-scores .ability-score-name", () => ready(store));
 
-const ready = (onClick) => {
+const ready = (store) => {
   // Remove any existing buttons.
   for (const button of document.querySelectorAll(
     "." + classes.rollAbilityScoreCheck
@@ -29,7 +28,11 @@ const ready = (onClick) => {
     const button = createButton(
       "roll",
       function (event) {
-        onClick(commands.rollCheck(stat, mod, event));
+        store.dispatch("click", {
+          event,
+          className: classes.rollAbilityScoreCheck,
+          data: { stat, mod },
+        });
       },
       [withTopMargin(), classes.rollAbilityScoreCheck]
     );
