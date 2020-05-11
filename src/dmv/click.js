@@ -9,52 +9,77 @@ import { makeEmote, makeRoll, makeToast } from "./commands";
  * @returns {Object} Toast and commands
  */
 export const parseClick = ({ className, event, data }) => {
-  //TODO: add schema validation
-  //TODO: add unit tests
-  const { name, mod, description, damage } = data;
   switch (className) {
     case classes.attackWithSpell:
     case classes.attackWithWeapon:
+      if (!data.name || !data.mod) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
       return {
-        toast: makeToast("Attacked with " + name, event),
+        toast: makeToast("Attacked with " + data.name, event),
         commands: [
-          makeEmote("attacks with " + name, event),
-          makeRoll(mod, event),
+          makeEmote("attacks with " + data.name, event),
+          makeRoll(data.mod, event),
         ],
       };
+
     case classes.rollAbilityScore:
     case classes.rollSkill:
+      if (!data.name || !data.mod) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
       return {
-        toast: makeToast("Rolled " + name + " check", event),
+        toast: makeToast("Rolled " + data.name + " check", event),
         commands: [
-          makeEmote("rolls " + name + " check", event),
-          makeRoll(mod, event),
+          makeEmote("rolls " + data.name + " check", event),
+          makeRoll(data.mod, event),
         ],
       };
+
     case classes.rollInitiative:
     case classes.rollProficiency:
+      if (!data.name || !data.mod) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
       return {
-        toast: makeToast("Rolled " + name, event),
-        commands: [makeEmote("rolls " + name, event), makeRoll(mod, event)],
-      };
-    case classes.rollSavingThrow:
-      return {
-        toast: makeToast("Rolled " + name + " save", event),
+        toast: makeToast("Rolled " + data.name, event),
         commands: [
-          makeEmote("rolls " + name + " save", event),
-          makeRoll(mod, event),
+          makeEmote("rolls " + data.name, event),
+          makeRoll(data.mod, event),
+        ],
+      };
+
+    case classes.rollSavingThrow:
+      if (!data.name || !data.mod) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
+      return {
+        toast: makeToast("Rolled " + data.name + " save", event),
+        commands: [
+          makeEmote("rolls " + data.name + " save", event),
+          makeRoll(data.mod, event),
         ],
       };
     case classes.rollWeaponDamage:
+      if (!data.name || !data.damage) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
       return {
-        toast: makeToast("Rolled " + name + " damage"),
-        commands: [makeEmote("rolls " + name + " damage"), "/roll " + damage],
+        toast: makeToast("Rolled " + data.name + " damage", event),
+        commands: [
+          makeEmote("rolls " + data.name + " damage", event),
+          "/roll " + data.damage,
+        ],
       };
     case classes.useFeature:
+      if (!data.name || !data.description) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
       return {
-        toast: makeToast("Used " + name),
-        commands: [makeEmote("uses " + name), description],
+        toast: makeToast("Used " + data.name, event),
+        commands: [makeEmote("uses " + data.name, event), data.description],
       };
+
     default:
       throw "Unknown class name: " + className;
   }
