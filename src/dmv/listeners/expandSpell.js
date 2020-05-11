@@ -27,7 +27,8 @@ const ready = (store) => {
         const cell = button.closest("td");
         const paragraphs = Array.from(cell.querySelectorAll("p"));
         const description = paragraphs.map((p) => p.innerText).join("\n");
-        const level = cell.querySelector("select").value;
+        // If the value isn't selected, cast at level 1.
+        const level = cell.querySelector("select").value || "1";
 
         button.addEventListener("click", function (event) {
           store.dispatch("click", {
