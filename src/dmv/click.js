@@ -23,6 +23,21 @@ export const parseClick = ({ className, event, data }) => {
         ],
       };
 
+    case classes.castSpell:
+      if (!data.name || !data.description || !data.level) {
+        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
+      }
+      return {
+        toast: makeToast(
+          "Cast " + data.name + " at level " + data.level,
+          event
+        ),
+        commands: [
+          makeEmote("casts " + data.name + " at level " + data.level, event),
+          data.description,
+        ],
+      };
+
     case classes.rollAbilityScore:
     case classes.rollSkill:
       if (!data.name || !data.mod) {

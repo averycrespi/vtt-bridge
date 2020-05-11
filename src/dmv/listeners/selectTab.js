@@ -1,3 +1,4 @@
+import { addExpandSpellListeners } from "./expandSpell";
 import { addRollInitiativeListeners } from "./rollInitiative";
 import { addRollProficiencyListeners } from "./rollProficiency";
 import { addRollSpellListeners } from "./rollSpell";
@@ -44,6 +45,7 @@ const ready = (store) => {
     console.debug("Selected spells tab");
     if (activeTab !== 2) {
       addRollSpellListeners(store);
+      addExpandSpellListeners(store);
     }
     activeTab = 2;
   });
