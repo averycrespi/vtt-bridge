@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "beedle": "^0.8.1",
+    "jsonschema": "^1.2.6",
     "notyf": "^3.6.0"
   },
   "devDependencies": {

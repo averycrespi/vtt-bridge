@@ -1,6 +1,9 @@
 import * as classes from "./classes";
+import * as schema from "./schema";
 
 import { makeEmote, makeRoll, makeToast } from "./commands";
+
+import { validate } from "jsonschema";
 
 /**
  * Parse a click into a toast and commands.
@@ -12,9 +15,7 @@ export const parseClick = ({ className, event, data }) => {
   switch (className) {
     case classes.attackWithSpell:
     case classes.attackWithWeapon:
-      if (!data.name || !data.mod) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.attackWithData, { throwError: true });
       return {
         toast: makeToast("Attacked with " + data.name, event),
         commands: [
@@ -24,9 +25,7 @@ export const parseClick = ({ className, event, data }) => {
       };
 
     case classes.castSpell:
-      if (!data.name || !data.description || !data.level) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.castData, { throwError: true });
       return {
         toast: makeToast(
           "Cast " + data.name + " at level " + data.level,
@@ -40,9 +39,7 @@ export const parseClick = ({ className, event, data }) => {
 
     case classes.rollAbilityScore:
     case classes.rollSkill:
-      if (!data.name || !data.mod) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.rollData, { throwError: true });
       return {
         toast: makeToast("Rolled " + data.name + " check", event),
         commands: [
@@ -53,9 +50,7 @@ export const parseClick = ({ className, event, data }) => {
 
     case classes.rollInitiative:
     case classes.rollProficiency:
-      if (!data.name || !data.mod) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.rollData, { throwError: true });
       return {
         toast: makeToast("Rolled " + data.name, event),
         commands: [
@@ -65,9 +60,7 @@ export const parseClick = ({ className, event, data }) => {
       };
 
     case classes.rollSavingThrow:
-      if (!data.name || !data.mod) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.rollData, { throwError: true });
       return {
         toast: makeToast("Rolled " + data.name + " save", event),
         commands: [
@@ -75,10 +68,9 @@ export const parseClick = ({ className, event, data }) => {
           makeRoll(data.mod, event),
         ],
       };
+
     case classes.rollWeaponDamage:
-      if (!data.name || !data.damage) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.rollDamageData, { throwError: true });
       return {
         toast: makeToast("Rolled " + data.name + " damage", event),
         commands: [
@@ -86,10 +78,9 @@ export const parseClick = ({ className, event, data }) => {
           "/roll " + data.damage,
         ],
       };
+
     case classes.useFeature:
-      if (!data.name || !data.description) {
-        throw "Invalid data for: " + className + ": " + JSON.stringify(data);
-      }
+      validate(data, schema.useData, { throwError: true });
       return {
         toast: makeToast("Used " + data.name, event),
         commands: [makeEmote("uses " + data.name, event), data.description],
