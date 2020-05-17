@@ -16,8 +16,8 @@
     <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
         <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chromw Web Store badge">
     </a>
-    <a href="https://github.com/averycrespi/vtt-bridge/commits/develop">
-        <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/develop" alt="Last commit badge">
+    <a href="https://github.com/averycrespi/vtt-bridge/commits/master">
+        <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/master" alt="Last commit badge">
     </a>
     <a href="https://github.com/averycrespi/vtt-bridge/issues">
         <img src="https://img.shields.io/github/issues/averycrespi/vtt-bridge" alt="Issues badge">
