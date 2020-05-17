@@ -1,22 +1,15 @@
 import * as classes from "../classes";
-import * as commands from "../commands";
 
 import { onElementLoad } from "../../common";
 
-/**
- * Add listeners to roll proficiency buttons.
- *
- * @param {Function} onClick
- */
-export const addRollProficiencyListeners = (onClick) =>
-  onElementLoad(".details-columns table tr .roll-button", () => ready(onClick));
+export const addRollProficiencyListeners = (store) =>
+  onElementLoad(".details-columns table tr .roll-button", () => ready(store));
 
-const ready = (onClick) => {
-  let count = 0;
-
+const ready = (store) => {
   const tables = document
     .querySelector(".details-columns")
     .querySelectorAll("table");
+
   for (const table of tables) {
     const rows = table.querySelectorAll("tr");
     for (const row of rows) {
@@ -26,17 +19,18 @@ const ready = (onClick) => {
       }
 
       const cells = Array.from(row.querySelectorAll("td"));
+
+      const className = classes.rollProficiency;
       const name = cells[0].innerText;
-      const bonus = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
+      const mod = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
 
       const button = row.querySelector(".roll-button");
+      button.classList.add(className);
       button.addEventListener("click", function (event) {
-        onClick(commands.rollCheck(name, bonus, event));
+        store.dispatch("click", { className, event, data: { name, mod } });
       });
-      button.classList.add(classes.rollProficiency);
-      count++;
     }
   }
 
-  console.debug("Added listeners to " + count + " roll proficiency buttons");
+  console.debug("Added roll proficiency listeners");
 };
