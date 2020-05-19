@@ -1,7 +1,7 @@
 import * as classes from "./classes";
 import * as schema from "./schema";
 
-import { makeEmote, makeRoll, makeToast } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeEmote, makeToast } from "./commands";
 
 import { validate } from "jsonschema";
 
@@ -20,7 +20,7 @@ export const parseClick = ({ className, event, data }) => {
         toast: makeToast("Attacked with " + data.name, event),
         commands: [
           makeEmote("attacks with " + data.name, event),
-          makeRoll(data.mod, event),
+          makeD20Roll(data.mod, event),
         ],
       };
 
@@ -44,7 +44,7 @@ export const parseClick = ({ className, event, data }) => {
         toast: makeToast("Rolled " + data.name + " check", event),
         commands: [
           makeEmote("rolls " + data.name + " check", event),
-          makeRoll(data.mod, event),
+          makeD20Roll(data.mod, event),
         ],
       };
 
@@ -55,7 +55,7 @@ export const parseClick = ({ className, event, data }) => {
         toast: makeToast("Rolled " + data.name, event),
         commands: [
           makeEmote("rolls " + data.name, event),
-          makeRoll(data.mod, event),
+          makeD20Roll(data.mod, event),
         ],
       };
 
@@ -65,7 +65,7 @@ export const parseClick = ({ className, event, data }) => {
         toast: makeToast("Rolled " + data.name + " save", event),
         commands: [
           makeEmote("rolls " + data.name + " save", event),
-          makeRoll(data.mod, event),
+          makeD20Roll(data.mod, event),
         ],
       };
 
@@ -75,7 +75,7 @@ export const parseClick = ({ className, event, data }) => {
         toast: makeToast("Rolled " + data.name + " damage", event),
         commands: [
           makeEmote("rolls " + data.name + " damage", event),
-          "/roll " + data.damage,
+          makeDamageRoll(data.damage, event),
         ],
       };
 

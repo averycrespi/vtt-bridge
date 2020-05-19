@@ -41,13 +41,13 @@ export const makeEmote = (text, event = null) => {
 };
 
 /**
- * Create a roll commands.
+ * Create a roll D20 command.
  *
  * @param {String} mod
  * @param {Object} event
  * @returns {String} Roll command
  */
-export const makeRoll = (mod, event = null) => {
+export const makeD20Roll = (mod, event = null) => {
   // If mod is zero, prevent "1d200" bug.
   const safeMod = mod === "0" ? "" : mod;
   if (!event) {
@@ -59,4 +59,9 @@ export const makeRoll = (mod, event = null) => {
   } else {
     return "/roll 1d20" + safeMod;
   }
+};
+
+/** Create a roll command for damage. */
+export const makeDamageRoll = (damage, event = null) => {
+  return "/roll " + damage;
 };

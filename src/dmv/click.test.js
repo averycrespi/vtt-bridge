@@ -1,6 +1,6 @@
 import * as classes from "./classes";
 
-import { makeEmote, makeRoll, makeToast } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeEmote, makeToast } from "./commands";
 
 import { parseClick } from "./click";
 
@@ -13,7 +13,7 @@ test("parse an attack with spell click", () =>
     })
   ).toStrictEqual({
     toast: makeToast("Attacked with sword"),
-    commands: [makeEmote("attacks with sword"), makeRoll("+1")],
+    commands: [makeEmote("attacks with sword"), makeD20Roll("+1")],
   }));
 
 test("parse a roll weapon damage click", () =>
@@ -25,7 +25,7 @@ test("parse a roll weapon damage click", () =>
     })
   ).toStrictEqual({
     toast: makeToast("Rolled dagger damage"),
-    commands: [makeEmote("rolls dagger damage"), "/roll 1d4+2"],
+    commands: [makeEmote("rolls dagger damage"), makeDamageRoll("1d4+2")],
   }));
 
 test("parse a use feature click", () =>

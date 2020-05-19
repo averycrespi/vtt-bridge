@@ -1,4 +1,4 @@
-import { makeEmote, makeRoll, makeToast } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeEmote, makeToast } from "./commands";
 
 const eventWithAdvantage = { ctrlKey: true };
 const eventWithDisadvantage = { shiftKey: true };
@@ -16,15 +16,19 @@ test("make an emote with disadvantage", () =>
     "/em rolls with disadvantage"
   ));
 
-test("make a roll", () => expect(makeRoll("+1")).toBe("/roll 1d20+1"));
+test("make a D20 roll", () => expect(makeD20Roll("+1")).toBe("/roll 1d20+1"));
 
-test("make an unmodified roll", () => expect(makeRoll("0")).toBe("/roll 1d20"));
+test("make an unmodified D20 roll", () =>
+  expect(makeD20Roll("0")).toBe("/roll 1d20"));
 
-test("make a roll with advantage", () =>
-  expect(makeRoll("-3", eventWithAdvantage)).toBe("/roll 2d20kh1-3"));
+test("make a D20 roll with advantage", () =>
+  expect(makeD20Roll("-3", eventWithAdvantage)).toBe("/roll 2d20kh1-3"));
 
-test("make a roll with disadvantage", () =>
-  expect(makeRoll("+2", eventWithDisadvantage)).toBe("/roll 2d20kl1+2"));
+test("make a D20 roll with disadvantage", () =>
+  expect(makeD20Roll("+2", eventWithDisadvantage)).toBe("/roll 2d20kl1+2"));
+
+test("make a damage roll", () =>
+  expect(makeDamageRoll("1d4+2")).toBe("/roll 1d4+2"));
 
 test("make a toast", () => expect(makeToast("hello")).toBe("hello!"));
 
