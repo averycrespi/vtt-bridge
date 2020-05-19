@@ -1,7 +1,5 @@
 import { messageTypes, onElementLoad } from "../common";
 
-console.debug("Loading roll20.js ...");
-
 const createNotification = () => {
   const notification = document.createElement("div");
   notification.classList.add("message", "system", "vtt-notification");
