@@ -7,18 +7,33 @@ const hasDisadvantage = (event) => event && event.shiftKey;
  *
  * @param {String} text
  * @param {Object} event
+ * @param {Boolean} hidden
  * @returns {String} Toast message
  */
-export const makeToast = (text, event = null) => {
-  if (!event) {
-    return text + "!";
-  } else if (hasAdvantage(event)) {
-    return text + " with advantage!";
+export const makeToast = (text, event = null, hidden = false) => {
+  let suffix = "!";
+  if (hasAdvantage(event)) {
+    suffix = " with advantage!";
   } else if (hasDisadvantage(event)) {
-    return text + " with disadvantage!";
-  } else {
-    return text + "!";
+    suffix = " with disadvantage!";
   }
+  if (hidden) {
+    suffix += " (hidden)";
+  }
+  return text + suffix;
+};
+
+/**
+ * Create a description.
+ *
+ * @param {String} description
+ * @param {String} text
+ * @param {Object} event
+ * @returns {String} Description
+ */
+export const makeDescription = (description, event = null, hidden = false) => {
+  const prefix = hidden ? "/w gm " : "";
+  return prefix + description;
 };
 
 /**
@@ -26,18 +41,18 @@ export const makeToast = (text, event = null) => {
  *
  * @param {String} text
  * @param {Object} event
+ * @param {Boolean} hidden
  * @returns {String} Emote command
  */
-export const makeEmote = (text, event = null) => {
-  if (!event) {
-    return "/em " + text;
-  } else if (hasAdvantage(event)) {
-    return "/em " + text + " with advantage";
+export const makeEmote = (text, event = null, hidden = false) => {
+  const prefix = hidden ? "/w gm " : "/em ";
+  let suffix = "";
+  if (hasAdvantage(event)) {
+    suffix = " with advantage";
   } else if (hasDisadvantage(event)) {
-    return "/em " + text + " with disadvantage";
-  } else {
-    return "/em " + text;
+    suffix = " with disadvantage";
   }
+  return prefix + text + suffix;
 };
 
 /**
@@ -45,23 +60,29 @@ export const makeEmote = (text, event = null) => {
  *
  * @param {String} mod
  * @param {Object} event
+ * @param {Boolean} hidden
  * @returns {String} Roll command
  */
-export const makeD20Roll = (mod, event = null) => {
-  // If mod is zero, prevent "1d200" bug.
-  const safeMod = mod === "0" ? "" : mod;
-  if (!event) {
-    return "/roll 1d20" + safeMod;
-  } else if (hasAdvantage(event)) {
-    return "/roll 2d20kh1" + safeMod;
+export const makeD20Roll = (mod, event = null, hidden = false) => {
+  const prefix = hidden ? "/gmroll " : "/roll ";
+  const suffix = mod === "0" ? "" : mod;
+  let dice = "1d20";
+  if (hasAdvantage(event)) {
+    dice = "2d20kh1";
   } else if (hasDisadvantage(event)) {
-    return "/roll 2d20kl1" + safeMod;
-  } else {
-    return "/roll 1d20" + safeMod;
+    dice = "2d20kl1";
   }
+  return prefix + dice + suffix;
 };
 
-/** Create a roll command for damage. */
-export const makeDamageRoll = (damage, event = null) => {
-  return "/roll " + damage;
+/** Create a roll command for damage.
+ *
+ * @param {String} damage
+ * @param {Object} event
+ * @param {Boolean} hidden
+ * @returns {String} Roll command
+ */
+export const makeDamageRoll = (damage, event = null, hidden = false) => {
+  const prefix = hidden ? "/gmroll " : "/roll ";
+  return prefix + damage;
 };

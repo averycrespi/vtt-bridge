@@ -1,6 +1,12 @@
 import * as classes from "./classes";
 
-import { makeD20Roll, makeDamageRoll, makeEmote, makeToast } from "./commands";
+import {
+  makeD20Roll,
+  makeDamageRoll,
+  makeDescription,
+  makeEmote,
+  makeToast,
+} from "./commands";
 
 import { parseClick } from "./click";
 
@@ -27,7 +33,6 @@ test("parse a roll weapon damage click", () =>
     toast: makeToast("Rolled dagger damage"),
     commands: [makeEmote("rolls dagger damage"), makeDamageRoll("1d4+2")],
   }));
-
 test("parse a use feature click", () =>
   expect(
     parseClick({
@@ -37,7 +42,10 @@ test("parse a use feature click", () =>
     })
   ).toStrictEqual({
     toast: makeToast("Used extra attack"),
-    commands: [makeEmote("uses extra attack"), "Make an extra attack."],
+    commands: [
+      makeEmote("uses extra attack"),
+      makeDescription("Make an extra attack."),
+    ],
   }));
 
 test("parse an unknown class name", () =>
@@ -45,11 +53,8 @@ test("parse an unknown class name", () =>
     parseClick({ className: "foo" });
   }).toThrow());
 
-test("parse a roll skill click without a mod", () =>
-  expect(() => {
-    parseClick({
-      className: classes.rollSkill,
-      event: {},
-      data: { name: "Acrobatics" },
-    });
-  }).toThrow());
+test("parse clicks without data", () => {
+  for (const className in classes) {
+    expect(() => parseClick({ className, event: {}, data: {} })).toThrow();
+  }
+});
