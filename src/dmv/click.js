@@ -45,7 +45,7 @@ export const parseClick = ({ className, event, data }, hidden) => {
             event,
             hidden
           ),
-          data.description,
+          makeDescription(data.description, event, hidden),
         ],
       };
 

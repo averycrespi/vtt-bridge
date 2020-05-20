@@ -3,24 +3,35 @@ const hasAdvantage = (event) => event && event.ctrlKey;
 const hasDisadvantage = (event) => event && event.shiftKey;
 
 /**
- * Create a toast message.
+ * Create a roll D20 command.
  *
- * @param {String} text
+ * @param {String} mod
  * @param {Object} event
  * @param {Boolean} hidden
- * @returns {String} Toast message
+ * @returns {String} Roll command
  */
-export const makeToast = (text, event = null, hidden = false) => {
-  let suffix = "!";
+export const makeD20Roll = (mod, event = null, hidden = false) => {
+  const prefix = hidden ? "/gmroll " : "/roll ";
+  const suffix = mod === "0" ? "" : mod;
+  let dice = "1d20";
   if (hasAdvantage(event)) {
-    suffix = " with advantage!";
+    dice = "2d20kh1";
   } else if (hasDisadvantage(event)) {
-    suffix = " with disadvantage!";
+    dice = "2d20kl1";
   }
-  if (hidden) {
-    suffix += " (hidden)";
-  }
-  return text + suffix;
+  return prefix + dice + suffix;
+};
+
+/** Create a roll command for damage.
+ *
+ * @param {String} damage
+ * @param {Object} event
+ * @param {Boolean} hidden
+ * @returns {String} Roll command
+ */
+export const makeDamageRoll = (damage, event = null, hidden = false) => {
+  const prefix = hidden ? "/gmroll " : "/roll ";
+  return prefix + damage;
 };
 
 /**
@@ -56,33 +67,22 @@ export const makeEmote = (text, event = null, hidden = false) => {
 };
 
 /**
- * Create a roll D20 command.
+ * Create a toast message.
  *
- * @param {String} mod
+ * @param {String} text
  * @param {Object} event
  * @param {Boolean} hidden
- * @returns {String} Roll command
+ * @returns {String} Toast message
  */
-export const makeD20Roll = (mod, event = null, hidden = false) => {
-  const prefix = hidden ? "/gmroll " : "/roll ";
-  const suffix = mod === "0" ? "" : mod;
-  let dice = "1d20";
+export const makeToast = (text, event = null, hidden = false) => {
+  let suffix = "!";
   if (hasAdvantage(event)) {
-    dice = "2d20kh1";
+    suffix = " with advantage!";
   } else if (hasDisadvantage(event)) {
-    dice = "2d20kl1";
+    suffix = " with disadvantage!";
   }
-  return prefix + dice + suffix;
-};
-
-/** Create a roll command for damage.
- *
- * @param {String} damage
- * @param {Object} event
- * @param {Boolean} hidden
- * @returns {String} Roll command
- */
-export const makeDamageRoll = (damage, event = null, hidden = false) => {
-  const prefix = hidden ? "/gmroll " : "/roll ";
-  return prefix + damage;
+  if (hidden) {
+    suffix += " (hidden)";
+  }
+  return text + suffix;
 };
