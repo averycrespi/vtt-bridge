@@ -51,6 +51,12 @@ With the click of a button, you can:
 - Roll checks
 - ... and much more!
 
+Advanced usage:
+
+- `Ctrl-Click` to roll with advantage.
+- `Shift-Click` to roll with disadvantage.
+- Hold down <kbd>h</kbd> to toggle roll visibility. Rolls can be *visible* (seen by everyone) or *hidden* (seen only by you and the GM).
+
 **Disclaimer**
 
 The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
