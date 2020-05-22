@@ -1,4 +1,6 @@
-import { messageTypes, onElementLoad } from "../common";
+import * as messageTypes from "../messages";
+
+import { onElementLoad } from "../callbacks";
 
 const createNotification = () => {
   const notification = document.createElement("div");
@@ -18,7 +20,7 @@ const createNotification = () => {
 };
 
 const receiveCommands = () => {
-  browser.runtime.sendMessage({ type: messageTypes.DEQUEUE }).then((commands) => {
+  browser.runtime.sendMessage({ type: messageTypes.DEQUEUE_COMMANDS }).then((commands) => {
     if (commands.length > 0) {
       const input = document.querySelector("#textchat-input");
       input.querySelector("textarea").value = commands.join("\n");
@@ -29,7 +31,7 @@ const receiveCommands = () => {
 };
 
 onElementLoad("#textchat .message.system .userscript-commandintro", () => {
-  browser.runtime.sendMessage({ type: messageTypes.CLEAR });
+  browser.runtime.sendMessage({ type: messageTypes.CLEAR_QUEUE });
   createNotification();
   setInterval(receiveCommands, 1000);
 });

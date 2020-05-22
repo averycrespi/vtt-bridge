@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 export const addUseFeatureListeners = (store) => {
   onElementLoad(".actions p span", () => ready(store, ".actions"));

@@ -3,7 +3,7 @@ import { addRollSavingThrowListeners } from "./rollSavingThrow";
 import { addRollSkillListeners } from "./rollSkill";
 import { addSelectTabListeners } from "./selectTab";
 import { addToggleVisibilityListeners } from "./toggleVisibility";
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 export const addDispatchers = (store) =>
   onElementLoad(".character-summary .class-name", () => {

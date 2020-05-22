@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 export const addRollInitiativeListeners = (store) => onElementLoad(".initiative", () => ready(store));
 

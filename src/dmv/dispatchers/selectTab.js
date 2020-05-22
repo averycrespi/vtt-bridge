@@ -4,7 +4,7 @@ import { addRollProficiencyListeners } from "./rollProficiency";
 import { addRollSpellListeners } from "./rollSpell";
 import { addUseFeatureListeners } from "./useFeature";
 import { addWeaponListeners } from "./weapon";
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 // Which tab is currently selected?
 let activeTab = -1;
