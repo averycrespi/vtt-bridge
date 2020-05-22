@@ -18,16 +18,14 @@ const createNotification = () => {
 };
 
 const receiveCommands = () => {
-  browser.runtime
-    .sendMessage({ type: messageTypes.DEQUEUE })
-    .then((commands) => {
-      if (commands.length > 0) {
-        const input = document.querySelector("#textchat-input");
-        input.querySelector("textarea").value = commands.join("\n");
-        input.querySelector(".btn").click();
-        console.debug("Ran commands: " + JSON.stringify(commands));
-      }
-    });
+  browser.runtime.sendMessage({ type: messageTypes.DEQUEUE }).then((commands) => {
+    if (commands.length > 0) {
+      const input = document.querySelector("#textchat-input");
+      input.querySelector("textarea").value = commands.join("\n");
+      input.querySelector(".btn").click();
+      console.debug("Ran commands: " + JSON.stringify(commands));
+    }
+  });
 };
 
 onElementLoad("#textchat .message.system .userscript-commandintro", () => {

@@ -11,8 +11,7 @@ import { onElementLoad } from "../common";
  *
  * @param {Object} store
  */
-export const connectToRoll20 = (store) =>
-  onElementLoad(".character-summary .class-name", () => ready(store));
+export const connectToRoll20 = (store) => onElementLoad(".character-summary .class-name", () => ready(store));
 
 const ready = (store) => {
   addSelectTabListeners(store);

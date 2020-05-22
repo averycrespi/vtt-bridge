@@ -5,8 +5,7 @@ import Store from "beedle";
  *
  * @returns {Object} Store
  */
-export const createStore = () =>
-  new Store({ actions, mutations, initialState });
+export const createStore = () => new Store({ actions, mutations, initialState });
 
 const actions = {
   click(context, payload) {

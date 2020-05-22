@@ -85,21 +85,3 @@ Advantages:
 Disadvantages:
 
 - `roll20.js` needs to send a `DEQUEUE` message at regular intervals. Most of the time, the command queue (and therefore the response) will be empty. This creates a trade-off between performance and delay.
-
-## Structure
-
-```sh
-src
-├── common.js           # Shared code
-├── dmv
-│   ├── classes.js      # Button CSS classes
-│   ├── click.js        # Click parser
-│   ├── commands.js     # Command builder
-│   ├── index.js        # DMV entry point
-│   ├── listeners
-│   └── store.js        # Click storage
-└── scripts
-    ├── background.js   # Background script
-    ├── dmv.js          # DMV content script
-    └── roll20.js       # Roll20 content script
-```

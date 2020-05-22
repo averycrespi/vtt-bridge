@@ -30,7 +30,8 @@
     "parcel:watch": "yarn parcel:polyfill && parcel watch --no-source-maps src/scripts/*",
     "parcel:clean": "rm -rf dist/*",
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
-    "parcel:test": "jest",
+    "parcel:test": "jest --silent",
+    "parcel:fix": "eslint --fix src/**/*.js",
     "firefox:run": "mkdir -p .profiles/firefox/ && web-ext run",
     "firefox:test": "./tests/run_firefox.sh",
     "chromium:run": "mkdir -p .profiles/chromium/ && web-ext run --target chromium",
@@ -59,54 +60,6 @@
         "https://www.dungeonmastersvault.com/pages/dnd/5e/characters",
         "https://app.roll20.net"
       ]
-    }
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-runtime"
-    ]
-  },
-  "jest": {
-    "silent": true
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "jest/globals": true
-    },
-    "extends": [
-      "plugin:prettier/recommended",
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:jest/recommended"
-    ],
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react",
-      "prettier",
-      "jest"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
     }
   }
 }
