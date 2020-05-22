@@ -5,9 +5,7 @@ import { onElementLoad } from "../../common";
 export const addUseFeatureListeners = (store) => {
   onElementLoad(".actions p span", () => ready(store, ".actions"));
   onElementLoad(".bonusActions p span", () => ready(store, ".bonusActions"));
-  onElementLoad(".features\\,Traits\\,AndFeats p span", () =>
-    ready(store, ".features\\,Traits\\,AndFeats")
-  );
+  onElementLoad(".features\\,Traits\\,AndFeats p span", () => ready(store, ".features\\,Traits\\,AndFeats"));
   onElementLoad(".reactions p span", () => ready(store, ".reactions"));
 };
 
@@ -29,6 +27,7 @@ const ready = (store, selector) => {
       store.dispatch("click", {
         className,
         event,
+
         data: { name, description },
       });
     };

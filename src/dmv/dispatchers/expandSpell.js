@@ -2,13 +2,10 @@ import * as classes from "../classes";
 
 import { onElementLoad } from "../../common";
 
-export const addExpandSpellListeners = (store) =>
-  onElementLoad(".details-columns tr.spell", () => ready(store));
+export const addExpandSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
-  const pointers = document
-    .querySelector(".details-columns")
-    .querySelectorAll(".pointer.orange");
+  const pointers = document.querySelector(".details-columns").querySelectorAll(".pointer.orange");
 
   for (const pointer of pointers) {
     pointer.addEventListener("click", function () {
@@ -20,7 +17,7 @@ const ready = (store) => {
         button.classList.remove("form-button");
         button.classList.add("roll-button", className);
 
-        // Extract the name spell from the prevous row.
+        // Extract the spell name from the prevous row.
         const row = button.closest("tr");
         const name = row.previousSibling.firstChild.innerText;
 

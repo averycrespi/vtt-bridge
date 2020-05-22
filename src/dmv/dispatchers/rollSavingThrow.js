@@ -2,14 +2,10 @@ import * as classes from "../classes";
 
 import { onElementLoad } from "../../common";
 
-export const addRollSavingThrowListeners = (store) =>
-  onElementLoad("table tr .saving-throw-name", () => ready(store));
+export const addRollSavingThrowListeners = (store) => onElementLoad("table tr .saving-throw-name", () => ready(store));
 
 const ready = (store) => {
-  const rows = document
-    .querySelector(".saving-throw-name")
-    .closest("table")
-    .querySelectorAll("tr");
+  const rows = document.querySelector(".saving-throw-name").closest("table").querySelectorAll("tr");
 
   for (const row of rows) {
     const className = classes.rollSavingThrow;

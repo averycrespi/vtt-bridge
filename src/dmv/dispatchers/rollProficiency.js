@@ -6,9 +6,7 @@ export const addRollProficiencyListeners = (store) =>
   onElementLoad(".details-columns table tr .roll-button", () => ready(store));
 
 const ready = (store) => {
-  const tables = document
-    .querySelector(".details-columns")
-    .querySelectorAll("table");
+  const tables = document.querySelector(".details-columns").querySelectorAll("table");
 
   for (const table of tables) {
     const rows = table.querySelectorAll("tr");

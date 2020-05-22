@@ -2,8 +2,7 @@ import * as classes from "../classes";
 
 import { onElementLoad } from "../../common";
 
-export const addRollInitiativeListeners = (store) =>
-  onElementLoad(".initiative", () => ready(store));
+export const addRollInitiativeListeners = (store) => onElementLoad(".initiative", () => ready(store));
 
 const ready = (store) => {
   const parent = document.querySelector(".initiative");
