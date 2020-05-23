@@ -14,13 +14,13 @@ addDispatchers(store);
 
 store.subscribe((state) => {
   if (state.click) {
-    const { toast, commands } = parseClick(state.click, !state.visible);
+    const { toast, commands } = parseClick(state.click, state.visible);
     notyf.success(toast);
     browser.runtime.sendMessage({ type: messageTypes.ENQUEUE_COMMANDS, commands });
   } else {
     notyf.dismissAll();
-    const message = state.visible ? "Commands are now visible!" : "Commands are now hidden!";
-    notyf.success({ message, duration: 0, dismissible: true });
+    const toast = state.visible ? "Commands are now visible!" : "Commands are now hidden!";
+    notyf.success({ message: toast, duration: 0, dismissible: true });
   }
 });
 
