@@ -26,11 +26,6 @@ describe("attack", () => {
       commands: [makeEmote("attacks with " + data.name, event, hidden), makeD20Roll(data.mod, event, hidden)],
     });
   });
-  test("with missing name", () => expect(() => parseClick({ className, neutral, data: { mod: data.mod } })).toThrow());
-  test("with missing mod", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 describe("cast spell", () => {
@@ -45,30 +40,6 @@ describe("cast spell", () => {
       ],
     });
   });
-  test("with missing name", () =>
-    expect(() =>
-      parseClick({
-        className,
-        neutral,
-        data: { level: data.level, description: data.description },
-      }),
-    ).toThrow());
-  test("with missing level", () =>
-    expect(() => {
-      parseClick({
-        className,
-        neutral,
-        data: { name: data.name, description: data.description },
-      });
-    }).toThrow());
-  test("with missing description", () =>
-    expect(() => {
-      parseClick({
-        className,
-        neutral,
-        data: { name: data.name, level: data.level },
-      });
-    }).toThrow());
 });
 
 describe("roll check", () => {
@@ -80,11 +51,6 @@ describe("roll check", () => {
       commands: [makeEmote("rolls " + data.name + " check", event, hidden), makeD20Roll(data.mod, event, hidden)],
     });
   });
-  test("with missing name", () => expect(() => parseClick({ className, neutral, data: { mod: data.mod } })).toThrow());
-  test("with missing mod", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 describe("roll", () => {
@@ -96,11 +62,6 @@ describe("roll", () => {
       commands: [makeEmote("rolls " + data.name, event, hidden), makeD20Roll(data.mod, event, hidden)],
     });
   });
-  test("with missing name", () => expect(() => parseClick({ className, neutral, data: { mod: data.mod } })).toThrow());
-  test("with missing mod", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 describe("roll save", () => {
@@ -112,11 +73,6 @@ describe("roll save", () => {
       commands: [makeEmote("rolls " + data.name + " save", event, hidden), makeD20Roll(data.mod, event, hidden)],
     });
   });
-  test("with missing name", () => expect(() => parseClick({ className, neutral, data: { mod: data.mod } })).toThrow());
-  test("with missing mod", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 describe("roll damage", () => {
@@ -131,12 +87,6 @@ describe("roll damage", () => {
       ],
     });
   });
-  test("with missing name", () =>
-    expect(() => parseClick({ className, neutral, data: { damage: data.damage } })).toThrow());
-  test("with missing damage", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 describe("use feature", () => {
@@ -148,18 +98,6 @@ describe("use feature", () => {
       commands: [makeEmote("uses " + data.name, event, hidden), makeDescription(data.description, event, hidden)],
     });
   });
-  test("with missing name", () =>
-    expect(() =>
-      parseClick({
-        className,
-        neutral,
-        data: { description: data.description },
-      }),
-    ).toThrow());
-  test("with missing description", () =>
-    expect(() => {
-      parseClick({ className, neutral, data: { name: data.name } });
-    }).toThrow());
 });
 
 test("unknown class name", () => expect(() => parseClick({ className: "foo", event: neutral, data: {} })).toThrow());
