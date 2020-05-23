@@ -1,19 +1,19 @@
-import * as messageTypes from "../messages";
+import * as messages from "../messages";
 
 let commandQueue = [];
 
 browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   switch (message.type) {
-    case messageTypes.ENQUEUE_COMMANDS:
+    case messages.enqueueCommands:
       commandQueue.push(...message.commands);
       break;
 
-    case messageTypes.DEQUEUE_COMMANDS:
+    case messages.dequeueCommands:
       sendResponse(commandQueue);
       commandQueue = [];
       break;
 
-    case messageTypes.CLEAR_QUEUE:
+    case messages.clearQueue:
       commandQueue = [];
       break;
 

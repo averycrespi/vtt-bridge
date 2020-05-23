@@ -1,26 +1,14 @@
-import * as messageTypes from "../messages";
+import "notyf/notyf.min.css";
 
+import * as messages from "../messages";
+
+import { Notyf } from "notyf";
 import { onElementLoad } from "../callbacks";
 
-const createNotification = () => {
-  const notification = document.createElement("div");
-  notification.classList.add("message", "system", "vtt-notification");
-
-  const spacer = document.createElement("div");
-  spacer.classList.add("spacer");
-  notification.appendChild(spacer);
-
-  const text = document.createElement("strong");
-  text.innerText = "Connected to VTT Bridge.";
-  notification.appendChild(text);
-
-  const chat = document.querySelector("#textchat");
-  chat.querySelector(".content").appendChild(notification);
-  console.debug("Created Roll20 notification");
-};
+let notyf = new Notyf();
 
 const receiveCommands = () => {
-  browser.runtime.sendMessage({ type: messageTypes.DEQUEUE_COMMANDS }).then((commands) => {
+  browser.runtime.sendMessage({ type: messages.dequeueCommands }).then((commands) => {
     if (commands.length > 0) {
       const input = document.querySelector("#textchat-input");
       input.querySelector("textarea").value = commands.join("\n");
@@ -30,8 +18,8 @@ const receiveCommands = () => {
   });
 };
 
-onElementLoad("#textchat .message.system .userscript-commandintro", () => {
-  browser.runtime.sendMessage({ type: messageTypes.CLEAR_QUEUE });
-  createNotification();
+onElementLoad("#textchat-input", () => {
+  notyf.success({ message: "Connected to VTT Bridge!", duration: 0, dismissible: true });
+  browser.runtime.sendMessage({ type: messages.clearQueue });
   setInterval(receiveCommands, 1000);
 });
