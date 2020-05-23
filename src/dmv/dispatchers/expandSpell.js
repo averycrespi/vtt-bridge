@@ -13,8 +13,7 @@ const ready = (store) => {
         const className = classes.castSpell;
 
         const button = document.querySelector(".spells td .form-button");
-        // Avoid selecting this button on other pointer clicks.
-        button.classList.remove("form-button");
+        button.classList.remove("form-button"); // Avoid selecting this button on other pointer clicks.
         button.classList.add("roll-button", className);
 
         // Extract the spell name from the prevous row.
@@ -24,15 +23,10 @@ const ready = (store) => {
         const cell = button.closest("td");
         const paragraphs = Array.from(cell.querySelectorAll("p"));
         const description = paragraphs.map((p) => p.innerText).join("\n");
-        // If the value isn't selected, cast at level 1.
-        const level = cell.querySelector("select").value || "1";
+        const level = cell.querySelector("select").value || "1"; // If the value isn't selected, cast at level 1.
 
         button.addEventListener("click", function (event) {
-          store.dispatch("click", {
-            className,
-            event,
-            data: { name, description, level },
-          });
+          store.dispatch("click", { className, event, data: { name, description, level } });
         });
       });
     });

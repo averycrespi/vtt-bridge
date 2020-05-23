@@ -12,8 +12,7 @@ const ready = (store) => {
     const rows = table.querySelectorAll("tr");
     for (const row of rows) {
       if (row.querySelectorAll("th").length > 0) {
-        // Skip table header.
-        continue;
+        continue; // Skip table header.
       }
 
       const cells = Array.from(row.querySelectorAll("td"));

@@ -9,13 +9,13 @@ const ready = (store) => {
 
   for (const row of rows) {
     const className = classes.rollSavingThrow;
-    const stat = row.querySelector(".saving-throw-name").innerText;
+    const name = row.querySelector(".saving-throw-name").innerText;
     const mod = row.querySelector(".saving-throw-bonus").innerText;
 
     const button = row.querySelector(".roll-button");
     button.classList.add(className);
     button.addEventListener("click", function (event) {
-      store.dispatch("click", { className, event, data: { name: stat, mod } });
+      store.dispatch("click", { className, event, data: { name, mod } });
     });
   }
 

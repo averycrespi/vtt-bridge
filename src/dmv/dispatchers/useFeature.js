@@ -24,12 +24,7 @@ const ready = (store, selector) => {
     button.innerText = "use";
     button.classList.add("roll-button", "m-t-10", "m-l-10", className);
     button.onclick = function (event) {
-      store.dispatch("click", {
-        className,
-        event,
-
-        data: { name, description },
-      });
+      store.dispatch("click", { className, event, data: { name, description } });
     };
     child.appendChild(button);
   }
