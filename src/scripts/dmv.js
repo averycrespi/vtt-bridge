@@ -19,7 +19,7 @@ store.subscribe((state) => {
     browser.runtime.sendMessage({ type: messageTypes.ENQUEUE_COMMANDS, commands });
   } else {
     notyf.dismissAll();
-    const message = state.visible ? "Commands are now hidden!" : "Commands are now visible!";
+    const message = state.visible ? "Commands are now visible!" : "Commands are now hidden!";
     notyf.success({ message, duration: 0, dismissible: true });
   }
 });
