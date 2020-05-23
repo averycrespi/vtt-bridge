@@ -22,6 +22,6 @@ const ready = (store) => {
     child.appendChild(button);
   }
 
-  console.debug("Create roll ability score buttons");
+  console.debug("Created roll ability score buttons");
   console.debug("Added roll ability score listeners");
 };
