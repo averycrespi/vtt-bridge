@@ -64,24 +64,27 @@ yarn test
 - Test characters will be loaded from `tests/characters.json`.
 - Test logs will be written to the `tests/logs` directory.
 
-## Architecture
+## How does the extension work?
 
-The extension uses a **queue-based architecture** to communicate between Dungeon Master's Vault and Roll20.
-
-How it works:
-
-1. The user clicks a button on Dungeon Master's Vault.
-2. `dmv.js` builds the commands and sends an `ENQUEUE` message to `background.js`.
-3. `background.js` receives the `ENQUEUE` message and appends the commands to its queue.
-4. `roll20.js` sends a `DEQUEUE` message to `background.js`. This message is sent at regular intervals.
-5. `background.js` receives the `DEQUEUE` message and responds with all commands in its queue. The queue is emptied.
-6. `roll20.js` receives the response and runs the commands in Roll20.
-
-Advantages:
-
-- The `tabs` permission is normally required for a background script to send a message to a content script. However, since `background.js` is directly responding to a `DEQUEUE` message from `roll20.js`, this permission is not necessary.
-- The extension will not crash if Dungeon Master's Vault is open without a corresponding Roll20 game.
-
-Disadvantages:
-
-- `roll20.js` needs to send a `DEQUEUE` message at regular intervals. Most of the time, the command queue (and therefore the response) will be empty. This creates a trade-off between performance and delay.
+- The extension is loaded.
+  - `background.js` creates an empty command queue.
+  - `background.js` starts listening for messages.
+- The user opens a character sheet on Dungeon Master's Vault.
+  - `dmv.js` displays a welcome toast.
+  - `dmv.js` adds buttons and event listeners to the page.
+  - `dmv.js` starts listening for dispatched actions.
+- The user joins a Roll20 game.
+  - `roll20.js` displays a welcome toast.
+  - `roll20.js` sends a `clear` message to `background.js`.
+  - `background.js` receives the `clear` message and empties its queue.
+- The user clicks a <kbd>Roll</kbd> button on Dungeon Master's Vault.
+  - `dmv.js` dispatches a `click` action with the class name, event, and data.
+  - `dmv.js` receives the `click` action.
+  - `dmv.js` parses the `click` action into a toast and a list of commands.
+  - `dmv.js` displays the toast.
+  - `dmv.js` sends an `enqueue` message (with the commands) to `background.js`.
+  - `background.js` receives the `enqueue` message and adds the commands to its queue.
+  - `roll20.js` sends a `dequeue` message to `background.js`.
+  - `background.js` receives the `dequeue` message and responds with all commands in its queue.
+  - `background.js` empties its queue.
+  - `roll20.js` receives the response and runs the commands.
