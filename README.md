@@ -77,9 +77,7 @@ Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link 
 
 ![Dungeon Master's Vault link](assets/dmv_www_link.png)
 
-Launch your Roll 20 game in another tab. You should see a chat message that says `Connected to VTT Bridge`.
-
-![Roll20 notification](assets/roll20_notification.png)
+Launch your Roll 20 game in another tab.
 
 Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
