@@ -5,7 +5,7 @@ import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote } from "./comma
 import { makeToast } from "./toasts";
 
 export const parseClick = ({ className, event, data }, visible) => {
-  const { name, mod, level, description, damage } = data;
+  const { name, mod, description, damage } = data;
   const options = {
     hasAdvantage: event && event.ctrlKey,
     hasDisadvantage: event && event.shiftKey,
@@ -21,8 +21,8 @@ export const parseClick = ({ className, event, data }, visible) => {
       };
     case classes.castSpell:
       return {
-        toast: makeToast("Cast " + name + " at level " + level, options),
-        commands: [makeEmote("casts " + name + " at level " + level, options), makeDescription(description, options)],
+        toast: makeToast("Cast " + name, options),
+        commands: [makeEmote("casts " + name, options), makeDescription(description, options)],
       };
     case classes.rollAbilityScore:
     case classes.rollSkill:
