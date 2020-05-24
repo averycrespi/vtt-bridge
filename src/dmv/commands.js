@@ -17,7 +17,7 @@ export const makeDamageRoll = (damage, { visible }) => {
 
 export const makeDescription = (description, { visible }) => {
   const prefix = visible ? "" : "/w gm ";
-  return prefix + description;
+  return prefix + description.replace(/\n/g, "\n" + prefix);
 };
 
 export const makeEmote = (text, { hasAdvantage, hasDisadvantage, visible }) => {
