@@ -1,24 +1,19 @@
-import { messageTypes } from "../common";
-
-console.debug("Loading background.js ...");
+import * as messages from "../messages";
 
 let commandQueue = [];
 
 browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   switch (message.type) {
-    case messageTypes.ENQUEUE:
-      console.debug("Enqueuing: " + JSON.stringify(message.commands) + " ...");
+    case messages.enqueueCommands:
       commandQueue.push(...message.commands);
       break;
 
-    case messageTypes.DEQUEUE:
-      console.debug("Dequeuing: " + JSON.stringify(commandQueue) + " ...");
+    case messages.dequeueCommands:
       sendResponse(commandQueue);
       commandQueue = [];
       break;
 
-    case messageTypes.CLEAR:
-      console.debug("Clearing command queue ...");
+    case messages.clearQueue:
       commandQueue = [];
       break;
 

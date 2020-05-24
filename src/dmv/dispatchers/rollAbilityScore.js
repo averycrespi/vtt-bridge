@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 export const addRollAbilityScoreListeners = (store) =>
   onElementLoad(".ability-scores .ability-score-name", () => ready(store));
@@ -22,6 +22,6 @@ const ready = (store) => {
     child.appendChild(button);
   }
 
-  console.debug("Create roll ability score buttons");
+  console.debug("Created roll ability score buttons");
   console.debug("Added roll ability score listeners");
 };

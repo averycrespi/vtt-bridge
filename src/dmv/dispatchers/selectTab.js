@@ -4,22 +4,17 @@ import { addRollProficiencyListeners } from "./rollProficiency";
 import { addRollSpellListeners } from "./rollSpell";
 import { addUseFeatureListeners } from "./useFeature";
 import { addWeaponListeners } from "./weapon";
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 // Which tab is currently selected?
 let activeTab = -1;
 
-export const addSelectTabListeners = (store) =>
-  onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
+export const addSelectTabListeners = (store) => onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
 
 const ready = (store) => {
-  const [
-    combatTab,
-    proficienciesTab,
-    spellsTab,
-    featuresTab,
-    equipmentTab,
-  ] = document.querySelectorAll(".flex-grow-1.t-a-c");
+  const [combatTab, proficienciesTab, spellsTab, featuresTab, equipmentTab] = document.querySelectorAll(
+    ".flex-grow-1.t-a-c",
+  );
 
   combatTab.addEventListener("click", () => {
     console.debug("Selected combat tab");

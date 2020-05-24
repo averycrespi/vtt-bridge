@@ -1,14 +1,11 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
-export const addRollSpellListeners = (store) =>
-  onElementLoad(".details-columns tr.spell", () => ready(store));
+export const addRollSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
-  const rows = document
-    .querySelector(".details-columns")
-    .querySelectorAll("tr.spell");
+  const rows = document.querySelector(".details-columns").querySelectorAll("tr.spell");
 
   for (const row of rows) {
     const cells = Array.from(row.querySelectorAll("td"));

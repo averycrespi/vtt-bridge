@@ -1,21 +1,18 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../common";
+import { onElementLoad } from "../../callbacks";
 
 export const addRollProficiencyListeners = (store) =>
   onElementLoad(".details-columns table tr .roll-button", () => ready(store));
 
 const ready = (store) => {
-  const tables = document
-    .querySelector(".details-columns")
-    .querySelectorAll("table");
+  const tables = document.querySelector(".details-columns").querySelectorAll("table");
 
   for (const table of tables) {
     const rows = table.querySelectorAll("tr");
     for (const row of rows) {
       if (row.querySelectorAll("th").length > 0) {
-        // Skip table header.
-        continue;
+        continue; // Skip table header.
       }
 
       const cells = Array.from(row.querySelectorAll("td"));

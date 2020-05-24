@@ -1,91 +1,56 @@
 import * as classes from "./classes";
-import * as schema from "./schema";
 
-import { makeEmote, makeRoll, makeToast } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote } from "./commands";
 
-import { validate } from "jsonschema";
+import { makeToast } from "./toasts";
 
-/**
- * Parse a click into a toast and commands.
- *
- * @param {Object} click
- * @returns {Object} Toast and commands
- */
-export const parseClick = ({ className, event, data }) => {
+export const parseClick = ({ className, event, data }, visible) => {
+  const { name, mod, description, damage } = data;
+  const options = {
+    hasAdvantage: event && event.ctrlKey,
+    hasDisadvantage: event && event.shiftKey,
+    visible,
+  };
+
   switch (className) {
     case classes.attackWithSpell:
     case classes.attackWithWeapon:
-      validate(data, schema.attackWithData, { throwError: true });
       return {
-        toast: makeToast("Attacked with " + data.name, event),
-        commands: [
-          makeEmote("attacks with " + data.name, event),
-          makeRoll(data.mod, event),
-        ],
+        toast: makeToast("Attacked with " + name, options),
+        commands: [makeEmote("attacks with " + name, options), makeD20Roll(mod, options)],
       };
-
     case classes.castSpell:
-      validate(data, schema.castData, { throwError: true });
       return {
-        toast: makeToast(
-          "Cast " + data.name + " at level " + data.level,
-          event
-        ),
-        commands: [
-          makeEmote("casts " + data.name + " at level " + data.level, event),
-          data.description,
-        ],
+        toast: makeToast("Cast " + name, options),
+        commands: [makeEmote("casts " + name, options), makeDescription(description, options)],
       };
-
     case classes.rollAbilityScore:
     case classes.rollSkill:
-      validate(data, schema.rollData, { throwError: true });
       return {
-        toast: makeToast("Rolled " + data.name + " check", event),
-        commands: [
-          makeEmote("rolls " + data.name + " check", event),
-          makeRoll(data.mod, event),
-        ],
+        toast: makeToast("Rolled " + name + " check", options),
+        commands: [makeEmote("rolls " + name + " check", options), makeD20Roll(mod, options)],
       };
-
     case classes.rollInitiative:
     case classes.rollProficiency:
-      validate(data, schema.rollData, { throwError: true });
       return {
-        toast: makeToast("Rolled " + data.name, event),
-        commands: [
-          makeEmote("rolls " + data.name, event),
-          makeRoll(data.mod, event),
-        ],
+        toast: makeToast("Rolled " + name, options),
+        commands: [makeEmote("rolls " + name, options), makeD20Roll(mod, options)],
       };
-
     case classes.rollSavingThrow:
-      validate(data, schema.rollData, { throwError: true });
       return {
-        toast: makeToast("Rolled " + data.name + " save", event),
-        commands: [
-          makeEmote("rolls " + data.name + " save", event),
-          makeRoll(data.mod, event),
-        ],
+        toast: makeToast("Rolled " + name + " save", options),
+        commands: [makeEmote("rolls " + name + " save", options), makeD20Roll(mod, options)],
       };
-
     case classes.rollWeaponDamage:
-      validate(data, schema.rollDamageData, { throwError: true });
       return {
-        toast: makeToast("Rolled " + data.name + " damage", event),
-        commands: [
-          makeEmote("rolls " + data.name + " damage", event),
-          "/roll " + data.damage,
-        ],
+        toast: makeToast("Rolled " + name + " damage", options),
+        commands: [makeEmote("rolls " + name + " damage", options), makeDamageRoll(damage, options)],
       };
-
     case classes.useFeature:
-      validate(data, schema.useData, { throwError: true });
       return {
-        toast: makeToast("Used " + data.name, event),
-        commands: [makeEmote("uses " + data.name, event), data.description],
+        toast: makeToast("Used " + name, options),
+        commands: [makeEmote("uses " + name, options), makeDescription(description, options)],
       };
-
     default:
       throw "Unknown class name: " + className;
   }
