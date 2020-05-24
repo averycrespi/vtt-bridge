@@ -1,17 +1,7 @@
 [
   {
-    "name": "Half-Orc Barbarian (20)",
-    "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216785521?frame=true",
-    "sections": ["features"]
-  },
-  {
-    "name": "Human Warlock (20)",
-    "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592217094563?frame=true",
-    "sections": ["features", "spells"]
-  },
-  {
-    "name": "Elf Rogue (20)",
-    "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592216788377?frame=true",
+    "name": "Human Paladin / Warlock / Rogue / Fighter",
+    "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592220571171?frame=true",
     "sections": ["features", "spells"]
   }
 ]
