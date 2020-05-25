@@ -22,5 +22,5 @@ if [[ ! -d 'tests/logs' ]]; then
 fi
 
 echo "Running automation tests in Firefox ..."
-python tests/dmv.py firefox "$@"
+python tests/main.py firefox "$@"
 echo 'Tests passed!'

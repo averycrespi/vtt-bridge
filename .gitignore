@@ -68,7 +68,8 @@ dist/
 .vscode/
 
 # Project-specific files
-.mypy_cache/
+**/__pycache__/
+**/.mypy_cache/
 .profiles/
 tests/logs/
 tests/venv/
