@@ -10,14 +10,14 @@ from selenium.webdriver.chrome.options import Options
 from sys import exit
 from typing import List
 
-from dmv.character import Character
-from dmv.existence_runner import ExistenceRunner
-from dmv.toast_runner import ToastRunner
+from dmv import Character
+from dmv.existence import ExistenceRunner
+from dmv.toast import ToastRunner
 
 
 def parse_args():
     """Parse command-line arguments."""
-    parser = ArgumentParser("Run automation tests for Dungeon Master's Vault")
+    parser = ArgumentParser("Run automation tests.")
     parser.add_argument(
         "browser",
         action="store",
@@ -28,15 +28,15 @@ def parse_args():
     parser.add_argument(
         "--log-dir",
         action="store",
-        default=Path("tests") / "logs",
         type=Path,
+        default=Path("tests") / "logs",
         help="Log directory",
     )
     parser.add_argument(
         "--characters-file",
         action="store",
-        default=Path("tests") / "characters.json",
         type=Path,
+        default=Path("tests") / "characters.json",
         help="Characters file",
     )
     return parser.parse_args()
@@ -80,10 +80,11 @@ def create_driver(browser: str, extension_file: Path):
         driver.install_addon(str(extension_file), temporary=True)
         return driver
     elif browser == "chromium":
-        chrome_options = Options()
-        chrome_options.add_extension(str(extension_file))
+        options = Options()
+        options.add_extension(str(extension_file))
+        log_path = os.path.devnull
         driver = webdriver.Chrome(
-            chrome_options=chrome_options, service_log_path=os.path.devnull
+            chrome_options=options, service_log_path=os.path.devnull
         )
         return driver
     else:

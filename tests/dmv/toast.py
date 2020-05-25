@@ -1,7 +1,4 @@
-import time
-
-from dmv.character import Character
-from dmv.runner import Runner
+from dmv import Character, Runner
 
 
 class ToastRunner(Runner):
@@ -10,10 +7,10 @@ class ToastRunner(Runner):
         self.driver.get(character.url)
         self.expect_toast("Connected to VTT Bridge!")
 
-        button = self.find_elements_by_class_name("vtt-roll-ability-score")[0]
+        button = self.find_elements_by_class_name("vtt-roll-initiative")[0]
         button.click()
-        self.expect_toast("Rolled STR check!")
+        self.expect_toast("Rolled initiative!")
         self.control_click(button)
-        self.expect_toast("Rolled STR check with advantage!")
+        self.expect_toast("Rolled initiative with advantage!")
         self.shift_click(button)
-        self.expect_toast("Rolled STR check with disadvantage!")
+        self.expect_toast("Rolled initiative with disadvantage!")

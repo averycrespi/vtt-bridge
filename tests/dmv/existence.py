@@ -1,5 +1,4 @@
-from dmv.character import Character
-from dmv.runner import Runner
+from dmv import Character, Runner
 
 
 class ExistenceRunner(Runner):
