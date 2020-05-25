@@ -22,5 +22,5 @@ if [[ ! -d 'tests/logs' ]]; then
 fi
 
 echo "Running automation tests in Chromium ..."
-python tests/dmv.py chromium "$@"
+python tests/main.py chromium "$@"
 echo 'Tests passed!'
