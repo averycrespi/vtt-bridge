@@ -1,7 +1,7 @@
 class Character:
-    def __init__(self, *, name: str, url: str):
-        self.name = name
-        self.url = url
+    def __init__(self, **kwargs):
+        self.name = kwargs["name"]
+        self.url = kwargs["url"]
 
     def __str__(self):
         return self.name

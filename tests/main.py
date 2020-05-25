@@ -12,6 +12,7 @@ from typing import List
 
 from dmv.character import Character
 from dmv.existence_runner import ExistenceRunner
+from dmv.toast_runner import ToastRunner
 
 
 def parse_args():
@@ -96,14 +97,15 @@ if __name__ == "__main__":
     extension_file = find_extension_file()
     driver = create_driver(args.browser, extension_file)
     try:
-        existence = ExistenceRunner(driver=driver, logger=logger)
+        existence_runner = ExistenceRunner(driver=driver, logger=logger)
+        toast_runner = ToastRunner(driver=driver, logger=logger)
         for character in characters:
-            existence.run(character)
+            existence_runner.run(character)
+            toast_runner.run(character)
         exit_code = 0
     except Exception:
         logger.exception("Tests failed with error:")
         exit_code = 1
     finally:
-        logger.info("Cleaning up ...")
         driver.close()
         exit(exit_code)
