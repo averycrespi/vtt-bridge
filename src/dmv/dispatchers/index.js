@@ -5,11 +5,12 @@ import { addSelectTabListeners } from "./selectTab";
 import { addToggleVisibilityListeners } from "./toggleVisibility";
 import { onElementLoad } from "../../callbacks";
 
-export const addDispatchers = (store) =>
+export const addDispatchers = (store, callback) =>
   onElementLoad(".character-summary .class-name", () => {
     addToggleVisibilityListeners(store);
     addSelectTabListeners(store);
     addRollAbilityScoreListeners(store);
     addRollSkillListeners(store);
     addRollSavingThrowListeners(store);
+    callback();
   });

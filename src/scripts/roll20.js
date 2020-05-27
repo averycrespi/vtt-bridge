@@ -1,11 +1,7 @@
-import "notyf/notyf.min.css";
-
 import * as messages from "../messages";
 
-import { Notyf } from "notyf";
 import { onElementLoad } from "../callbacks";
-
-let notyf = new Notyf();
+import { showConnected } from "../notifications";
 
 const receiveCommands = () => {
   browser.runtime.sendMessage({ type: messages.dequeueCommands }).then((commands) => {
@@ -19,7 +15,7 @@ const receiveCommands = () => {
 };
 
 onElementLoad("#textchat-input", () => {
-  notyf.success({ message: "Connected to VTT Bridge!", duration: 0, dismissible: true });
+  showConnected();
   browser.runtime.sendMessage({ type: messages.clearQueue });
   setInterval(receiveCommands, 1000);
 });
