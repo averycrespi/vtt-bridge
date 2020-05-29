@@ -11,10 +11,10 @@
 
 <div align="center">
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
-        <img src="https://img.shields.io/amo/v/vtt-bridge" alt="Mozilla Add-On badge">
+        <img src="https://img.shields.io/amo/v/vtt-bridge" alt="Mozilla Add-On version badge">
     </a>
     <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
-        <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chromw Web Store badge">
+        <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chrome Web Store version badge">
     </a>
     <a href="https://github.com/averycrespi/vtt-bridge/commits/master">
         <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/master" alt="Last commit badge">
@@ -29,6 +29,7 @@
 
 <div align="center">
     <a href="#about">About</a> •
+    <a href="#about">Key Features</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#faq">FAQ</a> •
     <a href="#development">Development</a> •
@@ -42,20 +43,15 @@
 
 ## About
 
-VTT Bridge connects your Dungeon Master's Vault character sheet to your Roll20 game.
+Do you play D&D on [Roll20](https://roll20.net), but prefer to manage your characters with [Dungeon Master's Vault](https://www.dungeonmastersvault.com)?
 
-With the click of a button, you can:
+VTT Bridge seamlessly connects your Dungeon Master's Vault character sheet to your Roll20 game.
 
-- Attack with weapons
-- Cast spells
-- Roll checks
-- ... and much more!
+## Key Features
 
-Advanced usage:
-
-- `Ctrl-Click` to roll with advantage.
-- `Shift-Click` to roll with disadvantage.
-- Hold down <kbd>h</kbd> to toggle roll visibility. Rolls can be *visible* (seen by everyone) or *hidden* (seen only by you and the GM).
+- Roll ability checks, attack with weapons, cast spells, and much more!
+- Use <kbd>Ctrl-Click</kbd> to roll with advantage and <kbd>Shift-Click</kbd> to roll with disadvantage.
+- Hold <kbd>H</kbd> to switch between visible rolls (everyone can see) and hidden rolls (only you and the GM can see).
 
 **Disclaimer**
 
@@ -73,32 +69,39 @@ Install the VTT Bridge extension for Firefox or Google Chrome.
     <img src="assets/chrome.png" alt="Chrome logo">
 </a>
 
-Open your Dungeon Master's Vault character sheet. Click the <kbd>www</kbd> link in the top right. The URL should now end with `?frame`.
+Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link. Launch your Roll 20 game in another tab.
 
-![Dungeon Master's Vault link](assets/dmv_www_link.png)
+![www link](assets/www_link.png)
 
-Launch your Roll 20 game in another tab.
+You should see a notification appear in both tabs.
+
+![Connected to VTT Bridge](assets/connected_to_vtt_bridge.png)
 
 Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
 ## FAQ
 
+**Help, the buttons on Dungeon Master's Vault aren't working!**
+
+- Make sure that you clicked the `www` link in the top right. The URL should end with `?frame`.
+
 **I found a bug! What should I do?**
 
-[Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Bug report". Complete the issue template.
+- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", and complete the issue template.
 
 **I have an idea for a new feature! What should I do?**
 
-[Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose) and select "Feature request". Complete the issue template.
+- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Feature request", and complete the issue template.
 
 ## Development
 
-See [DEVELOPERS.md](DEVELOPERS.md) for instructions.
+See [DEVELOPERS.md](DEVELOPERS.md) for help building, testing, and running the extension.
 
 ## Credits
 
-- Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
-- Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
+Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
+
+Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
 
 ## License
 
