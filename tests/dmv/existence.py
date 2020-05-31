@@ -8,10 +8,16 @@ class ExistenceRunner(Runner):
         )
         self.driver.get(character.url)
         self.left_panel()
+
         self.combat_tab()
         self.proficiencies_tab()
         self.spells_tab()
+        self.features_tab()
         self.equipment_tab()
+        self.features_tab()
+        self.spells_tab()
+        self.proficiencies_tab()
+        self.combat_tab()
 
     def left_panel(self):
         assert (

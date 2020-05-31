@@ -1,5 +1,8 @@
 export const onElementLoad = (selector, callback) => onPredicate(() => !!document.querySelector(selector), callback);
 
+export const onChildLoad = (element, selector, callback) =>
+  onPredicate(() => !!element.querySelector(selector), callback);
+
 const onPredicate = (predicate, callback, attempts = 10, timeout = 100) => {
   if (predicate()) {
     callback();
