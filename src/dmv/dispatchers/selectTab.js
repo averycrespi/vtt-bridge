@@ -1,10 +1,11 @@
+import { onChildLoad, onElementLoad } from "../../callbacks";
+
 import { addExpandSpellListeners } from "./expandSpell";
 import { addRollInitiativeListeners } from "./rollInitiative";
 import { addRollProficiencyListeners } from "./rollProficiency";
 import { addRollSpellListeners } from "./rollSpell";
 import { addUseFeatureListeners } from "./useFeature";
 import { addWeaponListeners } from "./weapon";
-import { onElementLoad } from "../../callbacks";
 
 // Which tab is currently selected?
 let activeTab = -1;
@@ -19,8 +20,10 @@ const ready = (store) => {
   combatTab.addEventListener("click", () => {
     console.debug("Selected combat tab");
     if (activeTab !== 0) {
-      addRollInitiativeListeners(store);
-      addWeaponListeners(store);
+      onChildLoad(combatTab, ".b-orange", () => {
+        addRollInitiativeListeners(store);
+        addWeaponListeners(store);
+      });
     }
     activeTab = 0;
   });
@@ -31,7 +34,7 @@ const ready = (store) => {
   proficienciesTab.addEventListener("click", () => {
     console.debug("Selected proficiencies tab");
     if (activeTab !== 1) {
-      addRollProficiencyListeners(store);
+      onChildLoad(proficienciesTab, ".b-orange", () => addRollProficiencyListeners(store));
     }
     activeTab = 1;
   });
@@ -39,8 +42,10 @@ const ready = (store) => {
   spellsTab.addEventListener("click", () => {
     console.debug("Selected spells tab");
     if (activeTab !== 2) {
-      addRollSpellListeners(store);
-      addExpandSpellListeners(store);
+      onChildLoad(spellsTab, ".b-orange", () => {
+        addRollSpellListeners(store);
+        addExpandSpellListeners(store);
+      });
     }
     activeTab = 2;
   });
@@ -48,7 +53,7 @@ const ready = (store) => {
   featuresTab.addEventListener("click", () => {
     console.debug("Selected features tab");
     if (activeTab !== 3) {
-      addUseFeatureListeners(store);
+      onChildLoad(featuresTab, ".b-orange", () => addUseFeatureListeners(store));
     }
     activeTab = 3;
   });
@@ -56,7 +61,7 @@ const ready = (store) => {
   equipmentTab.addEventListener("click", () => {
     console.debug("Selected equipment tab");
     if (activeTab !== 4) {
-      addWeaponListeners(store);
+      onChildLoad(equipmentTab, ".b-orange", () => addWeaponListeners(store));
     }
     activeTab = 4;
   });

@@ -17,5 +17,5 @@ const ready = (store) => {
     store.dispatch("click", { className, event, data: { name, mod } });
   });
 
-  console.debug("Added roll initiative listeners");
+  console.debug("Added roll initiative listener");
 };

@@ -27,9 +27,9 @@ const ready = (store) => {
         button.addEventListener("click", function (event) {
           store.dispatch("click", { className, event, data: { name, description } });
         });
+
+        console.debug("Added expand spell listener: " + name);
       });
     });
   }
-
-  console.debug("Added expand spell listeners");
 };

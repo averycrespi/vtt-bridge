@@ -19,7 +19,7 @@ const ready = (store) => {
     button.addEventListener("click", function (event) {
       store.dispatch("click", { className, event, data: { name, mod } });
     });
-  }
 
-  console.debug("Added roll spell listeners");
+    console.debug("Added roll spell listener: " + name);
+  }
 };

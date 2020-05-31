@@ -29,8 +29,7 @@ const ready = (store) => {
     damageButton.addEventListener("click", function () {
       store.dispatch("click", { className: classes.rollWeaponDamage, event, data: { name, damage } });
     });
-  }
 
-  console.debug("Added attack with weapon listeners");
-  console.debug("Added roll weapon damage listeners");
+    console.debug("Added attack with weapon and roll weapon damage listeners: " + name);
+  }
 };
