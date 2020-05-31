@@ -27,8 +27,7 @@ const ready = (store, selector) => {
       store.dispatch("click", { className, event, data: { name, description } });
     };
     child.appendChild(button);
-  }
 
-  console.debug("Created use feature buttons with selector: " + selector);
-  console.debug("Added use feature listeners with selector: " + selector);
+    console.debug("Added use feature listener: " + name);
+  }
 };

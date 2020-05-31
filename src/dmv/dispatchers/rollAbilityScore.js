@@ -20,8 +20,7 @@ const ready = (store) => {
       store.dispatch("click", { className, event, data: { name, mod } });
     };
     child.appendChild(button);
-  }
 
-  console.debug("Created roll ability score buttons");
-  console.debug("Added roll ability score listeners");
+    console.debug("Added roll ability score listener: " + name);
+  }
 };
