@@ -1,4 +1,4 @@
-export const className = {
+export const classes = {
   attackWithSpell: "vtt-attack-with-spell",
   attackWithWeapon: "vtt-attack-with-weapon",
   castSpell: "vtt-cast-spell",

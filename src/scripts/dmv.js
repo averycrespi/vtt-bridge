@@ -1,6 +1,6 @@
 import { showCommands, showConnected, showVisibility } from "../notifications";
 
-import { addDispatchers } from "../dmv/dispatchers";
+import { addDispatchers } from "../dispatch";
 import { createStore } from "../dmv/store";
 import { messageType } from "../common";
 import { parseClick } from "../dmv/click";

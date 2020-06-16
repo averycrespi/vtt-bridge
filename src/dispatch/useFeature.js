@@ -1,6 +1,4 @@
-import * as classes from "../classes";
-
-import { onElementLoad } from "../../common";
+import { classes, onElementLoad } from "../common";
 
 export const addUseFeatureListeners = (store) => {
   onElementLoad(".actions p span", () => ready(store, ".actions"));
