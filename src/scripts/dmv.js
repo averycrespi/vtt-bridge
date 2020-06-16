@@ -1,9 +1,9 @@
 import { showCommands, showConnected, showVisibility } from "../notifications";
 
 import { addDispatchers } from "../dispatch";
-import { createStore } from "../dmv/store";
+import { createStore } from "../store";
 import { messageType } from "../common";
-import { parseClick } from "../dmv/click";
+import { parseClick } from "../transform/click";
 
 const store = createStore();
 addDispatchers(store, () => showConnected());

@@ -1,5 +1,4 @@
-import { messageType } from "../common";
-import { onElementLoad } from "../common";
+import { messageType, onElementLoad } from "../common";
 import { showConnected } from "../notifications";
 
 const receiveCommands = () => {
