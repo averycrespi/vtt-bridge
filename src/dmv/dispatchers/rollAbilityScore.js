@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../callbacks";
+import { onElementLoad } from "../../common";
 
 export const addRollAbilityScoreListeners = (store) =>
   onElementLoad(".ability-scores .ability-score-name", () => ready(store));

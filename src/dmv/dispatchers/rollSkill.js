@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../callbacks";
+import { onElementLoad } from "../../common";
 
 export const addRollSkillListeners = (store) => onElementLoad(".skills tr .skill-name", () => ready(store));
 

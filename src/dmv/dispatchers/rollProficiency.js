@@ -1,6 +1,6 @@
 import * as classes from "../classes";
 
-import { onElementLoad } from "../../callbacks";
+import { onElementLoad } from "../../common";
 
 export const addRollProficiencyListeners = (store) =>
   onElementLoad(".details-columns table tr .roll-button", () => ready(store));
