@@ -1,5 +1,5 @@
 import { messageType, onElementLoad } from "../common";
-import { showConnected } from "../notifications";
+import { showConnected } from "../notify";
 
 const receiveCommands = () => {
   browser.runtime.sendMessage({ type: messageType.dequeue }).then((commands) => {

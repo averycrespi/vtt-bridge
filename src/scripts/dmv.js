@@ -1,4 +1,4 @@
-import { showCommands, showConnected, showVisibility } from "../notifications";
+import { showCommands, showConnected, showVisibility } from "../notify";
 
 import { addDispatchers } from "../dispatch";
 import { createStore } from "../store";
