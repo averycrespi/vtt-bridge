@@ -1,4 +1,4 @@
-import * as classes from "./classes";
+import { classes } from "../common";
 
 import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote } from "./commands";
 

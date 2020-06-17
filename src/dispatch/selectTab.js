@@ -1,4 +1,4 @@
-import { onChildLoad, onElementLoad } from "../../callbacks";
+import { onChildLoad, onElementLoad } from "../common";
 
 import { addExpandSpellListeners } from "./expandSpell";
 import { addRollInitiativeListeners } from "./rollInitiative";

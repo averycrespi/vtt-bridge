@@ -1,23 +1,23 @@
-import * as messages from "../messages";
+import { messageType } from "../common";
 
-let commandQueue = [];
+let queue = [];
 
 browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   switch (message.type) {
-    case messages.enqueueCommands:
-      commandQueue.push(...message.commands);
+    case messageType.enqueue:
+      queue.push(...message.commands);
       break;
 
-    case messages.dequeueCommands:
-      sendResponse(commandQueue);
-      commandQueue = [];
+    case messageType.dequeue:
+      sendResponse(queue);
+      queue = [];
       break;
 
-    case messages.clearQueue:
-      commandQueue = [];
+    case messageType.clear:
+      queue = [];
       break;
 
     default:
-      throw "Unknown message type: " + message.type;
+      throw "Unknown messagetype: " + message.type;
   }
 });
