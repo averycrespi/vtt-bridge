@@ -8,7 +8,7 @@ const bottomLeft = new Notyf({ position: { x: "left", y: "bottom" } });
 export const showConnected = () =>
   bottomRight.success({ message: "Connected to VTT Bridge!", duration: 0, dismissible: true });
 
-export const showCommands = (message) => bottomRight.success(message);
+export const showToast = (toast) => bottomRight.success(toast);
 
 let visibilityToast;
 export const showVisibility = (visible) => {

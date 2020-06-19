@@ -9,8 +9,8 @@ class ToastRunner(Runner):
 
         button = self.find_elements_by_class_name("vtt-roll-initiative")[0]
         button.click()
-        self.expect_toast("Rolled initiative!")
+        self.expect_toast("Player rolled initiative!")
         self.control_click(button)
-        self.expect_toast("Rolled initiative with advantage!")
+        self.expect_toast("Player rolled initiative with advantage!")
         self.shift_click(button)
-        self.expect_toast("Rolled initiative with disadvantage!")
+        self.expect_toast("Player rolled initiative with disadvantage!")
