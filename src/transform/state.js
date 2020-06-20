@@ -18,42 +18,39 @@ export const parseState = (state) => {
     case classes.attackWithWeapon:
       return {
         toast: makeToast(character + " attacked with " + name, options),
-        commands: [makeEmote(": " + character + " attacks with " + name, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(character + " attacks with " + name, options), makeD20Roll(mod, options)],
       };
     case classes.castSpell:
       return {
         toast: makeToast(character + " cast " + name, options),
-        commands: [makeEmote(": " + character + " casts " + name, options), makeDescription(description, options)],
+        commands: [makeEmote(character + " casts " + name, options), makeDescription(description, options)],
       };
     case classes.rollAbilityScore:
     case classes.rollSkill:
       return {
         toast: makeToast(character + " rolled " + name + " check", options),
-        commands: [makeEmote(": " + character + " rolls " + name + " check", options), makeD20Roll(mod, options)],
+        commands: [makeEmote(character + " rolls " + name + " check", options), makeD20Roll(mod, options)],
       };
     case classes.rollInitiative:
     case classes.rollProficiency:
       return {
         toast: makeToast(character + " rolled " + name, options),
-        commands: [makeEmote(": " + character + " rolls " + name, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(character + " rolls " + name, options), makeD20Roll(mod, options)],
       };
     case classes.rollSavingThrow:
       return {
         toast: makeToast(character + " rolled " + name + " save", options),
-        commands: [makeEmote(": " + character + " rolls " + name + " save", options), makeD20Roll(mod, options)],
+        commands: [makeEmote(character + " rolls " + name + " save", options), makeD20Roll(mod, options)],
       };
     case classes.rollWeaponDamage:
       return {
         toast: makeToast(character + " rolled " + name + " damage", options),
-        commands: [
-          makeEmote(": " + character + " rolls " + name + " damage", options),
-          makeDamageRoll(damage, options),
-        ],
+        commands: [makeEmote(character + " rolls " + name + " damage", options), makeDamageRoll(damage, options)],
       };
     case classes.useFeature:
       return {
         toast: makeToast(character + " used " + name, options),
-        commands: [makeEmote(": " + character + " uses " + name, options), makeDescription(description, options)],
+        commands: [makeEmote(character + " uses " + name, options), makeDescription(description, options)],
       };
     default:
       throw "Unknown class name: " + className;
