@@ -21,7 +21,7 @@ export const makeDescription = (description, { visible }) => {
 };
 
 export const makeEmote = (text, { hasAdvantage, hasDisadvantage, visible }) => {
-  const prefix = visible ? "/em " : "/w gm ";
+  const prefix = visible ? "/em : " : "/w gm ";
   let suffix = "";
   if (hasAdvantage) {
     suffix = " with advantage";

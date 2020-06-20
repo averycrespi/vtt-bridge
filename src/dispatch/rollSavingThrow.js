@@ -1,6 +1,4 @@
-import * as classes from "../classes";
-
-import { onElementLoad } from "../../callbacks";
+import { classes, onElementLoad } from "../common";
 
 export const addRollSavingThrowListeners = (store) => onElementLoad("table tr .saving-throw-name", () => ready(store));
 

@@ -27,11 +27,11 @@ describe("make a description", () => {
 });
 
 describe("make an emote", () => {
-  test("unmodified", () => expect(makeEmote("rolls", { visible: true })).toBe("/em rolls"));
+  test("unmodified", () => expect(makeEmote("rolls", { visible: true })).toBe("/em : rolls"));
   test("with advantage", () =>
-    expect(makeEmote("rolls", { hasAdvantage: true, visible: true })).toBe("/em rolls with advantage"));
+    expect(makeEmote("rolls", { hasAdvantage: true, visible: true })).toBe("/em : rolls with advantage"));
   test("with disadvantage", () =>
-    expect(makeEmote("rolls", { hasDisadvantage: true, visible: true })).toBe("/em rolls with disadvantage"));
+    expect(makeEmote("rolls", { hasDisadvantage: true, visible: true })).toBe("/em : rolls with disadvantage"));
   test("hidden", () => expect(makeEmote("rolls", { visible: false })).toBe("/w gm rolls"));
   test("hidden with advantage", () =>
     expect(makeEmote("rolls", { hasAdvantage: true, visible: false })).toBe("/w gm rolls with advantage"));

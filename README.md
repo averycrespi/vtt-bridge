@@ -69,7 +69,7 @@ Install the VTT Bridge extension for Firefox or Google Chrome.
     <img src="assets/chrome.png" alt="Chrome logo">
 </a>
 
-Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link. Launch your Roll 20 game in another tab.
+Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link. Launch your Roll20 game in another tab.
 
 ![www link](assets/www_link.png)
 
@@ -81,23 +81,23 @@ Click one of the buttons on your Dungeon Master's Vault character sheet. Your ro
 
 ## FAQ
 
-> Help, the buttons on Dungeon Master's Vault aren't working!
+**Help, the buttons on Dungeon Master's Vault aren't working!**
 
 Make sure that you clicked the `www` link in the top right. The URL should end with `?frame`.
 
-> Why does the extension need to "Access your data for www.dungeonmastersvault.com"?
+**Why does the extension need to "Access your data for www.dungeonmastersvault.com"?**
 
 VTT Bridge needs to create buttons, add event listeners, and show notifications.
 
-> Why does the extension need to "Access your data for app.roll20.net"?
+**Why does the extension need to "Access your data for app.roll20.net"?**
 
-VTT Bridge needs to run commands and show notifications.
+VTT Bridge needs to create chat messages and show notifications.
 
-> I found a bug! What should I do?
+**I found a bug! What should I do?**
 
 [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
 
-> I have an idea for a new feature! What should I do?
+**I have an idea for a new feature! What should I do?**
 
 [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Feature request", then complete the issue template.
 
