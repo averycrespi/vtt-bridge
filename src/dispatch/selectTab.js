@@ -10,9 +10,11 @@ import { addWeaponListeners } from "./weapon";
 // Which tab is currently selected?
 let activeTab = -1;
 
+// Brittle: wait for any tab to load.
 export const addSelectTabListeners = (store) => onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
 
 const ready = (store) => {
+  // Find all 5 tabs. A tab is not done loading until it has an orange bar as its child.
   const [combatTab, proficienciesTab, spellsTab, featuresTab, equipmentTab] = document.querySelectorAll(
     ".flex-grow-1.t-a-c",
   );

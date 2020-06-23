@@ -1,5 +1,6 @@
 import { classes, onElementLoad } from "../common";
 
+// Brittle: wait for any roll button to load.
 export const addWeaponListeners = (store) => onElementLoad(".weapons .weapon .roll-button", () => ready(store));
 
 const ready = (store) => {
@@ -13,7 +14,9 @@ const ready = (store) => {
     const details = cells.find((c) => c.innerText.includes("damage")).innerText;
 
     const name = cells[0].innerText;
-    const damage = details.match(/([0-9d+-]+) damage/)[1]; // Match first capture group.
+    // Brittle: search the details with a damage regex.
+    const damage = details.match(/([0-9d+-]+) damage/)[1];
+    // Brittle: find the first cell that matches a mod regex.
     const mod = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
 
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");

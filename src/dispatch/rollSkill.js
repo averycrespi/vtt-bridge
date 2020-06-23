@@ -1,6 +1,6 @@
 import { classes, onElementLoad } from "../common";
 
-export const addRollSkillListeners = (store) => onElementLoad(".skills tr .skill-name", () => ready(store));
+export const addRollSkillListeners = (store) => onElementLoad(".skills", () => ready(store));
 
 const ready = (store) => {
   const rows = document.querySelector(".skills").querySelectorAll("tr");
