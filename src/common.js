@@ -8,6 +8,7 @@ export const classes = {
   rollSavingThrow: "vtt-roll-saving-throw",
   rollSkill: "vtt-roll-skill",
   rollWeaponDamage: "vtt-roll-weapon-damage",
+  toggleVisibility: "vtt-toggle-visibility",
   useFeature: "vtt-use-feature",
 };
 
