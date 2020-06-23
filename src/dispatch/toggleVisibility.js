@@ -8,7 +8,7 @@ const ready = (store) => {
   const summary = document.querySelector(".character-summary");
 
   const button = document.createElement("button");
-  button.classList.add("form-button", "m-l-10", classes.toggleVisibility);
+  button.classList.add("form-button", "m-l-10", "h-40", classes.toggleVisibility);
   button.addEventListener("click", function () {
     visible = !visible;
     store.dispatch("visibility", visible);
@@ -24,7 +24,7 @@ const ready = (store) => {
 
   const textSpan = document.createElement("span");
   textSpan.classList.add("m-l-5");
-  textSpan.innerText = "toggle";
+  textSpan.innerText = "toggle visibility";
   button.appendChild(textSpan);
 
   console.debug("Added toggle visibility listeners");
