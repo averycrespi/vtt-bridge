@@ -1,5 +1,6 @@
 import { classes, onElementLoad } from "../common";
 
+// Brittle: wait for any spell row to load.
 export const addRollSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
@@ -10,7 +11,7 @@ const ready = (store) => {
 
     const className = classes.attackWithSpell;
     const name = cells[0].innerText;
-    const mod = cells[4].innerText; //TODO: use better selector
+    const mod = cells[4].innerText; // Brittle: extract the mod from the 5th cell.
 
     const button = row.querySelector(".roll-button");
     button.classList.add(className);

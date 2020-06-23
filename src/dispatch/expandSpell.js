@@ -1,5 +1,6 @@
 import { classes, onElementLoad } from "../common";
 
+// Brittle: wait for any spell row to load.
 export const addExpandSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
@@ -7,16 +8,16 @@ const ready = (store) => {
 
   for (const pointer of pointers) {
     pointer.addEventListener("click", function () {
+      // Brittle: wait for any form button in a cell to load.
       onElementLoad(".spells td .form-button", () => {
         const className = classes.castSpell;
 
         const button = document.querySelector(".spells td .form-button");
-        button.classList.remove("form-button"); // Avoid selecting this button on other pointer clicks.
+        button.classList.remove("form-button"); // Avoid matching this button again.
         button.classList.add("roll-button", className);
 
-        // Extract the spell name from the prevous row.
-        const row = button.closest("tr");
-        const name = row.previousSibling.firstChild.innerText;
+        const prevRow = button.closest("tr").previousSibling;
+        const name = prevRow.firstChild.innerText;
 
         const cell = button.closest("td");
         const paragraphs = Array.from(cell.querySelectorAll("p"));

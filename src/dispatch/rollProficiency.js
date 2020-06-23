@@ -1,5 +1,6 @@
 import { classes, onElementLoad } from "../common";
 
+// Brittle: wait for any roll button to load.
 export const addRollProficiencyListeners = (store) =>
   onElementLoad(".details-columns table tr .roll-button", () => ready(store));
 
@@ -12,11 +13,11 @@ const ready = (store) => {
       if (row.querySelectorAll("th").length > 0) {
         continue; // Skip table header.
       }
-
       const cells = Array.from(row.querySelectorAll("td"));
 
       const className = classes.rollProficiency;
       const name = cells[0].innerText;
+      // Brittle: find the first cell that satisfies a mod regex.
       const mod = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
 
       const button = row.querySelector(".roll-button");
