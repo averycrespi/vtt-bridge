@@ -38,7 +38,7 @@
 </div>
 
 <div align="center">
-    <img src="assets/screenshot.png" alt="Screenshot">
+    <img src="assets/screenshot_1920x1080.png" alt="Screenshot">
 </div>
 
 ## About
@@ -51,7 +51,7 @@ VTT Bridge seamlessly connects your Dungeon Master's Vault character sheet to yo
 
 - Roll ability checks, attack with weapons, cast spells, and more!
 - <kbd>Ctrl-Click</kbd> to roll with advantage and <kbd>Shift-Click</kbd> to roll with disadvantage.
-- Switch between visible commands (everyone can see) and hidden commands (only you and the GM can see).
+- Switch between visible commands (that everyone can see) and hidden commands (that only you and the GM can see).
 
 **Disclaimer**
 
@@ -71,11 +71,11 @@ Install the VTT Bridge extension for Firefox or Google Chrome.
 
 Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link in the top right.
 
-![www link](assets/www_link.png)
+![www link](assets/www.png)
 
 Launch your Roll20 game in another tab. You should see a notification appear in both tabs.
 
-![Connected to VTT Bridge](assets/connected_to_vtt_bridge.png)
+![Notification](assets/notification.png)
 
 Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
