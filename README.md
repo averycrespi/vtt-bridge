@@ -38,7 +38,7 @@
 </div>
 
 <div align="center">
-    <img src="assets/screenshot.png" alt="Screenshot">
+    <img src="assets/screenshot_1920x1080.png" alt="Screenshot">
 </div>
 
 ## About
@@ -49,9 +49,9 @@ VTT Bridge seamlessly connects your Dungeon Master's Vault character sheet to yo
 
 ## Key Features
 
-- Roll ability checks, attack with weapons, cast spells, and much more!
-- Use <kbd>Ctrl-Click</kbd> to roll with advantage and <kbd>Shift-Click</kbd> to roll with disadvantage.
-- Hold <kbd>H</kbd> to switch between visible rolls (everyone can see) and hidden rolls (only you and the GM can see).
+- Roll ability checks, attack with weapons, cast spells, and more!
+- <kbd>Ctrl-Click</kbd> to roll with advantage and <kbd>Shift-Click</kbd> to roll with disadvantage.
+- Switch between visible commands (that everyone can see) and hidden commands (that only you and the GM can see).
 
 **Disclaimer**
 
@@ -69,13 +69,13 @@ Install the VTT Bridge extension for Firefox or Google Chrome.
     <img src="assets/chrome.png" alt="Chrome logo">
 </a>
 
-Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link. Launch your Roll20 game in another tab.
+Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link in the top right.
 
-![www link](assets/www_link.png)
+![www link](assets/www.png)
 
-You should see a notification appear in both tabs.
+Launch your Roll20 game in another tab. You should see a notification appear in both tabs.
 
-![Connected to VTT Bridge](assets/connected_to_vtt_bridge.png)
+![Notification](assets/notification.png)
 
 Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
@@ -83,32 +83,23 @@ Click one of the buttons on your Dungeon Master's Vault character sheet. Your ro
 
 **Help, the buttons on Dungeon Master's Vault aren't working!**
 
-Make sure that you clicked the `www` link in the top right. The URL should end with `?frame`.
+Make sure that you clicked the `www` link. The URL should end with `?frame`.
 
-**Why does the extension need to "Access your data for www.dungeonmastersvault.com"?**
+**Why does the extension need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
-VTT Bridge needs to create buttons, add event listeners, and show notifications.
-
-**Why does the extension need to "Access your data for app.roll20.net"?**
-
-VTT Bridge needs to create chat messages and show notifications.
+The extension needs to add buttons to Dungeon Master's Vault and enter chat messages on Roll20. VTT Bridge will not make any changes to your content or account on either site.
 
 **I found a bug! What should I do?**
 
 [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
 
-**I have an idea for a new feature! What should I do?**
-
-[Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Feature request", then complete the issue template.
-
 ## Development
 
-See [DEVELOPERS.md](DEVELOPERS.md) for help building, testing, and running the extension.
+See [DEVELOPERS.md](DEVELOPERS.md) for information about building, testing, and running the extension.
 
 ## Credits
 
 Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
-
 Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
 
 ## License
