@@ -1,20 +1,31 @@
-export const addToggleVisibilityListeners = (store) => {
+import { classes, onElementLoad } from "../common";
+
+export const addToggleVisibilityListeners = (store) => onElementLoad(".character-summary", () => ready(store));
+
+const ready = (store) => {
   let visible = true;
-  let timer = null;
 
-  document.addEventListener("keydown", function (e) {
-    if (e.code === "KeyH" && !timer) {
-      timer = window.setTimeout(function () {
-        visible = !visible;
-        store.dispatch("visibility", visible);
-      }, 1000);
-    }
-  });
+  const summary = document.querySelector(".character-summary");
 
-  document.addEventListener("keyup", function (e) {
-    if (e.code === "KeyH" && timer) {
-      window.clearTimeout(timer);
-      timer = null;
-    }
+  const button = document.createElement("button");
+  button.classList.add("form-button", "m-l-10", "h-40", classes.toggleVisibility);
+  button.addEventListener("click", function () {
+    visible = !visible;
+    store.dispatch("visibility", visible);
   });
+  summary.appendChild(button);
+
+  const iconSpan = document.createElement("span");
+  button.appendChild(iconSpan);
+
+  const icon = document.createElement("i");
+  icon.classList.add("fa", "f-s-18", "fa-eye");
+  iconSpan.appendChild(icon);
+
+  const textSpan = document.createElement("span");
+  textSpan.classList.add("m-l-5");
+  textSpan.innerText = "toggle visibility";
+  button.appendChild(textSpan);
+
+  console.debug("Added toggle visibility listeners");
 };

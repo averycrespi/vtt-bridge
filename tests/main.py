@@ -8,11 +8,10 @@ from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from sys import exit
-from typing import List
 
-from dmv import Character
-from dmv.existence import ExistenceRunner
-from dmv.toast import ToastRunner
+
+from engine import Engine
+from runner import Runner
 
 
 def parse_args():
@@ -33,11 +32,11 @@ def parse_args():
         help="Log directory",
     )
     parser.add_argument(
-        "--characters-file",
+        "--url-file",
         action="store",
         type=Path,
-        default=Path("tests") / "characters.json",
-        help="Characters file",
+        default=Path("tests") / "character_urls.json",
+        help="Character URL file",
     )
     return parser.parse_args()
 
@@ -57,12 +56,6 @@ def configure_logger(log_dir: Path, browser: str) -> logging.Logger:
     return logger
 
 
-def load_characters(characters_file: Path) -> List[Character]:
-    """Load characters from a file."""
-    with open(characters_file) as f:
-        return [Character(**obj) for obj in json.load(f)]
-
-
 def find_extension_file() -> Path:
     """Find the packaged extension file."""
     paths = list(Path("web-ext-artifacts/").glob("*.zip"))
@@ -70,7 +63,8 @@ def find_extension_file() -> Path:
         raise ValueError("Can't find packaged extension file. Run `yarn build`.")
     elif len(paths) > 1:
         raise ValueError("Found multiple packaged extension files. Run `yarn clean`.")
-    return paths[0].resolve()
+    else:
+        return paths[0].resolve()
 
 
 def create_driver(browser: str, extension_file: Path):
@@ -82,7 +76,6 @@ def create_driver(browser: str, extension_file: Path):
     elif browser == "chromium":
         options = Options()
         options.add_extension(str(extension_file))
-        log_path = os.path.devnull
         driver = webdriver.Chrome(
             chrome_options=options, service_log_path=os.path.devnull
         )
@@ -94,15 +87,12 @@ def create_driver(browser: str, extension_file: Path):
 if __name__ == "__main__":
     args = parse_args()
     logger = configure_logger(args.log_dir, args.browser)
-    characters = load_characters(args.characters_file)
-    extension_file = find_extension_file()
-    driver = create_driver(args.browser, extension_file)
+    driver = create_driver(args.browser, find_extension_file())
+    runner = Runner(Engine(driver), logger)
     try:
-        existence_runner = ExistenceRunner(driver=driver, logger=logger)
-        toast_runner = ToastRunner(driver=driver, logger=logger)
-        for character in characters:
-            existence_runner.run(character)
-            toast_runner.run(character)
+        with open(args.url_file) as f:
+            for url in json.load(f):
+                runner.run(url)
         exit_code = 0
     except Exception:
         logger.exception("Tests failed with error:")
