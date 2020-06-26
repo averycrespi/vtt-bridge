@@ -51,15 +51,15 @@ VTT Bridge seamlessly connects your Dungeon Master's Vault character sheet to yo
 
 - Roll ability checks, attack with weapons, cast spells, and more!
 - <kbd>Ctrl-Click</kbd> to roll with advantage and <kbd>Shift-Click</kbd> to roll with disadvantage.
-- Switch between visible commands (that everyone can see) and hidden commands (that only you and the GM can see).
+- Switch between visible commands (everyone can see) and hidden commands (only you and the GM can see).
 
-**Disclaimer**
+## Disclaimer
 
 The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
 
 ## Getting Started
 
-Install the VTT Bridge extension for Firefox or Google Chrome.
+**Install the extension** by clicking one of the following icons:
 
 <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
     <img src="assets/firefox.png" alt="Firefox logo">
@@ -85,9 +85,17 @@ Click one of the buttons on your Dungeon Master's Vault character sheet. Your ro
 
 Make sure that you clicked the `www` link. The URL should end with `?frame`.
 
-**Why does the extension need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
+**Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
-The extension needs to add buttons to Dungeon Master's Vault and enter chat messages on Roll20. VTT Bridge will not make any changes to your content or account on either site.
+BTT Bridge needs to add buttons to Dungeon Master's Vault and enter chat messages on Roll20. VTT Bridge will not make any changes to your content or account on either site.
+
+**Do I need to have any specific content on Roll20?**
+
+No. Any Dungeon Master's Vault content (including homebrew) will work, regardless of your Roll20 content.
+
+**Do I need to have a Plus/Pro subscription on Roll20?**
+
+No. VTT Bridge works with a basic (free) Roll20 account. The extension will not generate any subscriber-only commands.
 
 **I found a bug! What should I do?**
 
