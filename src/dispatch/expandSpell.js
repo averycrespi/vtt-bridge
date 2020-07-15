@@ -4,7 +4,9 @@ import { classes, onElementLoad } from "../common";
 export const addExpandSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
-  const pointers = document.querySelector(".details-columns").querySelectorAll(".pointer.orange");
+  let pointers = document.querySelector(".details-columns").querySelectorAll(".spell.pointer");
+  // TOOD: remove orange pointers in the next release.
+  pointers = [...pointers, ...document.querySelector(".details-columns").querySelectorAll(".pointer.orange")];
 
   for (const pointer of pointers) {
     pointer.addEventListener("click", function () {
