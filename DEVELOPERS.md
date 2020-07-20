@@ -57,11 +57,8 @@ yarn firefox:test
 yarn chromium:test
 
 # Run all tests.
+# Make sure you run `yarn build` first.
 yarn test
 ```
 
-Notes:
-
-- The test harness will create and activate a Python virtual environment in `tests/venv`.
-- Characters will be loaded from `tests/characters.json`.
-- Logs will be written to `tests/logs`.
+See `tests/README.md` for more information about automation tests.
