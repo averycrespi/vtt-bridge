@@ -13,9 +13,21 @@
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
         <img src="https://img.shields.io/amo/v/vtt-bridge" alt="Mozilla Add-On version badge">
     </a>
+    <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
+        <img src="https://img.shields.io/amo/users/vtt-bridge" alt="Mozilla Add-on users badge">
+    </a>
+</div>
+
+<div align="center">
     <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
         <img src="https://img.shields.io/chrome-web-store/v/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chrome Web Store version badge">
     </a>
+    <a href="https://chrome.google.com/webstore/detail/vtt-bridge/fadncbccmelchegmlghbhpjchdmghmhh">
+        <img src="https://img.shields.io/chrome-web-store/users/fadncbccmelchegmlghbhpjchdmghmhh" alt="Chrome Web Store users badge">
+    </a>
+</div>
+
+<div align="center">
     <a href="https://github.com/averycrespi/vtt-bridge/commits/master">
         <img src="https://img.shields.io/github/last-commit/averycrespi/vtt-bridge/master" alt="Last commit badge">
     </a>
@@ -25,16 +37,6 @@
     <a href="https://github.com/averycrespi/vtt-bridge/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/averycrespi/vtt-bridge" alt="License badge">
     </a>
-</div>
-
-<div align="center">
-    <a href="#about">About</a> •
-    <a href="#about">Key Features</a> •
-    <a href="#getting-started">Getting Started</a> •
-    <a href="#faq">FAQ</a> •
-    <a href="#development">Development</a> •
-    <a href="#credits">Credits</a> •
-    <a href="#license">License</a>
 </div>
 
 <div align="center">
@@ -69,15 +71,15 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
     <img src="assets/chrome.png" alt="Chrome logo">
 </a>
 
-Open your Dungeon Master's Vault character sheet and click the <kbd>www</kbd> link in the top right.
+**Open your Dungeon Master's Vault character sheet** and click the <kbd>www</kbd> link in the top right.
 
 ![www link](assets/www.png)
 
-Launch your Roll20 game in another tab. You should see a notification appear in both tabs.
+**Launch your Roll20 game** in another tab. You should see a notification appear in both tabs.
 
 ![Notification](assets/notification.png)
 
-Click one of the buttons on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
+**Click a button** on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
 
 ## FAQ
 
@@ -87,7 +89,7 @@ Make sure that you clicked the `www` link. The URL should end with `?frame`.
 
 **Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
-BTT Bridge needs to add buttons to Dungeon Master's Vault and enter chat messages on Roll20. VTT Bridge will not make any changes to your content or account on either site.
+VVT Bridge needs to add buttons to Dungeon Master's Vault and enter chat messages on Roll20. VTT Bridge will not make any changes to your content or account on either site.
 
 **Do I need to have any specific content on Roll20?**
 
