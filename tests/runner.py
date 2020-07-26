@@ -33,7 +33,7 @@ class Runner:
 
         self.logger.debug("Checking user interaction")
         self._check_roll_strength_button()
-        for spell in character.spells:
+        for spell in character.tested_spells:
             self._check_spell_expansion(spell)
 
     def _toggle_visibility(self):

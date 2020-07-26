@@ -11,7 +11,7 @@ class Character:
         num_tools: int = 0,
         num_spells: int = 0,
         num_features: int = 0,
-        spells: List[str] = []
+        tested_spells: List[str] = []
     ):
         """Create a new character."""
         self.url = url
@@ -20,4 +20,4 @@ class Character:
         self.num_tools = num_tools
         self.num_spells = num_spells
         self.num_features = num_features
-        self.spells = spells
+        self.tested_spells = tested_spells

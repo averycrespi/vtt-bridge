@@ -45,20 +45,19 @@ Requires [Python](https://www.python.org/) 3.6 (or newer), [geckodriver](https:/
 # Build the extension package.
 yarn build
 
-# Run unit tests with Jest.
+# Run unit tests.
 yarn parcel:test
 
-# Run automation tests for Firefox.
+# Run automation tests with Firefox.
 # The `geckodriver` binary must be in your PATH.
 yarn firefox:test
 
-# Run automation tests for Chromium.
+# Run automation tests with Chromium.
 # The `chromedriver` binary must be in your PATH.
 yarn chromium:test
 
 # Run all tests.
-# Make sure you run `yarn build` first.
 yarn test
 ```
 
-See `tests/README.md` for more information about automation tests.
+See [tests/README.md](tests/README.md) for more information about automation tests.

@@ -6,6 +6,6 @@
     "num_tools": 0,
     "num_spells": 12,
     "num_features": 9,
-    "spells": ["Bless"]
+    "tested_spells": ["Bless"]
   }
 ]
