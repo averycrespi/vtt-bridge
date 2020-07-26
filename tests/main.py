@@ -8,8 +8,10 @@ from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from sys import exit
+from typing import Sequence
 
 
+from character import Character
 from engine import Engine
 from runner import Runner
 
@@ -32,25 +34,26 @@ def parse_args():
         help="Log directory",
     )
     parser.add_argument(
-        "--url-file",
+        "--character-file",
         action="store",
         type=Path,
-        default=Path("tests") / "character_urls.json",
-        help="Character URL file",
+        default=Path("tests") / "characters.json",
+        help="Character JSON file",
     )
+    parser.add_argument("--debug", action="store_true", help="Enable debug logging")
     return parser.parse_args()
 
 
-def configure_logger(log_dir: Path, browser: str) -> logging.Logger:
+def configure_logger(log_dir: Path, browser: str, debug: bool) -> logging.Logger:
     """Configure the logger."""
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(message)s")
     streamHandler = logging.StreamHandler()
     streamHandler.setFormatter(formatter)
-    log_file = log_dir / "{}.log".format(browser)
+    log_file = log_dir / f"{browser}.log"
     fileHandler = logging.FileHandler(log_file)
     fileHandler.setFormatter(formatter)
     logger = logging.getLogger(browser)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG if debug else logging.INFO)
     logger.addHandler(streamHandler)
     logger.addHandler(fileHandler)
     return logger
@@ -60,14 +63,14 @@ def find_extension_file() -> Path:
     """Find the packaged extension file."""
     paths = list(Path("web-ext-artifacts/").glob("*.zip"))
     if len(paths) < 1:
-        raise ValueError("Can't find packaged extension file. Run `yarn build`.")
+        raise ValueError("Can't find extension file. Run `yarn build`.")
     elif len(paths) > 1:
-        raise ValueError("Found multiple packaged extension files. Run `yarn clean`.")
+        raise ValueError("Found multiple extension files. Run `yarn rebuild`.")
     else:
         return paths[0].resolve()
 
 
-def create_driver(browser: str, extension_file: Path):
+def create_driver_with_extension(browser: str, extension_file: Path):
     """Create the driver and load the extension."""
     if browser == "firefox":
         driver = webdriver.Firefox(service_log_path=os.path.devnull)
@@ -81,18 +84,25 @@ def create_driver(browser: str, extension_file: Path):
         )
         return driver
     else:
-        raise ValueError("Unknown browser: {}".format(browser))
+        raise ValueError(f"Unknown browser: {browser}")
+
+
+def load_characters(character_file: Path) -> Sequence[Character]:
+    """Load characters from a JSON file."""
+    with open(character_file) as f:
+        return [Character(**data) for data in json.load(f)]
 
 
 if __name__ == "__main__":
     args = parse_args()
-    logger = configure_logger(args.log_dir, args.browser)
-    driver = create_driver(args.browser, find_extension_file())
-    runner = Runner(Engine(driver), logger)
+    logger = configure_logger(args.log_dir, args.browser, args.debug)
+    driver = create_driver_with_extension(args.browser, find_extension_file())
+    engine = Engine(driver, logger)
+    runner = Runner(engine, logger)
+    characters = load_characters(args.character_file)
     try:
-        with open(args.url_file) as f:
-            for url in json.load(f):
-                runner.run(url)
+        for character in characters:
+            runner.run(character)
         exit_code = 0
     except Exception:
         logger.exception("Tests failed with error:")

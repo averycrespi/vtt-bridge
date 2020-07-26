@@ -45,14 +45,14 @@ Requires [Python](https://www.python.org/) 3.6 (or newer), [geckodriver](https:/
 # Build the extension package.
 yarn build
 
-# Run unit tests with Jest.
+# Run unit tests.
 yarn parcel:test
 
-# Run automation tests for Firefox.
+# Run automation tests with Firefox.
 # The `geckodriver` binary must be in your PATH.
 yarn firefox:test
 
-# Run automation tests for Chromium.
+# Run automation tests with Chromium.
 # The `chromedriver` binary must be in your PATH.
 yarn chromium:test
 
@@ -60,8 +60,4 @@ yarn chromium:test
 yarn test
 ```
 
-Notes:
-
-- The test harness will create and activate a Python virtual environment in `tests/venv`.
-- Characters will be loaded from `tests/characters.json`.
-- Logs will be written to `tests/logs`.
+See [tests/README.md](tests/README.md) for more information about automation tests.

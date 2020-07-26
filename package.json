@@ -37,6 +37,7 @@
     "chromium:test": "./tests/run_chromium.sh",
     "build": "yarn parcel:rebuild && web-ext lint && web-ext build",
     "clean": "yarn parcel:clean && rm -rf web-ext-artifacts/*",
+    "rebuild": "yarn clean && yarn build",
     "test": "yarn parcel:test && yarn firefox:test && yarn chromium:test"
   },
   "webExt": {
