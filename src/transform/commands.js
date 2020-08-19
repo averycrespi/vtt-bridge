@@ -1,13 +1,13 @@
 export const makeD20Roll = (mod, { hasAdvantage, hasDisadvantage, visible }) => {
   const prefix = visible ? "/roll " : "/gmroll ";
   const suffix = mod === "0" ? "" : mod;
-  let dice = "1d20";
   if (hasAdvantage) {
-    dice = "2d20kh1";
+    return prefix + "2d20kh1" + suffix;
   } else if (hasDisadvantage) {
-    dice = "2d20kl1";
+    return prefix + "2d20kl1" + suffix;
+  } else {
+    return prefix + "1d20" + suffix;
   }
-  return prefix + dice + suffix;
 };
 
 export const makeDamageRoll = (damage, { visible }) => {
@@ -22,11 +22,20 @@ export const makeDescription = (description, { visible }) => {
 
 export const makeEmote = (text, { hasAdvantage, hasDisadvantage, visible }) => {
   const prefix = visible ? "/em : " : "/w gm ";
-  let suffix = "";
   if (hasAdvantage) {
-    suffix = " with advantage";
+    return prefix + text + " with advantage";
   } else if (hasDisadvantage) {
-    suffix = " with disadvantage";
+    return prefix + text + " with disadvantage";
+  } else {
+    return prefix + text;
   }
-  return prefix + text + suffix;
+};
+
+export const makeWeaponAttack = (attack, { hasAdvantage, hasDisadvantage, visible }) => {
+  const prefix = visible ? "/roll " : "/gmroll ";
+  if (hasAdvantage || hasDisadvantage) {
+    return prefix + attack + "\n" + prefix + attack;
+  } else {
+    return prefix + attack;
+  }
 };

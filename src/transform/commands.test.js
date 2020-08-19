@@ -1,4 +1,4 @@
-import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote, makeWeaponAttack } from "./commands";
 
 describe("make a D20 roll", () => {
   test("unmodified", () => expect(makeD20Roll("0", { visible: true })).toBe("/roll 1d20"));
@@ -37,4 +37,18 @@ describe("make an emote", () => {
     expect(makeEmote("rolls", { hasAdvantage: true, visible: false })).toBe("/w gm rolls with advantage"));
   test("hidden with disadvantage", () =>
     expect(makeEmote("rolls", { hasDisadvantage: true, visible: false })).toBe("/w gm rolls with disadvantage"));
+});
+
+describe("make a weapon attack", () => {
+  test("unmodified", () => expect(makeWeaponAttack("1d4", { visible: true })).toBe("/roll 1d4"));
+  test("modified", () => expect(makeWeaponAttack("1d4+2", { visible: true })).toBe("/roll 1d4+2"));
+  test("with advantage", () =>
+    expect(makeWeaponAttack("1d4+2", { visible: true, hasAdvantage: true })).toBe("/roll 1d4+2\n/roll 1d4+2"));
+  test("with disadvantage", () =>
+    expect(makeWeaponAttack("1d4+2", { visible: true, hasDisadvantage: true })).toBe("/roll 1d4+2\n/roll 1d4+2"));
+  test("hidden", () => expect(makeWeaponAttack("1d4+2", { visible: false })).toBe("/gmroll 1d4+2"));
+  test("hidden with advantage", () =>
+    expect(makeWeaponAttack("1d4+2", { visible: false, hasAdvantage: true })).toBe("/gmroll 1d4+2\n/gmroll 1d4+2"));
+  test("hidden with disadvantage", () =>
+    expect(makeWeaponAttack("1d4+2", { visible: false, hasDisadvantage: true })).toBe("/gmroll 1d4+2\n/gmroll 1d4+2"));
 });
