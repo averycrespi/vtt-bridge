@@ -6,7 +6,13 @@
 </div>
 
 <div align="center">
-    <h4>A browser extension that connects Dungeon Master's Vault to Roll20.</h4>
+    <h4>A browser extension that connects
+        <a href="https://www.dungeonmastersvault.com/">Dungeon Master's Vault</a>
+        to
+        <a href="https://roll20.net/">Roll20</a>.
+    </h4>
+    <hr>
+    <br>
 </div>
 
 <div align="center">
@@ -57,7 +63,7 @@ VTT Bridge seamlessly connects your Dungeon Master's Vault character sheet to yo
 
 ## Disclaimer
 
-The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll 20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll 20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
+The use of this tool is meant for use for your own campaigns. It is only meant and should only be used on campaigns with content that you legally possess. The use of this tool may violate the [Roll20 Marketplace Asset EULA](https://wiki.roll20.net/Marketplace_Asset_EULA) or the [Roll20 Terms of Service](https://wiki.roll20.net/Terms_of_Service_and_Privacy_Policy). This tool is not affiliated with Dungeon Master's Vault, Roll20, or Wizards of the Coast.
 
 ## Getting Started
 
