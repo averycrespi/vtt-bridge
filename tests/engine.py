@@ -49,7 +49,7 @@ class Engine:
     def select_tab_by_index(self, index: int):
         """Select a tab by index."""
         self.logger.debug(f"Selecting tab by index: {index}")
-        tab_selector = ".flex-grow-1.t-a-c"
+        tab_selector = ".w-50-p .flex-grow-1.t-a-c"
         self.find(tab_selector)[index].click()
 
     def expect_toast(self, pattern: str):
