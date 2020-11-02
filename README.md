@@ -12,6 +12,16 @@
         <a href="https://roll20.net/">Roll20</a>.
     </h4>
     <hr>
+</div>
+
+<div align="center">
+    <p>
+        <b>NOTICE: Due to some upcoming DMV changes, the extension may stop working for a short period of time.</b>
+    </p>
+    <p>
+        <b>Thank you for your patience while I fix the incompatibilities.</b>
+    </p>
+    <hr>
     <br>
 </div>
 
