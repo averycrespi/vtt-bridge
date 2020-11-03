@@ -99,11 +99,11 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 ## FAQ
 
-> Help, the buttons on Dungeon Master's Vault aren't working!
+**Help, the buttons on Dungeon Master's Vault aren't working!**
 
 Make sure that you clicked the `www` link. The URL should end with `?frame`.
 
-> Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?
+**Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
 On Dungeon Master's Vault, the extension adds event listeners to the roll buttons.
 
@@ -111,23 +111,23 @@ On Roll20, the extension runs commands in the game chat.
 
 VTT Bridge will *never* make any changes to your account or your content on either site.
 
-> Do I need to have any specific content on Roll20?
+**Do I need to have any specific content on Roll20?**
 
 No. All Dungeon Master's Vault content (including homebrew) will work, regardless of your Roll20 content.
 
-> Do I need to have a Plus/Pro subscription on Roll20?
+**Do I need to have a Plus/Pro subscription on Roll20?**
 
 No. VTT Bridge works with a basic (free) Roll20 account.
 
 The extension will not generate any subscriber-only commands.
 
-> How can I use VTT Bridge with my personal Dungeon Master's Vault server?
+**How can I use VTT Bridge with my personal Dungeon Master's Vault server?**
 
 VTT Bridge does not officially support personal Dungeon Master's Vault servers.
 
 However, you can follow the instructions in [DEVELOPERS.md](DEVELOPERS.md) to create your own version of the extension.
 
-> I found a bug! What should I do?
+**I found a bug! What should I do?**
 
 [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
 
