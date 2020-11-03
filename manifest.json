@@ -10,7 +10,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.dungeonmastersvault.com/pages/dnd/5e/characters/*?frame=true"],
+      "matches": ["*://www.dungeonmastersvault.com/pages/dnd/5e/characters/*?frame=true"],
       "js": ["dist/polyfill.js", "dist/dmv.js"],
       "css": ["dist/dmv.css"]
     },
