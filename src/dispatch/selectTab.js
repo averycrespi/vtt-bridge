@@ -11,12 +11,13 @@ import { addWeaponListeners } from "./weapon";
 let activeTab = -1;
 
 // Brittle: wait for any tab to load.
-export const addSelectTabListeners = (store) => onElementLoad(".flex-grow-1.t-a-c", () => ready(store));
+// We need the ".w-50-p" to exclude banner ads.
+export const addSelectTabListeners = (store) => onElementLoad(".w-50-p .flex-grow-1.t-a-c", () => ready(store));
 
 const ready = (store) => {
   // Find all 5 tabs. A tab is not done loading until it has an orange bar as its child.
   const [combatTab, proficienciesTab, spellsTab, featuresTab, equipmentTab] = document.querySelectorAll(
-    ".flex-grow-1.t-a-c",
+    ".w-50-p .flex-grow-1.t-a-c",
   );
 
   combatTab.addEventListener("click", () => {

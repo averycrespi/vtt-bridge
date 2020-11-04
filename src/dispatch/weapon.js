@@ -5,25 +5,22 @@ export const addWeaponListeners = (store) => onElementLoad(".weapons .weapon .ro
 
 const ready = (store) => {
   const rows = document.querySelector(".weapons").querySelectorAll("tr");
+
   for (const row of rows) {
+    // Skip table headers.
     if (row.querySelectorAll("th").length > 0) {
-      continue; // Skip table header.
+      continue;
     }
 
     const cells = Array.from(row.querySelectorAll("td"));
-    const details = cells.find((c) => c.innerText.includes("damage")).innerText;
-
     const name = cells[0].innerText;
-    // Brittle: search the details with a damage regex.
-    const damage = details.match(/([0-9d+-]+) damage/)[1];
-    // Brittle: find the first cell that matches a mod regex.
-    const mod = cells.find((c) => c.innerText.match(/^[0-9+-]+/)).innerText;
-
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
+    const attack = attackButton.innerText;
+    const damage = damageButton.innerText;
 
     attackButton.classList.add(classes.attackWithWeapon);
     attackButton.addEventListener("click", function (event) {
-      store.dispatch("click", { className: classes.attackWithWeapon, event, data: { name, mod } });
+      store.dispatch("click", { className: classes.attackWithWeapon, event, data: { name, attack } });
     });
 
     damageButton.classList.add(classes.rollWeaponDamage);

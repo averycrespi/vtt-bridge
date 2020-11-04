@@ -4,19 +4,17 @@ import { classes, onElementLoad } from "../common";
 export const addExpandSpellListeners = (store) => onElementLoad(".details-columns tr.spell", () => ready(store));
 
 const ready = (store) => {
+  const className = classes.castSpell;
   let pointers = document.querySelector(".details-columns").querySelectorAll(".spell.pointer");
-  // TOOD: remove orange pointers in the next release.
-  pointers = [...pointers, ...document.querySelector(".details-columns").querySelectorAll(".pointer.orange")];
 
   for (const pointer of pointers) {
     pointer.addEventListener("click", function () {
       // Brittle: wait for any form button in a cell to load.
       onElementLoad(".spells td .form-button", () => {
-        const className = classes.castSpell;
-
         const button = document.querySelector(".spells td .form-button");
         button.classList.remove("form-button"); // Avoid matching this button again.
         button.classList.add("roll-button", className);
+        button.innerText = "CAST SPELL";
 
         const prevRow = button.closest("tr").previousSibling;
         const name = prevRow.firstChild.innerText;

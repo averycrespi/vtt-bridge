@@ -1,4 +1,4 @@
-import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote, makeWeaponAttack } from "./commands";
 
 import { classes } from "../common";
 import { makeToast } from "./toasts";
@@ -6,7 +6,7 @@ import { makeToast } from "./toasts";
 export const parseState = (state) => {
   const { click, visible, character } = state;
   const { className, event, data } = click;
-  const { name, mod, description, damage } = data;
+  const { name, mod, description, attack, damage } = data;
   const options = {
     hasAdvantage: event && event.ctrlKey,
     hasDisadvantage: event && event.shiftKey,
@@ -16,10 +16,10 @@ export const parseState = (state) => {
   switch (className) {
     case classes.attackWithSpell:
     case classes.attackWithWeapon:
-      validate(name, mod);
+      validate(name, attack);
       return {
         toast: makeToast(character + " attacked with " + name, options),
-        commands: [makeEmote(character + " attacks with " + name, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(character + " attacks with " + name, options), makeWeaponAttack(attack, options)],
       };
     case classes.castSpell:
       validate(name, description);

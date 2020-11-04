@@ -3,23 +3,20 @@ import { classes, onElementLoad } from "../common";
 export const addRollAbilityScoreListeners = (store) => onElementLoad(".ability-scores", () => ready(store));
 
 const ready = (store) => {
-  const children = document.querySelector(".ability-scores").children;
+  const className = classes.rollAbilityScore;
+  const buttons = document.querySelectorAll(".ability-scores .roll-button");
 
-  for (const child of children) {
-    const className = classes.rollAbilityScore;
-
-    const name = child.querySelector(".ability-score-name").innerText;
-    const mod = child.querySelector(".ability-score-modifier").innerText;
-
-    // These buttons don't normally exist, so we need to create them.
-    const button = document.createElement("button");
-    button.innerText = "roll";
-    button.classList.add("roll-button", "m-t-10", className);
-    button.onclick = function (event) {
+  // Brittle: manually set ability score names.
+  const names = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
+  for (let i = 0; i < names.length; i++) {
+    const button = buttons[i];
+    const name = names[i];
+    const mod = button.innerText;
+    button.classList.add(className);
+    button.addEventListener("click", function (event) {
       store.dispatch("click", { className, event, data: { name, mod } });
-    };
-    child.appendChild(button);
-
-    console.debug("Added roll ability score listener: " + name);
+    });
   }
+
+  console.debug("Added roll ability score listener: " + name);
 };

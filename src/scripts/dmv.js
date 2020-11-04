@@ -14,6 +14,8 @@ store.subscribe((state) => {
     const { toast, commands } = parseState(state);
     showToast(toast);
     browser.runtime.sendMessage({ type: messageType.enqueue, commands });
+    console.log("Showed toast: " + toast);
+    console.log("Sent commands: " + commands);
   } else if (state.visible !== lastVisibility) {
     showVisibility(state.visible);
     lastVisibility = state.visible;

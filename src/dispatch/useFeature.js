@@ -20,7 +20,7 @@ const ready = (store, selector) => {
 
     // These buttons don't normally exist, so we need to create them.
     const button = document.createElement("button");
-    button.innerText = "use";
+    button.innerText = "USE";
     button.classList.add("roll-button", "m-t-10", "m-l-10", className);
     button.onclick = function (event) {
       store.dispatch("click", { className, event, data: { name, description } });
