@@ -127,17 +127,22 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 **Do I need to have a Plus/Pro subscription on Roll20?**
 
-- No. VTT Bridge works with a basic (free) Roll20 account. The extension will not generate any subscriber-only commands.
+- No. VTT Bridge works with a basic (free) Roll20 account, and will not generate subscriber-only commands.
 
 **How can I use VTT Bridge with my personal Dungeon Master's Vault server?**
 
 - VTT Bridge does not officially support personal Dungeon Master's Vault servers.
 - However, you can follow the instructions in [DEVELOPERS.md](DEVELOPERS.md#modifying-the-extension) to create your own version of the extension.
 
+**How does VTT Bridge work?**
+
+- See [DEVELOPERS.md](DEVELOPERS.md#how-the-extension-works) for a detailed explanation of VTT Bridge's design.
+
 **I found a bug! What should I do?**
 
-- Check the [Issues tab](https://github.com/averycrespi/vtt-bridge/issues) to see if anyone else has reported the same problem.
-- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
+- First, check if the [FAQ](#faq) addresses your issue.
+- Second, check the [Issues tab](https://github.com/averycrespi/vtt-bridge/issues) to see if anyone else has reported the same problem.
+- If your problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
 
 ## Development
 
