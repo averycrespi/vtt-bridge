@@ -22,7 +22,6 @@
         <b>Thank you for your patience while I fix the incompatibilities.</b>
     </p>
     <hr>
-    <br>
 </div>
 
 <div align="center">
@@ -54,6 +53,19 @@
         <img src="https://img.shields.io/github/license/averycrespi/vtt-bridge" alt="License badge">
     </a>
 </div>
+
+<div align="center">
+  <hr>
+  <a href="#about">About</a> •
+  <a href="#key-features">Key Features</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#faq">FAQ</a> •
+  <a href="#development">Development</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
+  <hr>
+</div>
+
 
 <div align="center">
     <img src="assets/screenshot_1920x1080.png" alt="Screenshot">
@@ -101,8 +113,7 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 **Help, the buttons on Dungeon Master's Vault aren't working!**
 
-- Make sure that you clicked the `www` link.
-- If you are on the correct page, the URL should end with `?frame`.
+- Make sure that you clicked the `www` link. If you are on the correct page, the URL should end with `?frame`.
 
 **Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
@@ -116,19 +127,22 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 **Do I need to have a Plus/Pro subscription on Roll20?**
 
-- No. VTT Bridge works with a basic (free) Roll20 account.
-- The extension will not generate any subscriber-only commands.
+- No. VTT Bridge works with a basic (free) Roll20 account, and will not generate subscriber-only commands.
 
 **How can I use VTT Bridge with my personal Dungeon Master's Vault server?**
 
 - VTT Bridge does not officially support personal Dungeon Master's Vault servers.
-- However, you can follow the instructions in [DEVELOPERS.md](DEVELOPERS.md) to create your own version of the extension.
+- However, you can follow the instructions in [DEVELOPERS.md](DEVELOPERS.md#modifying-the-extension) to create your own version of the extension.
+
+**How does VTT Bridge work?**
+
+- See [DEVELOPERS.md](DEVELOPERS.md#how-the-extension-works) for a detailed explanation of VTT Bridge's design.
 
 **I found a bug! What should I do?**
 
-- Make sure that your issue is not covered by the FAQ.
-- Check the Issues tab to see if anyone else has reported the same problem.
-- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
+- First, check if the [FAQ](#faq) addresses your issue.
+- Second, check the [Issues tab](https://github.com/averycrespi/vtt-bridge/issues) to see if anyone else has reported the same problem.
+- If your problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
 
 ## Development
 
