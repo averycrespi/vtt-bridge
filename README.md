@@ -15,16 +15,6 @@
 </div>
 
 <div align="center">
-    <p>
-        <b>NOTICE: Due to some upcoming DMV changes, the extension may stop working for a short period of time.</b>
-    </p>
-    <p>
-        <b>Thank you for your patience while I fix the incompatibilities.</b>
-    </p>
-    <hr>
-</div>
-
-<div align="center">
     <a href="https://addons.mozilla.org/en-CA/firefox/addon/vtt-bridge/">
         <img src="https://img.shields.io/amo/v/vtt-bridge" alt="Mozilla Add-On version badge">
     </a>
