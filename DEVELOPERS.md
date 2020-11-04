@@ -1,81 +1,92 @@
 # Development
 
+- [Development](#development)
+  - [Building the extension](#building-the-extension)
+  - [Running the extension](#running-the-extension)
+  - [Testing the extension](#testing-the-extension)
+  - [Modifying the extension](#modifying-the-extension)
+
 ## Building the extension
 
-> Requirements: [Git](https://git-scm.com/) and the [Yarn](https://yarnpkg.com/) package manager.
+> Requirements: [Git](https://git-scm.com/), [Yarn](https://yarnpkg.com/)
 
 ```sh
-# Clone the repository.
+# Clone the repository
 git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 
-# Install dependencies.
+# Install dependencies
 yarn
 
-# Install build tools.
+# Install build tools
 yarn global add parcel web-ext
 
-# Build the extension package.
+# Build the extension package
 yarn build
 ```
 
+Build notes:
+- The `KNOWN_LIBRARY` notice is caused by `polyfill.js` and can be safely ignored.
+- The `UNSAFE_VAR_ASSIGNMENT` warnings are caused by Parcel and can be safely ignored.
+- The ` Accessing non-existent property '*' of module exports inside circular dependency` warnings are caused by [certain Node dependencies](https://github.com/nodejs/node/issues/32987) and can be safely ignored.
+
 ## Running the extension
 
-> Prerequisites: Follow "Building the extension".
+> Prerequisites: [Building the extension](#building-the-extension)
 
-> Requirements: [Firefox](https://www.mozilla.org/en-CA/firefox/) and [Chromium](https://www.chromium.org/).
+> Requirements: [Firefox](https://www.mozilla.org/en-CA/firefox/), [Chromium](https://www.chromium.org/)
 
 ```sh
-# Build the extension package.
+# Build the extension package
 yarn build
 
-# Start Firefox with the extension loaded.
-# The `firefox` binary must be in your $PATH.
-# The Firefox profile will be saved in `.profiles/firefox`.
+# Start Firefox with the extension loaded
+# The `firefox` binary must be in your $PATH
+# The Firefox profile will be saved in `.profiles/firefox`
 yarn firefox:run
 
-# Start Chromium with the extension loaded.
-# The `chromium-browser` binary must be in your $PATH.
-# The Chromium profile will be saved in `.profiles/chromium`.
+# Start Chromium with the extension loaded
+# The `chromium-browser` binary must be in your $PATH
+# The Chromium profile will be saved in `.profiles/chromium`
 yarn chromium:run
 ```
 
 ## Testing the extension
 
-> Prerequisites: Follow "Building the extension".
+> Prerequisites: [Building the extension](#building-the-extension)
 
-> Requirements: [Python](https://www.python.org/) 3.6 (or newer), [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/), and [chromedriver](https://chromedriver.chromium.org/).
+> Requirements: [Python](https://www.python.org/) 3.6 (or newer), [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/), [chromedriver](https://chromedriver.chromium.org/)
 
 ```sh
-# Build the extension package.
+# Build the extension package
 yarn build
 
-# Run unit tests.
+# Run unit tests
 yarn parcel:test
 
-# Run automation tests with Firefox.
-# The `geckodriver` binary must be in your $PATH.
+# Run automation tests with Firefox
+# The `geckodriver` binary must be in your $PATH
 yarn firefox:test
 
-# Run automation tests with Chromium.
-# The `chromedriver` binary must be in your $PATH.
+# Run automation tests with Chromium
+# The `chromedriver` binary must be in your $PATH
 yarn chromium:test
 
-# Run all tests.
+# Run all unit and automation tests
 yarn test
 ```
 
 See [tests/README.md](tests/README.md) for more information about automation tests.
 
-## Creating your own version of the extension
+## Modifying the extension
 
-> Prerequisites: Follow "Building the extension".
+> Prerequisites: [Building the extension](#building-the-extension)
 
-> Warning: If you create your own version of the extension, you will NOT receive automatic updates.
+> Warning: If you create your own version of the extension, you will NOT receive automatic updates
 
-If you want to make changes to the extension, you can create your own version of VTT Bridge.
+If you want to modify the extension, you can create your own version of VTT Bridge.
 
 ```sh
-# Clone the repository.
+# Clone the repository
 git clone https://github.com/averycrespi/vtt-bridge.git && cd vtt-bridge
 ```
 
@@ -105,15 +116,15 @@ content_scripts": [
 After editing `manifest.json`, you must rebuild the extension with your changes.
 
 ```sh
-# Build the extension package.
+# Build the extension package
 yarn build
 
-# Find the packaged extension file in `web-ext-artifacts/`.
+# Find the packaged extension file in `web-ext-artifacts/`
 ls web-ext-artifacts
 # e.g. vtt_bridge-1.2.3.zip
 ```
 
-Next, you will need to manually install the packaged extension file.
+Next, you will need to manually install the packaged extension file:
 
-- Firefox: Follow the [Mozilla documentation](https://support.mozilla.org/en-US/kb/find-and-install-add-ons-add-features-to-firefox#w_how-do-i-find-and-install-add-ons), specifically the "For advanced users" section.
+- Firefox: Follow the "For advanced users" section of the [Mozilla documentation](https://support.mozilla.org/en-US/kb/find-and-install-add-ons-add-features-to-firefox#w_how-do-i-find-and-install-add-ons).
 - Chrome/Chromium: Visit [chrome://extensions](chrome://extensions), enable "Developer mode", then drag-and-drop the `.zip` file.
