@@ -7,8 +7,13 @@ assignees: averycrespi
 
 ---
 
+**Checklist**
+
+- [ ] My idea aligns with [the design principles](https://github.com/averycrespi/vtt-bridge/wiki/Design-principles-of-the-extension) of the extension.
+- [ ] This feature request is not [a duplicate](https://github.com/averycrespi/vtt-bridge/issues).
+
 **Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+A clear and concise description of what the problem is.
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.

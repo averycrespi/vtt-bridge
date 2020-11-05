@@ -107,8 +107,8 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 **Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
-- On Dungeon Master's Vault, the extension adds event listeners to the roll buttons.
-- On Roll20, the extension runs commands in the game chat.
+- On Dungeon Master's Vault, the extension adds event listeners to buttons.
+- On Roll20, the extension runs commands in the chat.
 - VTT Bridge will *never* make any changes to your account or your content on either site.
 
 **Do I need to have any specific content on Roll20?**
@@ -126,13 +126,15 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 **How does VTT Bridge work?**
 
-- See [this wiki page](https://github.com/averycrespi/vtt-bridge/wiki/How-the-extension-works) for a detailed explanation of VTT Bridge's design.
+- See [this wiki page](https://github.com/averycrespi/vtt-bridge/wiki/How-the-extension-works) for a detailed explanation how VTT Bridge works.
 
 **I found a bug! What should I do?**
 
-- First, check if the [FAQ](#faq) addresses your issue.
-- Second, check the [Issues tab](https://github.com/averycrespi/vtt-bridge/issues) to see if anyone else has reported the same problem.
-- If your problem persists, [open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
+- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Bug report", then complete the issue template.
+
+**I have an idea for a feature! What should I do?**
+
+- [Open an issue](https://github.com/averycrespi/vtt-bridge/issues/new/choose), select "Feature request", then complete the issue template.
 
 ## Development
 
