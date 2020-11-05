@@ -136,7 +136,7 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 ## Development
 
-See [DEVELOPERS.md](DEVELOPERS.md) for information about building, testing, and running the extension.
+See [the project wiki](https://github.com/averycrespi/vtt-bridge/wiki) for information about building, testing, and running the extension.
 
 ## Credits
 
