@@ -19,9 +19,11 @@ const ready = (store) => {
 
       const cells = Array.from(row.querySelectorAll("td"));
       const name = cells[0].innerText;
-
       const button = row.querySelector(".roll-button");
-      const mod = button.innerText;
+
+      // Temporary workaround: tool buttons are not compact.
+      const mod = button.innerText === "Roll" ? cells[cells.length - 2].innerText : button.innerText;
+
       button.classList.add(className);
       button.addEventListener("click", function (event) {
         store.dispatch("click", { className, event, data: { name, mod } });
