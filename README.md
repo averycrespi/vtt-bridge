@@ -122,11 +122,11 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 **How can I use VTT Bridge with my personal Dungeon Master's Vault server?**
 
 - VTT Bridge does not officially support personal Dungeon Master's Vault servers.
-- However, you can follow the instructions in [DEVELOPERS.md](DEVELOPERS.md#modifying-the-extension) to create your own version of the extension.
+- However, you can follow the [wiki instructions](https://github.com/averycrespi/vtt-bridge/wiki/Modifying-the-extension) to create your own version of the extension.
 
 **How does VTT Bridge work?**
 
-- See [DEVELOPERS.md](DEVELOPERS.md#how-the-extension-works) for a detailed explanation of VTT Bridge's design.
+- See [this wiki page](https://github.com/averycrespi/vtt-bridge/wiki/How-the-extension-works) for a detailed explanation of VTT Bridge's design.
 
 **I found a bug! What should I do?**
 

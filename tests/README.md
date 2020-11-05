@@ -1,8 +1,8 @@
 # Automation Tests
 
-> Note: see [DEVELOPERS.md](../DEVELOPERS.md) for information about test requirements and usage.
-
-Automation tests are written in Python and use the [Selenium](https://www.selenium.dev/) framework. The Python dependencies are isolated in a virtual environment. Browser logs are written to disk for debugging purposes.
+- Automation tests are written in Python and use the [Selenium](https://www.selenium.dev/) framework.
+- The Python dependencies are isolated in a virtual environment.
+- Browser logs are written to disk for debugging purposes.
 
 ## Overview
 
