@@ -1,11 +1,11 @@
 [
   {
     "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592227885528?frame=true",
-    "name": "Paladin",
+    "name": "Bard",
     "num_weapons": 2,
-    "num_tools": 0,
-    "num_spells": 12,
-    "num_features": 9,
-    "tested_spells": ["Bless"]
+    "num_tools": 3,
+    "num_spells": 8,
+    "num_features": 5,
+    "tested_spells": ["Bane"]
   }
 ]
