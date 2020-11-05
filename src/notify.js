@@ -1,12 +1,17 @@
 import "notyf/notyf.min.css";
 
 import { Notyf } from "notyf";
+import manifest from "../manifest.json";
 
 const bottomRight = new Notyf();
 const bottomLeft = new Notyf({ position: { x: "left", y: "bottom" } });
 
 export const showConnected = () =>
-  bottomRight.success({ message: "Connected to VTT Bridge!", duration: 0, dismissible: true });
+  bottomRight.success({
+    message: "Connected to VTT Bridge v" + manifest.version + "!",
+    duration: 0,
+    dismissible: true,
+  });
 
 export const showToast = (toast) => bottomRight.success(toast);
 
