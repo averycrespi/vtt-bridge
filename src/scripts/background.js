@@ -18,6 +18,6 @@ browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       break;
 
     default:
-      throw "Unknown messagetype: " + message.type;
+      throw `Unknown message type: ${message.type}`;
   }
 });
