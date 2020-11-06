@@ -105,6 +105,10 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 - Make sure that you clicked the `www` link. If you are on the correct page, the URL should end with `?frame`.
 
+**Help, VTT Bridge doesn't work with incognito mode/private browsing!**
+
+- Extensions must be manually allowed to run in [incognito mode (Chrome)](https://support.google.com/chrome/thread/3194459?hl=en) or [private browsing (Firefox)](https://support.mozilla.org/en-US/kb/extensions-private-browsing).
+
 **Why does VTT Bridge need to "Access your data for www.dungeonmastersvault.com and app.roll20.net"?**
 
 - On Dungeon Master's Vault, the extension adds event listeners to buttons.
