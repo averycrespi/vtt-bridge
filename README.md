@@ -119,6 +119,10 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 - No. VTT Bridge works with a basic (free) Roll20 account, and will not generate subscriber-only commands.
 
+**Does VTT Bridge work when the Roll20 chat is popped-out?**
+
+- Yes. VTT Bridge works when the text chat is [popped-out](https://wiki.roll20.net/Text_Chat#Pop-Out_Chat) to a new window.
+
 **How can I use VTT Bridge with my personal Dungeon Master's Vault server?**
 
 - VTT Bridge does not officially support personal Dungeon Master's Vault servers.
