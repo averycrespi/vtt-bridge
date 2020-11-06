@@ -21,6 +21,10 @@ export const showVisibility = (visible) => {
   if (visible) {
     visibilityToast = bottomLeft.success({ message: "Commands are visible!", duration: 0, dismissible: true });
   } else {
-    visibilityToast = bottomLeft.error({ message: "Commands are hidden!", duration: 0, dismissible: true });
+    visibilityToast = bottomLeft.success({ message: "Commands are hidden!", duration: 0, dismissible: true });
   }
+};
+
+export const showError = (error) => {
+  bottomRight.error({ message: error, duration: 0, dismissible: true });
 };

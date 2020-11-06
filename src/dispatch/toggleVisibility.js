@@ -1,5 +1,7 @@
 import { classes, onElementLoad } from "../common";
 
+import { STORE_VISIBILITY } from "../store";
+
 export const addToggleVisibilityListeners = (store) => onElementLoad(".character-summary", () => ready(store));
 
 const ready = (store) => {
@@ -11,7 +13,7 @@ const ready = (store) => {
   button.classList.add("form-button", "m-l-10", "h-40", classes.toggleVisibility);
   button.addEventListener("click", function () {
     visible = !visible;
-    store.dispatch("visibility", visible);
+    store.dispatch(STORE_VISIBILITY, visible);
   });
   summary.appendChild(button);
 
