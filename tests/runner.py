@@ -14,7 +14,7 @@ class Runner:
         """Run tests."""
         self.logger.debug(f"Running tests for character: {character.name}")
         self.engine.load_url(character.url)
-        self.engine.expect_toast("Connected to VTT Bridge!")
+        self.engine.expect_toast("Connected to VTT Bridge v.*?!")
         self._check_left_panel()
 
         self.logger.debug("Moving forwards through tabs")

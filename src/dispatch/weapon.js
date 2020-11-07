@@ -1,4 +1,6 @@
+import { STORE_CLICK, STORE_ERROR } from "../store";
 import { classes, onElementLoad } from "../common";
+import { isValidAttack, isValidDamage, isValidName } from "../transform/validate";
 
 // Brittle: wait for any roll button to load.
 export const addWeaponListeners = (store) => onElementLoad(".weapons .weapon .roll-button", () => ready(store));
@@ -14,20 +16,35 @@ const ready = (store) => {
 
     const cells = Array.from(row.querySelectorAll("td"));
     const name = cells[0].innerText;
+    if (!isValidName(name)) {
+      store.dispatch(STORE_ERROR, { name: "weapon", property: "name", value: name });
+      continue;
+    }
+
     const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
+
     const attack = attackButton.innerText;
-    const damage = damageButton.innerText;
+    if (!isValidAttack(attack)) {
+      store.dispatch(STORE_ERROR, { name, property: "attack", value: attack });
+      continue;
+    }
 
     attackButton.classList.add(classes.attackWithWeapon);
     attackButton.addEventListener("click", function (event) {
-      store.dispatch("click", { className: classes.attackWithWeapon, event, data: { name, attack } });
+      store.dispatch(STORE_CLICK, { className: classes.attackWithWeapon, event, data: { name, attack } });
     });
+    console.debug(`Added weapon attack listener: ${name}`);
+
+    const damage = damageButton.innerText;
+    if (!isValidDamage(damage)) {
+      store.dispach("error", { name, property: "damage", value: damage });
+      continue;
+    }
 
     damageButton.classList.add(classes.rollWeaponDamage);
     damageButton.addEventListener("click", function () {
-      store.dispatch("click", { className: classes.rollWeaponDamage, event, data: { name, damage } });
+      store.dispatch(STORE_CLICK, { className: classes.rollWeaponDamage, event, data: { name, damage } });
     });
-
-    console.debug("Added attack with weapon and roll weapon damage listeners: " + name);
+    console.debug(`Added weapon damage listener: ${name}`);
   }
 };

@@ -2,7 +2,7 @@
   "name": "vtt-bridge",
   "description": "Connect Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "license": "MIT",
   "dependencies": {
     "beedle": "^0.8.1",
@@ -30,7 +30,7 @@
     "parcel:clean": "rm -rf dist/*",
     "parcel:rebuild": "yarn parcel:clean && yarn parcel:build",
     "parcel:test": "jest",
-    "parcel:fix": "eslint --fix src/**/*.js",
+    "assets:optimize": "optipng assets/*",
     "firefox:run": "mkdir -p .profiles/firefox/ && web-ext run",
     "firefox:test": "./tests/run_firefox.sh",
     "chromium:run": "mkdir -p .profiles/chromium/ && web-ext run --target chromium",

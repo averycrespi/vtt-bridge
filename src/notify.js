@@ -1,21 +1,42 @@
 import "notyf/notyf.min.css";
 
 import { Notyf } from "notyf";
+import manifest from "../manifest.json";
 
-const bottomRight = new Notyf();
-const bottomLeft = new Notyf({ position: { x: "left", y: "bottom" } });
+const successNotyf = new Notyf();
+const errorNotyf = new Notyf();
+const visibilityNotyf = new Notyf({
+  position: { x: "left", y: "bottom" },
+  types: [
+    { type: "visible", background: "#aa7a21", icon: { className: "fa fa-eye", color: "#ffffff" } },
+    { type: "hidden", background: "#6591a5", icon: { className: "fa fa-eye-slash", color: "#ffffff" } },
+  ],
+});
 
 export const showConnected = () =>
-  bottomRight.success({ message: "Connected to VTT Bridge!", duration: 0, dismissible: true });
+  successNotyf.success({
+    message: "Connected to VTT Bridge v" + manifest.version + "!",
+    duration: 0,
+    dismissible: true,
+  });
 
-export const showToast = (toast) => bottomRight.success(toast);
+export const showToast = (toast) => {
+  successNotyf.dismissAll();
+  successNotyf.success(toast);
+};
 
 let visibilityToast;
 export const showVisibility = (visible) => {
-  bottomLeft.dismiss(visibilityToast);
-  if (visible) {
-    visibilityToast = bottomLeft.success({ message: "Commands are visible!", duration: 0, dismissible: true });
-  } else {
-    visibilityToast = bottomLeft.error({ message: "Commands are hidden!", duration: 0, dismissible: true });
-  }
+  visibilityNotyf.dismiss(visibilityToast);
+  const type = visible ? "visible" : "hidden";
+  visibilityToast = visibilityNotyf.open({
+    type,
+    message: `Commands are ${type}!`,
+    duration: 0,
+    dismissible: true,
+  });
+};
+
+export const showError = (error) => {
+  errorNotyf.error({ message: error, duration: 0, dismissible: true }).on("dismiss", () => errorNotyf.dismissAll());
 };
