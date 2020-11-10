@@ -9,7 +9,7 @@ assignees: averycrespi
 
 **Checklist**
 
-- [ ] My idea aligns with [the design principles](https://github.com/averycrespi/vtt-bridge/wiki/Design-principles-of-the-extension) of the extension.
+- [ ] I have considered [the design principles](https://github.com/averycrespi/vtt-bridge/wiki/Design-principles-of-the-extension) of the extension.
 - [ ] This feature request is not [a duplicate](https://github.com/averycrespi/vtt-bridge/issues).
 
 **Is your feature request related to a problem? Please describe.**

@@ -8,7 +8,7 @@ assignees: averycrespi
 ---
 
 **Checklist**
-- [ ] The [FAQ](https://github.com/averycrespi/vtt-bridge#faq) does not resolve my issue.
+- [ ] The [FAQ](https://github.com/averycrespi/vtt-bridge/wiki/FAQ) does not resolve my issue.
 - [ ] This bug report is not [a duplicate](https://github.com/averycrespi/vtt-bridge/issues).
 
 **Describe the bug**
