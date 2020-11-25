@@ -21,7 +21,7 @@ const ready = (store) => {
       continue;
     }
 
-    const [attackButton, damageButton] = row.querySelectorAll(".roll-button");
+    const [attackButton, ...damageButtons] = row.querySelectorAll(".roll-button");
 
     const attack = attackButton.innerText;
     if (!isValidAttack(attack)) {
@@ -35,16 +35,22 @@ const ready = (store) => {
     });
     console.debug(`Added weapon attack listener: ${name}`);
 
-    const damage = damageButton.innerText;
-    if (!isValidDamage(damage)) {
-      store.dispach("error", { name, property: "damage", value: damage });
-      continue;
-    }
+    for (const damageButton of damageButtons) {
+      let damage = damageButton.innerText;
+      if (damage.charAt(0) === "v") {
+        // Remove versatility indicator.
+        damage = damage.slice("v ".length);
+      }
+      if (!isValidDamage(damage)) {
+        store.dispach("error", { name, property: "damage", value: damage });
+        continue;
+      }
 
-    damageButton.classList.add(classes.rollWeaponDamage);
-    damageButton.addEventListener("click", function () {
-      store.dispatch(STORE_CLICK, { className: classes.rollWeaponDamage, event, data: { name, damage } });
-    });
-    console.debug(`Added weapon damage listener: ${name}`);
+      damageButton.classList.add(classes.rollWeaponDamage);
+      damageButton.addEventListener("click", function (event) {
+        store.dispatch(STORE_CLICK, { className: classes.rollWeaponDamage, event, data: { name, damage } });
+      });
+      console.debug(`Added weapon damage listener: ${name}`);
+    }
   }
 };

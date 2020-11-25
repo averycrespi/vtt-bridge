@@ -7,7 +7,8 @@ class Character:
         *,
         url: str,
         name: str = "",
-        num_weapons: int = 0,
+        num_total_weapons: int = 0,
+        num_versatile_weapons: int = 0,
         num_tools: int = 0,
         num_spells: int = 0,
         num_features: int = 0,
@@ -16,7 +17,8 @@ class Character:
         """Create a new character."""
         self.url = url
         self.name = name
-        self.num_weapons = num_weapons
+        self.num_total_weapons = num_total_weapons
+        self.num_versatile_weapons = num_versatile_weapons
         self.num_tools = num_tools
         self.num_spells = num_spells
         self.num_features = num_features
