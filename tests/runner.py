@@ -18,18 +18,18 @@ class Runner:
         self._check_left_panel()
 
         self.logger.debug("Moving forwards through tabs")
-        self._check_combat_tab(character.num_weapons)
-        self._check_proficiencies_tab(character.num_tools)
-        self._check_features_tab(character.num_features)
-        self._check_spells_tab(character.num_spells)
-        self._check_equipment_tab(character.num_weapons)
+        self._check_combat_tab(character)
+        self._check_proficiencies_tab(character)
+        self._check_features_tab(character)
+        self._check_spells_tab(character)
+        self._check_equipment_tab(character)
 
         self.logger.debug("Moving backwards through tabs")
-        self._check_equipment_tab(character.num_weapons)
-        self._check_spells_tab(character.num_spells)
-        self._check_features_tab(character.num_features)
-        self._check_proficiencies_tab(character.num_tools)
-        self._check_combat_tab(character.num_weapons)
+        self._check_equipment_tab(character)
+        self._check_spells_tab(character)
+        self._check_features_tab(character)
+        self._check_proficiencies_tab(character)
+        self._check_combat_tab(character)
 
         self.logger.debug("Checking user interaction")
         self._check_roll_strength_button()
@@ -49,43 +49,51 @@ class Runner:
         saving_throw = self.engine.find(".vtt-roll-saving-throw")
         assert len(saving_throw) == 6, "Wrong number of roll saving throw buttons"
 
-    def _check_combat_tab(self, num_weapons: int):
+    def _check_combat_tab(self, c: Character):
         self.logger.debug("Checking combat tab")
         self.engine.select_tab_by_index(0)
         initiative = self.engine.find(".vtt-roll-initiative")
         assert len(initiative) == 1, "Wrong number of roll initiative buttons"
         attack = self.engine.find(".vtt-attack-with-weapon")
-        assert len(attack) == num_weapons, "Wrong number of attack with weapon buttons"
+        assert (
+            len(attack) == c.num_total_weapons
+        ), "Wrong number of attack with weapon buttons"
         damage = self.engine.find(".vtt-roll-weapon-damage")
-        assert len(damage) == num_weapons, "Wrong number of roll weapon damage buttons"
+        assert (
+            len(damage) == c.num_total_weapons + c.num_versatile_weapons
+        ), "Wrong number of roll weapon damage buttons"
 
-    def _check_proficiencies_tab(self, num_tools: int):
+    def _check_proficiencies_tab(self, c: Character):
         self.logger.debug("Checking proficiencies tab")
         self.engine.select_tab_by_index(1)
         proficiency = self.engine.find(".vtt-roll-proficiency")
         assert (
-            len(proficiency) == 18 + num_tools
+            len(proficiency) == 18 + c.num_tools
         ), "Wrong number of roll proficiency buttons"
 
-    def _check_spells_tab(self, num_spells: int):
+    def _check_spells_tab(self, c: Character):
         self.logger.debug("Checking spells tab")
         self.engine.select_tab_by_index(2)
         attack = self.engine.find(".vtt-attack-with-spell")
-        assert len(attack) == num_spells, "Wrong number of attack with spell buttons"
+        assert len(attack) == c.num_spells, "Wrong number of attack with spell buttons"
 
-    def _check_features_tab(self, num_features: int):
+    def _check_features_tab(self, c: Character):
         self.logger.debug("Checking features tab")
         self.engine.select_tab_by_index(3)
         feature = self.engine.find(".vtt-use-feature")
-        assert len(feature) == num_features, "Wrong number of use feature buttons"
+        assert len(feature) == c.num_features, "Wrong number of use feature buttons"
 
-    def _check_equipment_tab(self, num_weapons: int):
+    def _check_equipment_tab(self, c: Character):
         self.logger.debug("Checking equipment tab")
         self.engine.select_tab_by_index(4)
         attack = self.engine.find(".vtt-attack-with-weapon")
-        assert len(attack) == num_weapons, "Wrong number of attack with weapon buttons"
+        assert (
+            len(attack) == c.num_total_weapons
+        ), "Wrong number of attack with weapon buttons"
         damage = self.engine.find(".vtt-roll-weapon-damage")
-        assert len(damage) == num_weapons, "Wrong number of roll weapon damage buttons"
+        assert (
+            len(damage) == c.num_total_weapons + c.num_versatile_weapons
+        ), "Wrong number of roll weapon damage buttons"
 
     def _check_roll_strength_button(self):
         self.logger.debug("Checking roll strength button")

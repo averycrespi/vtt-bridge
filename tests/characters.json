@@ -2,7 +2,8 @@
   {
     "url": "https://www.dungeonmastersvault.com/pages/dnd/5e/characters/17592227885528?frame=true",
     "name": "Bard",
-    "num_weapons": 2,
+    "num_total_weapons": 2,
+    "num_versatile_weapons": 1,
     "num_tools": 3,
     "num_spells": 8,
     "num_features": 5,
