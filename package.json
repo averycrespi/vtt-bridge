@@ -24,7 +24,7 @@
     "webextension-polyfill": "^0.6.0"
   },
   "scripts": {
-    "parcel:polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/polyfill.js",
+    "parcel:polyfill": "mkdir -p dist/ && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js dist/polyfill.js",
     "parcel:build": "yarn parcel:polyfill && parcel build --no-source-maps src/scripts/*",
     "parcel:watch": "yarn parcel:polyfill && parcel watch --no-source-maps src/scripts/*",
     "parcel:clean": "rm -rf dist/*",
