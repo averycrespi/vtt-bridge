@@ -51,6 +51,7 @@
   <a href="#getting-started">Getting Started</a> •
   <a href="#support">Support</a> •
   <a href="#credits">Credits</a> •
+  <a href="#privacy">Privacy</a> •
   <a href="#license">License</a>
   <hr>
 </div>
@@ -109,6 +110,10 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 
 - Project inspired by [VTT Enhancement Suite](https://ssstormy.github.io/roll20-enhancement-suite/).
 - Logo derived from [dragon by BGBOXXX Design](https://thenounproject.com/term/dragon/1646665/) from the Noun Project.
+
+## Privacy
+
+VTT Bridge does not collect, store, or transmit any data.
 
 ## License
 
