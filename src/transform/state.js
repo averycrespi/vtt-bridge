@@ -32,6 +32,11 @@ export const parseState = (state) => {
         commands: [makeEmote(`${character} rolls ${name} check`, options), makeD20Roll(mod, options)],
       };
     case classes.rollInitiative:
+      return {
+        toast: makeToast(`${character} rolled ${name}`, options),
+        // Add turn tracker support to initiative rolls.
+        commands: [makeEmote(`${character} rolls ${name}`, options), makeD20Roll(mod, options) + " &{tracker}"],
+      };
     case classes.rollProficiency:
       return {
         toast: makeToast(`${character} rolled ${name}`, options),

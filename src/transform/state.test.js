@@ -21,7 +21,7 @@ describe("parse state", () => {
     };
     const { toast, commands } = parseState(state);
     expect(toast).toBe("Wizard rolled initiative with disadvantage!");
-    expect(commands).toStrictEqual(["/em : Wizard rolls initiative with disadvantage", "/roll 2d20kl1"]);
+    expect(commands).toStrictEqual(["/em : Wizard rolls initiative with disadvantage", "/roll 2d20kl1 &{tracker}"]);
   });
 
   test("Fighter rolls Club damage (hidden)", () => {
