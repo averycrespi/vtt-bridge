@@ -49,6 +49,7 @@
   <a href="#about">About</a> •
   <a href="#key-features">Key Features</a> •
   <a href="#getting-started">Getting Started</a> •
+  <a href="#project-status">Project Status</a> •
   <a href="#support">Support</a> •
   <a href="#credits">Credits</a> •
   <a href="#privacy">Privacy</a> •
@@ -98,6 +99,14 @@ The use of this tool is meant for use for your own campaigns. It is only meant a
 ![Notification](assets/notification.png)
 
 **Click a button** on your Dungeon Master's Vault character sheet. Your roll will appear in Roll20!
+
+## Project Status
+
+VTT Bridge is in maintenance mode, which means that I don't plan to add any new features.
+
+However, I will continue to release updates for the following reasons:
+- To upgrade dependencies and fix security issues
+- To maintain compatibility with the latest versions of Dungeon Master's Vault and Roll20
 
 ## Support
 
