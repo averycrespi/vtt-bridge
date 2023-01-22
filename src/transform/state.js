@@ -18,7 +18,7 @@ export const parseState = (state) => {
     case classes.attackWithWeapon:
       return {
         toast: makeToast(`${character} attacked with ${name}`, options),
-        commands: [makeEmote(`${character} attacks with ${name}`, options), makeWeaponAttack(attack, options)],
+        commands: [makeEmote(`${character} attacks with ${name}`, options), makeWeaponAttack(attack, character, name, damage, options)],
       };
     case classes.castSpell:
       return {
@@ -29,23 +29,23 @@ export const parseState = (state) => {
     case classes.rollSkill:
       return {
         toast: makeToast(`${character} rolled ${name} check`, options),
-        commands: [makeEmote(`${character} rolls ${name} check`, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(`${character} rolls ${name} check`, options), makeD20Roll(mod, character, name, options)],
       };
     case classes.rollInitiative:
       return {
         toast: makeToast(`${character} rolled ${name}`, options),
         // Add turn tracker support to initiative rolls.
-        commands: [makeEmote(`${character} rolls ${name}`, options), makeD20Roll(mod, options) + " &{tracker}"],
+        commands: [makeEmote(`${character} rolls ${name}`, options), makeD20Roll(mod, character, name, options) + " &{tracker}"],
       };
     case classes.rollProficiency:
       return {
         toast: makeToast(`${character} rolled ${name}`, options),
-        commands: [makeEmote(`${character} rolls ${name}`, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(`${character} rolls ${name}`, options), makeD20Roll(mod, character, name, options)],
       };
     case classes.rollSavingThrow:
       return {
         toast: makeToast(`${character} rolled ${name} save`, options),
-        commands: [makeEmote(`${character} rolls ${name} save`, options), makeD20Roll(mod, options)],
+        commands: [makeEmote(`${character} rolls ${name} save`, options), makeD20Roll(mod, character, name, options)],
       };
     case classes.rollWeaponDamage:
       return {
