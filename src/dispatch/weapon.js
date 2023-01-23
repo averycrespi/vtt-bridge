@@ -30,11 +30,8 @@ const ready = (store) => {
     }
 
     attackButton.classList.add(classes.attackWithWeapon);
-    attackButton.addEventListener("click", function (event) {
-      store.dispatch(STORE_CLICK, { className: classes.attackWithWeapon, event, data: { name, attack } });
-    });
-    console.debug(`Added weapon attack listener: ${name}`);
-
+    
+    
     for (const damageButton of damageButtons) {
       let damage = damageButton.innerText;
       if (damage.charAt(0) === "v") {
@@ -47,6 +44,14 @@ const ready = (store) => {
       }
 
       damageButton.classList.add(classes.rollWeaponDamage);
+
+      
+      attackButton.addEventListener("click", function (event) {
+        store.dispatch(STORE_CLICK, { className: classes.attackWithWeapon, event, data: { name, attack, damage } });
+      });
+
+      console.debug(`Added weapon attack listener: ${name}`);
+
       damageButton.addEventListener("click", function (event) {
         store.dispatch(STORE_CLICK, { className: classes.rollWeaponDamage, event, data: { name, damage } });
       });
