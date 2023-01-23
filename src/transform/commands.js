@@ -85,3 +85,12 @@ export const makeSpellAttack = (attack, { hasAdvantage, hasDisadvantage, visible
     return prefix + attack;
   }
 };
+
+export const makeTrait = (description, character, name, { visible }) => {
+  const prefix = visible ? "" : "/w gm ";
+
+  return prefix + "&{template:traits} {{charname="+ character +"}} {{name="+ name + "}} {{source=Features}} {{description="+description.replace(/\n/g, "\n")+"}}"
+};
+
+
+

@@ -1,4 +1,4 @@
-import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote, makeWeaponAttack, makeSpellAttack } from "./commands";
+import { makeD20Roll, makeDamageRoll, makeDescription, makeEmote, makeWeaponAttack, makeSpellAttack , makeTrait} from "./commands";
 
 import { classes } from "../common";
 import { makeToast } from "./toasts";
@@ -61,7 +61,7 @@ export const parseState = (state) => {
     case classes.useFeature:
       return {
         toast: makeToast(`${character} used ${name}`, options),
-        commands: [makeEmote(`${character} uses ${name}`, options), makeDescription(description, options)],
+        commands: [makeEmote(`${character} uses ${name}`, options), makeTrait(description, character, name, options)],
       };
     default:
       throw `Unknown class name: ${className}`;
