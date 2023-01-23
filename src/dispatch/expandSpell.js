@@ -27,6 +27,23 @@ const ready = (store) => {
         }
 
         const cell = button.closest("td");
+        
+        //Get spell details as array
+        const div = Array.from(cell.querySelectorAll("div"));
+        const spellItems = (div[0].innerText).split("\n");
+
+        const index = spellItems.indexOf("CAST SPELL");//Rip out all the different cast levels
+        spellItems.splice(0,index +1);
+
+       
+        console.debug(`Added expand spell items: ${spellItems}`);
+
+        /*const school = items[3];
+        const castingTime = items[4];
+        const range = items[5];
+        const duration = items[6];
+        const components = items[7];
+        */
         const paragraphs = Array.from(cell.querySelectorAll("p"));
         const description = paragraphs.map((p) => p.innerText).join("\n");
         if (!isValidDescription(description)) {
@@ -35,7 +52,7 @@ const ready = (store) => {
         }
 
         button.addEventListener("click", function (event) {
-          store.dispatch(STORE_CLICK, { className, event, data: { name, description } });
+          store.dispatch(STORE_CLICK, { className, event, data: { name, description, spellItems } });
         });
 
         console.debug(`Added expand spell listener: ${name}`);
