@@ -2,7 +2,7 @@
   "name": "vtt-bridge",
   "description": "Connect Dungeon Master's Vault to Roll20.",
   "author": "Avery Crespi",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "license": "MIT",
   "dependencies": {
     "beedle": "^0.8.1",
