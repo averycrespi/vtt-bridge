@@ -1,14 +1,20 @@
 export function sendMessage(message) {
-    const request = new XMLHttpRequest();
-    request.open("POST", "DISCORD WEBOOK URL GOES HERE");
+  chrome.storage.sync.get("discordurl", function (items) {
+    if (!chrome.runtime.error) {
+      console.debug('Loaded: URL as' + items.discordurl);
 
-    request.setRequestHeader('Content-type', 'application/json');
+      const request = new XMLHttpRequest();
+      request.open("POST", items.discordurl);
 
-    const params = {
-      username: "DMZ-Bot",
-      avatar_url: "",
-      content: message
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "DMZ-Bot",
+        avatar_url: "",
+        content: message
+      }
+
+      request.send(JSON.stringify(params));
     }
-
-    request.send(JSON.stringify(params));
-  }
+  });
+}
