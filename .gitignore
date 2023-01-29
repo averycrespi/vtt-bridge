@@ -63,6 +63,7 @@ typings/
 # Parcel related files
 dist/
 .cache/
+.parcel-cache/
 
 # Editor configuration
 .vscode/

@@ -1,13 +1,35 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "VTT Bridge",
-  "version": "1.6.3",
+
+  "version": "1.6.4",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@example.com"
+    }
+  },
   "description": "Connect Dungeon Master's Vault to Roll20.",
+ 
+
+  "background": {
+    "service_worker": "wrapper.js",
+    "type": "module"
+  },
   "icons": {
     "48": "icons/48.png",
     "96": "icons/96.png",
     "128": "icons/128.png"
   },
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "config.html",
+    "open_in_tab": false
+  },
+    "browser_action": {
+      "default_popup": "config.html"
+    },
   "content_scripts": [
     {
       "matches": ["*://www.dungeonmastersvault.com/pages/dnd/5e/characters/*?frame=true"],
@@ -19,8 +41,6 @@
       "js": ["dist/polyfill.js", "dist/roll20.js"],
       "css": ["dist/roll20.css"]
     }
-  ],
-  "background": {
-    "scripts": ["dist/polyfill.js", "dist/background.js"]
-  }
+  ]
+  
 }
